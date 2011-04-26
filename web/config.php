@@ -6,10 +6,10 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = 'localhost';
-$CFG->dbname    = 'moodle';
-$CFG->dbuser    = 'moodle';
-$CFG->dbpass    = 'moodle';
+$CFG->dbhost    = 'jamesbrennan.ca';
+$CFG->dbname    = 'jamesbr5_sea';
+$CFG->dbuser    = 'jamesbr5_sea';
+$CFG->dbpass    = 'sea4900';
 $CFG->prefix    = 'mdl_';
 $CFG->dboptions = array (
   'dbpersist' => 0,
