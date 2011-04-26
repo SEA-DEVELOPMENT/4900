@@ -1,0 +1,1 @@
+M.core_flashdetect={};M.core_flashdetect.init=function(Y){var flashversion=swfobject.getFlashPlayerVersion();Y.io(M.cfg.wwwroot+'/login/environment.php?sesskey='+M.cfg.sesskey+'&flashversion='+flashversion.major+'.'+flashversion.minor+'.'+flashversion.release,{method:"POST"});};

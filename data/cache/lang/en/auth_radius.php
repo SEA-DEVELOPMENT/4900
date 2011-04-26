@@ -1,0 +1,17 @@
+<?php $this->cache['en']['auth_radius'] = array (
+  'auth_radiusdescription' => 'This method uses a <a href="http://en.wikipedia.org/wiki/RADIUS">RADIUS</a> server to check whether a given username and password is valid.',
+  'auth_radiushost' => 'Address of the RADIUS server',
+  'auth_radiushost_key' => 'Host',
+  'auth_radiuschangepasswordurl_key' => 'Password-change URL',
+  'auth_radiusnasport' => 'Port to use to connect',
+  'auth_radiusnasport_key' => 'Port',
+  'auth_radiussecret' => 'Shared secret',
+  'auth_radiussecret_key' => 'Secret',
+  'auth_radiustype' => 'Choose an authentication scheme to use with the RADIUS server.',
+  'auth_radiustypechapmd5' => 'CHAP MD5',
+  'auth_radiustype_key' => 'Authentication',
+  'auth_radiustypemschapv1' => 'Microsoft CHAP version 1',
+  'auth_radiustypemschapv2' => 'Microsoft CHAP version 2',
+  'auth_radiustypepap' => 'PAP',
+  'pluginname' => 'RADIUS server',
+);

@@ -1,0 +1,36 @@
+<?php $this->cache['en']['core_notes'] = array (
+  'addnewnote' => 'Add a new note',
+  'addnewnoteselect' => 'Select users to write notes about',
+  'bynameondate' => 'by {$a->name} - {$a->date}',
+  'cannotdeletepost' => 'Error occurred while deleting post',
+  'configenablenotes' => 'Enable storing of notes about individual users.',
+  'content' => 'Content',
+  'course' => 'course',
+  'coursenotes' => 'Course notes',
+  'created' => 'created',
+  'deleteconfirm' => 'Delete this note?',
+  'deletenotes' => 'Delete all notes',
+  'editnote' => 'Edit note',
+  'enablenotes' => 'Enable notes',
+  'groupaddnewnote' => 'Add a common note',
+  'invalidid' => 'Invalid note ID specified',
+  'nocontent' => 'Note content can not be empty',
+  'nonotes' => 'There are no notes of this type yet',
+  'nopermissiontodelete' => 'You may not delete this note',
+  'note' => 'Note',
+  'notes' => 'Notes',
+  'notesdisabled' => 'Notes are disabled, sorry.',
+  'notesnotvisible' => 'You are not allowed to view the notes.',
+  'nouser' => 'You must select a user',
+  'personal' => 'personal',
+  'personalnotes' => 'Personal notes',
+  'publishstate' => 'Context',
+  'publishstate_help' => 'A note\'s context determines who can see the note.
+
+* Personal - The note will be visible only to you
+* Course - The note will be visible to teachers in this course
+* Site - The note will be visible to teachers in all courses',
+  'site' => 'site',
+  'sitenotes' => 'Site notes',
+  'unknown' => 'unknown',
+);
