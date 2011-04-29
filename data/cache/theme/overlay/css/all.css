@@ -340,7 +340,7 @@ img{width:auto;height:auto;float:left}.path-mod-quiz
 input{display:block;margin:0.5em 0}.path-mod-quiz
 .qnbutton{display:block;float:left;width:1.5em;height:1.5em;overflow:hidden;margin:0.3em 0.3em 0.3em 0;padding:0;border:1px
 solid #bbb;background:#eee no-repeat top right;text-align:center;vertical-align:middle;cursor:pointer;white-space:normal;font:inherit;line-height:1.5em;font-weight:bold;color:#00f;border-color:#bbb;background-color:#ddd}.path-mod-quiz .qnbutton:hover{text-decoration:underline;color:#f00}.path-mod-quiz
-.qnbutton.flagged{background-image:url(image.php?theme=overlay&image=i%2Fne_red_mark&rev=162)}.path-mod-quiz
+.qnbutton.flagged{background-image:url(image.php?theme=overlay&image=i%2Fne_red_mark&rev=163)}.path-mod-quiz
 .qnbutton.thispage{border-color:black}.path-mod-quiz
 .qnbutton.open{background-color:white}.path-mod-quiz
 .qnbutton.correct{background-color:#cfc}.path-mod-quiz
@@ -641,10 +641,10 @@ td{width:20%;vertical-align:top;border-right:1px solid #ddd;background-color:#f5
 .path-mod-workshop .userplan td.active a:active{color:black}.path-mod-workshop .userplan
 td.lastcol{border-right:none}.path-mod-workshop .userplan
 td.active{border-left:1px solid #ddd;border-right:1px solid #ddd;background-color:#e7f1c3}.path-mod-workshop .userplan tr.phasetasks
-li{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-todo&rev=162&component=mod_workshop);background-position:top left;background-repeat:no-repeat;list-style-type:none}.path-mod-workshop .userplan tr.phasetasks
-li.completed{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-done&rev=162&component=mod_workshop)}.path-mod-workshop .userplan tr.phasetasks
-li.fail{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-fail&rev=162&component=mod_workshop)}.path-mod-workshop .userplan tr.phasetasks
-li.info{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-info&rev=162&component=mod_workshop)}.path-mod-workshop .userplan tr.phasetasks
+li{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-todo&rev=163&component=mod_workshop);background-position:top left;background-repeat:no-repeat;list-style-type:none}.path-mod-workshop .userplan tr.phasetasks
+li.completed{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-done&rev=163&component=mod_workshop)}.path-mod-workshop .userplan tr.phasetasks
+li.fail{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-fail&rev=163&component=mod_workshop)}.path-mod-workshop .userplan tr.phasetasks
+li.info{background-image:url(image.php?theme=overlay&image=userplan%2Ftask-info&rev=163&component=mod_workshop)}.path-mod-workshop .userplan tr.phasetasks
 .tasks{list-style:none;margin:3px;padding:0px}.path-mod-workshop .userplan tr.phasetasks
 .title{padding:0px
 10px 0px 20px}.path-mod-workshop .userplan tr.phasetasks
@@ -733,8 +733,8 @@ auto 0;z-index:90;width:95%;padding:10px
 li{background-color:#FFFAFA !important;-moz-border-radius:6px;-webkit-border-radius:6px;padding-right:4px;padding-bottom:2px}#page-blocks-community-communitycourse
 .ratingcount{color:#8B8989;font-size:80%;vertical-align:top}#page-blocks-community-communitycourse
 .norating{font-weight:bold;color:#8B8989;font-size:80%}#page-blocks-community-communitycourse .star-rating{list-style:none;margin:4px
-0 4px;padding:0px;width:100px;height:20px;position:relative;background:url(image.php?theme=overlay&image=i%2Fstar-rating&rev=162) top left repeat-x;float:left}#page-blocks-community-communitycourse .star-rating
-li{padding:0px;margin:0px;height:20px;width:20px;float:left}#page-blocks-community-communitycourse .star-rating li.current-rating{background:url(image.php?theme=overlay&image=i%2Fstar-rating&rev=162) left bottom;position:absolute;height:20px;display:block;text-indent: -9000px;z-index:1}#page-blocks-community-communitycourse
+0 4px;padding:0px;width:100px;height:20px;position:relative;background:url(image.php?theme=overlay&image=i%2Fstar-rating&rev=163) top left repeat-x;float:left}#page-blocks-community-communitycourse .star-rating
+li{padding:0px;margin:0px;height:20px;width:20px;float:left}#page-blocks-community-communitycourse .star-rating li.current-rating{background:url(image.php?theme=overlay&image=i%2Fstar-rating&rev=163) left bottom;position:absolute;height:20px;display:block;text-indent: -9000px;z-index:1}#page-blocks-community-communitycourse
 .nocomments{font-weight:bold;color:#8B8989;font-size:80%}#page-blocks-community-communitycourse
 .hubcommentator{float:left;font-weight:bold}#page-blocks-community-communitycourse
 .hubcommentdate{font-weight:bold}#page-blocks-community-communitycourse
@@ -773,7 +773,7 @@ ul{padding-left:0;margin:0}.block_navigation .block_tree li.depth_2
 ul{padding-left:16px;margin:0}.block_navigation .block_tree
 .tree_item{padding-left:18px;margin:3px
 0px;text-align:left}.block_navigation .block_tree
-.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fexpanded&rev=162);background-position:0 10%;background-repeat:no-repeat}.block_navigation .block_tree
+.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fexpanded&rev=163);background-position:0 10%;background-repeat:no-repeat}.block_navigation .block_tree
 .tree_item.branch.navigation_node{background-image:none;padding-left:0}.block_navigation .block_tree .type_activity>.tree_item.branch{background-image:none;position:relative}.block_navigation .block_tree .type_activity > .tree_item.branch
 img{position:absolute;left:0}.block_navigation .block_tree
 .root_node.leaf{padding-left:0px}.block_navigation .block_tree
@@ -781,10 +781,10 @@ img{position:absolute;left:0}.block_navigation .block_tree
 ul{font-weight:normal}.dock .block_navigation
 .tree_item{white-space:nowrap}.jsenabled .block_navigation .block_tree
 .tree_item.branch{cursor:pointer}.jsenabled .block_navigation .block_tree
-.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty&rev=162);background-position:0% 5%;background-repeat:no-repeat}.jsenabled .block_navigation .block_tree .collapsed
+.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty&rev=163);background-position:0% 5%;background-repeat:no-repeat}.jsenabled .block_navigation .block_tree .collapsed
 ul{display:none}.jsenabled .block_navigation .block_tree .collapsed
-.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=162)}.jsenabled .block_navigation .block_tree
-.tree_item.branch.loadingbranch{background-image:url(image.php?theme=overlay&image=i%2Floading_small&rev=162)}.jsenabled .block_navigation.dock_on_load,
+.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=163)}.jsenabled .block_navigation .block_tree
+.tree_item.branch.loadingbranch{background-image:url(image.php?theme=overlay&image=i%2Floading_small&rev=163)}.jsenabled .block_navigation.dock_on_load,
 .block_navigation .block_tree_box
 .requiresjs{display:none}.jsenabled .block_navigation .block_tree_box
 .requiresjs{display:inline}.ie6 .block_navigation .block_tree
@@ -798,8 +798,8 @@ ul{padding-left:0;padding-right:7px}.dir-rtl .block_navigation .block_tree
 .root_node.leaf{padding-right:0}.dir-rtl .block_navigation .block_tree li.item_with_icon > p img,
 .dir-rtl .block_navigation .block_tree .type_activity > .tree_item.branch
 img{right:0;left:auto}.jsenabled.dir-rtl .block_navigation .block_tree
-.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty_rtl&rev=162);background-position:center right}.jsenabled.dir-rtl .block_navigation .block_tree .collapsed
-.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_rtl&rev=162)}.block_online_users .content .list
+.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty_rtl&rev=163);background-position:center right}.jsenabled.dir-rtl .block_navigation .block_tree .collapsed
+.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_rtl&rev=163)}.block_online_users .content .list
 li.listentry{clear:both}.block_online_users .content .list li.listentry
 .user{float:left;position:relative}.block_online_users .content .list li.listentry
 .message{float:right}.block_online_users .content
@@ -830,13 +830,13 @@ ul{padding-left:16px;margin:0}.block_settings .block_tree li.item_with_icon>p{po
 img{vertical-align:middle;position:absolute;left:0;top:3px}.block_settings .block_tree
 .tree_item{padding-left:18px;margin:3px
 0px;text-align:left}.block_settings .block_tree
-.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fexpanded&rev=162);background-position:0 10%;background-repeat:no-repeat}.block_settings .block_tree
+.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fexpanded&rev=163);background-position:0 10%;background-repeat:no-repeat}.block_settings .block_tree
 .root_node.leaf{padding-left:0px}.block_settings .block_tree
 .active_tree_node{font-weight:bold}.jsenabled .block_settings .block_tree
 .tree_item.branch{cursor:pointer}.jsenabled .block_settings .block_tree
-.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty&rev=162);background-position:0 10%;background-repeat:no-repeat}.jsenabled .block_settings .block_tree .collapsed
+.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty&rev=163);background-position:0 10%;background-repeat:no-repeat}.jsenabled .block_settings .block_tree .collapsed
 ul{display:none}.jsenabled .block_settings .block_tree .collapsed
-.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=162)}.ie6 .block_settings .block_tree
+.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=163)}.ie6 .block_settings .block_tree
 .tree_item{width:100%}.dir-rtl .block_settings
 .block_tree{padding-right:0px}.dir-rtl .block_settings .block_tree li
 ul{padding-left:0;padding-right:7px}.dir-rtl .block_settings .block_tree li.item_with_icon > p img,
@@ -845,8 +845,8 @@ img{left:auto;right:0}.dir-rtl .block_settings .block_tree
 .tree_item{padding-right:18px;text-align:right}.dir-rtl .block_settings .block_tree
 .tree_item.branch{background-position:center right}.dir-rtl .block_settings .block_tree
 .root_node.leaf{padding-right:0px}.jsenabled.dir-rtl .block_settings .block_tree
-.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty_rtl&rev=162);background-position:center right}.jsenabled.dir-rtl .block_settings .block_tree .collapsed
-.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_rtl&rev=162)}.block_tag_flickr .flickr-photos{padding:3px}.block_tag_youtube .youtube-thumb{padding:3px;padding-bottom:0.5em;display:block;float:left}.block_tag_youtube .yt-video-entry
+.tree_item.emptybranch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_empty_rtl&rev=163);background-position:center right}.jsenabled.dir-rtl .block_settings .block_tree .collapsed
+.tree_item.branch{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_rtl&rev=163)}.block_tag_flickr .flickr-photos{padding:3px}.block_tag_youtube .youtube-thumb{padding:3px;padding-bottom:0.5em;display:block;float:left}.block_tag_youtube .yt-video-entry
 li{clear:left}.block_tags{}.block_tags
 #coursetag{}.block_tags #coursetag
 .coursetag_form_wrapper{}.block_tags #coursetag .coursetag_form_wrapper
@@ -1438,18 +1438,18 @@ body.tag
 .tag_cloud
 .s1{font-size:0.9em}.tag_cloud
 .s0{font-size:0.8em}.file-picker
-.ygtvtn{background:url(image.php?theme=overlay&image=y%2Ftn&rev=162) 0 0 no-repeat;width:17px;height:22px}.file-picker
-.ygtvtm{background:url(image.php?theme=overlay&image=y%2Ftm&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvtmh{background:url(image.php?theme=overlay&image=y%2Ftmh&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvtp{background:url(image.php?theme=overlay&image=y%2Ftp&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvtph{background:url(image.php?theme=overlay&image=y%2Ftph&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvln{background:url(image.php?theme=overlay&image=y%2Fln&rev=162) 0 0 no-repeat;width:17px;height:22px}.file-picker
-.ygtvlm{background:url(image.php?theme=overlay&image=y%2Flm&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvlmh{background:url(image.php?theme=overlay&image=y%2Flmh&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvlp{background:url(image.php?theme=overlay&image=y%2Flp&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvlph{background:url(image.php?theme=overlay&image=y%2Flph&rev=162) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
-.ygtvloading{background:url(image.php?theme=overlay&image=y%2Floading&rev=162) 0 0 no-repeat;width:16px;height:22px}.file-picker
-.ygtvdepthcell{background:url(image.php?theme=overlay&image=y%2Fvline&rev=162) 0 0 no-repeat;width:17px;height:22px}.file-picker
+.ygtvtn{background:url(image.php?theme=overlay&image=y%2Ftn&rev=163) 0 0 no-repeat;width:17px;height:22px}.file-picker
+.ygtvtm{background:url(image.php?theme=overlay&image=y%2Ftm&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvtmh{background:url(image.php?theme=overlay&image=y%2Ftmh&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvtp{background:url(image.php?theme=overlay&image=y%2Ftp&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvtph{background:url(image.php?theme=overlay&image=y%2Ftph&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvln{background:url(image.php?theme=overlay&image=y%2Fln&rev=163) 0 0 no-repeat;width:17px;height:22px}.file-picker
+.ygtvlm{background:url(image.php?theme=overlay&image=y%2Flm&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvlmh{background:url(image.php?theme=overlay&image=y%2Flmh&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvlp{background:url(image.php?theme=overlay&image=y%2Flp&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvlph{background:url(image.php?theme=overlay&image=y%2Flph&rev=163) 0 0 no-repeat;width:34px;height:22px;cursor:pointer}.file-picker
+.ygtvloading{background:url(image.php?theme=overlay&image=y%2Floading&rev=163) 0 0 no-repeat;width:16px;height:22px}.file-picker
+.ygtvdepthcell{background:url(image.php?theme=overlay&image=y%2Fvline&rev=163) 0 0 no-repeat;width:17px;height:22px}.file-picker
 .ygtvblankdepthcell{width:17px;height:22px}.file-picker .ygtvitem
 table{margin-bottom:0}.file-picker .ygtvitem
 td{border:none;padding:0}* html .file-picker
@@ -1528,7 +1528,7 @@ li{position:relative;padding:2px
 5px}.smartselect .smartselect_menu_content ul li
 a{color:#333;text-decoration:none}.smartselect .smartselect_menu_content ul li
 a.selectable{color:inherit}.smartselect
-.smartselect_submenuitem{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=162);background-repeat:no-repeat;background-position:100%}.smartselect.spanningmenu
+.smartselect_submenuitem{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=163);background-repeat:no-repeat;background-position:100%}.smartselect.spanningmenu
 .smartselect_submenu{position:absolute;top:-1px;left:100%}.smartselect.spanningmenu .smartselect_submenu
 a{white-space:nowrap;padding-right:16px}.smartselect.spanningmenu .smartselect_menu_content ul li a.selectable:hover{text-decoration:underline}.smartselect.compactmenu
 .smartselect_submenu{position:relative;margin:2px
@@ -1602,7 +1602,7 @@ object{height:25px;width:600px}sub{vertical-align:sub}sup{vertical-align:super}.
 .dir-rtl .ygtvok,
 .dir-rtl .ygtvok:hover,
 .dir-rtl .ygtvcancel,
-.dir-rtl .ygtvcancel:hover{width:18px;height:22px;background-image:url(image.php?theme=overlay&image=yui2-treeview-sprite-rtl&rev=162&component=theme);background-repeat:no-repeat;cursor:pointer}.dir-rtl
+.dir-rtl .ygtvcancel:hover{width:18px;height:22px;background-image:url(image.php?theme=overlay&image=yui2-treeview-sprite-rtl&rev=163&component=theme);background-repeat:no-repeat;cursor:pointer}.dir-rtl
 .ygtvtn{background-position:0 -5600px}.dir-rtl
 .ygtvtm{background-position:0 -4000px}.dir-rtl .ygtvtmh,
 .dir-rtl
@@ -1872,7 +1872,7 @@ li.activity{margin-right:20px;position:relative}.path-course-view li.activity sp
 .path-course-view li.activity
 form.togglecompletion{display:inline;position:absolute;right:-20px;top:0;z-index:10;padding:0.2em 0}.path-course-view li.activity form.togglecompletion
 div{display:inline}.path-course-view li.activity form.togglecompletion
-.ajaxworking{position:absolute;top:0;left:20px;width:20px;height:20px;background:url(image.php?theme=overlay&image=i%2Fajaxloader&rev=162) no-repeat}.dir-rtl.path-course-view
+.ajaxworking{position:absolute;top:0;left:20px;width:20px;height:20px;background:url(image.php?theme=overlay&image=i%2Fajaxloader&rev=163) no-repeat}.dir-rtl.path-course-view
 li.activity{margin-right:0px;margin-left:20px}.dir-rtl.path-course-view li.activity form.togglecompletion,
 .dir-rtl.path-course-view li.activity
 span.autocompletion{right:auto;left:-20px}.section
@@ -1926,17 +1926,17 @@ tr.section{text-align:center}.course
 ul.section{margin:5px;padding:0}.weeks-format,.topics-format{margin-top:8px;min-width:763px}#page-course-user
 .section{border-width:1px;border-style:solid;padding:10px}.categoryboxcontent{border-width:1px;border-style:solid}.course_category_tree
 .controls{visibility:hidden}.course_category_tree .controls
-div{display:inline;cursor:pointer}.course_category_tree .category.with_children>.category_label{background-image:url(image.php?theme=overlay&image=t%2Fexpanded&rev=162);background-repeat:no-repeat}.course_category_tree
+div{display:inline;cursor:pointer}.course_category_tree .category.with_children>.category_label{background-image:url(image.php?theme=overlay&image=t%2Fexpanded&rev=163);background-repeat:no-repeat}.course_category_tree
 .category_label{padding-left:13px}.course_category_tree .category
 .category{margin:5px}.course_category_tree .category
 .courses{padding-left:16px}.course_category_tree .category .courses
-.course_link{display:block;background-image:url(image.php?theme=overlay&image=i%2Fcourse&rev=162);background-repeat:no-repeat;padding-left:18px}.course_category_tree .category
+.course_link{display:block;background-image:url(image.php?theme=overlay&image=i%2Fcourse&rev=163);background-repeat:no-repeat;padding-left:18px}.course_category_tree .category
 .course{position:relative}.course_category_tree .category
 .course_info{position:absolute;right:0;top:0}.course_category_tree .category .course_info a,
 .course_category_tree .category .course_info
 div{float:left;width:16px;height:16px}.jsenabled .course_category_tree
 .controls{visibility:visible}.jsenabled .course_category_tree .category.with_children.collapsed
-.category_label{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=162)}.jsenabled .course_category_tree .category.with_children.collapsed .subcategories,
+.category_label{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed&rev=163)}.jsenabled .course_category_tree .category.with_children.collapsed .subcategories,
 .jsenabled .course_category_tree .category.with_children.collapsed
 .courses{display:none}.path-course
 .clearfloat{float:none;clear:both;height:0px}#page-course-index .categorylist
@@ -1944,7 +1944,7 @@ div{float:left;width:16px;height:16px}.jsenabled .course_category_tree
 .info{float:right;text-align:right}.dir-rtl .coursebox
 .summary{text-align:right}.dir-rtl .course_category_tree .category.with_children>.category_label{background-position:center right;padding-right:18px}.dir-rtl .course_category_tree .category_label, .dir-rtl .course_category_tree .category
 .course{padding-right:18px}.dir-rtl.jsenabled .course_category_tree .category.with_children.collapsed
-.category_label{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_rtl&rev=162)}.dir-rtl .course_category_tree .category .courses
+.category_label{background-image:url(image.php?theme=overlay&image=t%2Fcollapsed_rtl&rev=163)}.dir-rtl .course_category_tree .category .courses
 .course_link{background-position:center right;padding-right:18px}.dir-rtl
 .clearfloat{float:none;clear:both;height:0px}.dir-rtl .categorylist .category .info,
 .dir-rtl .categorylist .category .indentation,
@@ -2206,7 +2206,7 @@ h3{text-align:center;font-size:1.2em}.maincalendar .header
 .maincalendar .calendarmonth
 th{border-color:#ddd;border-style:dotted;border-width:1px}.maincalendar .calendarmonth th,
 .minicalendar
-th{background:url(image.php?theme=overlay&image=gradient-sb&rev=162&component=theme) repeat-x 0 0}.maincalendar .calendar-controls{padding:10px
+th{background:url(image.php?theme=overlay&image=gradient-sb&rev=163&component=theme) repeat-x 0 0}.maincalendar .calendar-controls{padding:10px
 5px 0}.maincalendar .calendar-controls .previous,
 .maincalendar .calendar-controls .current,
 .maincalendar .calendar-controls
@@ -2656,15 +2656,15 @@ solid #eee;background:#eee}.course-content
 #custommenu .yui3-menu .yui3-menu .yui3-menuitem-active .yui3-menuitem-content,
 #custommenu .yui3-menu-horizontal.javascript-disabled li a:hover{background-color:#666}#custommenu .yui3-menu-content,
 #custommenu .yui3-menu .yui3-menu .yui3-menu-content{background-image:none;background-color:#333;border-width:0;padding:0}#custommenu .yui3-menu-label,
-#custommenu .yui3-menu .yui3-menu .yui3-menu-label{background-image:url(image.php?theme=overlay&image=vertical-menu-submenu-indicator&rev=162&component=theme);background-position:right center;background-repeat:no-repeat}#custommenu .yui3-menu-label.yui3-menu-label-menuvisible,
-#custommenu .yui3-menu .yui3-menu .yui3-menu-label.yui3-menu-label-menuvisible{background-image:url(image.php?theme=overlay&image=horizontal-menu-submenu-indicator&rev=162&component=theme)}#custommenu .yui3-menu-horizontal .yui3-menu-label,
+#custommenu .yui3-menu .yui3-menu .yui3-menu-label{background-image:url(image.php?theme=overlay&image=vertical-menu-submenu-indicator&rev=163&component=theme);background-position:right center;background-repeat:no-repeat}#custommenu .yui3-menu-label.yui3-menu-label-menuvisible,
+#custommenu .yui3-menu .yui3-menu .yui3-menu-label.yui3-menu-label-menuvisible{background-image:url(image.php?theme=overlay&image=horizontal-menu-submenu-indicator&rev=163&component=theme)}#custommenu .yui3-menu-horizontal .yui3-menu-label,
 #custommenu .yui3-menu-horizontal .yui3-menuitem-content{border-width:0;text-transform:uppercase;text-decoration:none;font-size:1em;font-weight:200;line-height:30px;cursor:pointer;padding:0
 20px}#custommenu .yui3-menu-horizontal.javascript-disabled .yui3-menu-content,
 #custommenu .yui3-menu-horizontal.javascript-disabled .yui3-menu-content
 .ul{border-width:0}#custommenu .yui3-menu-horizontal.javascript-disabled li
 a{padding:0
 20px;display:block}#dock
-.firstdockitem{margin-top:30px}#newheaderleft,#newheader{background: #2a4c7b url(image.php?theme=overlay&image=header&rev=162&component=theme) repeat-x 0 100%}a:link,a:visited{color: #428ab5} body{margin:auto 0px;width:auto;height:100%}#page{width:100%;overflow:hidden;min-height:100%}#page-content{clear:both;position:relative;width:100%;min-height:100%}#page-content #region-main-box{float:left;margin-left: -200px;position:relative;width:200%;right:100%;min-height:100%}#page-content #region-post-box{float:left;margin-left: -200px;width:100%;min-height:100%}#page-content #region-main-wrap{float:left;width:50%;min-height:100%}#page-content #region-main{position:relative;margin-left:400px;left:100%;min-height:100%}#page-content #region-pre{float:right;position:relative;width:200px;left:200px;min-height:100%}#page-content #region-post{float:right;position:relative;left:600px;width:200px;min-height:100%}#page-content #region-main .region-content{overflow:hidden;padding:20px
+.firstdockitem{margin-top:30px}#newheaderleft,#newheader{background: #2a4c7b url(image.php?theme=overlay&image=header&rev=163&component=theme) repeat-x 0 100%}a:link,a:visited{color: #428ab5} body{margin:auto 0px;width:auto;height:100%}#page{width:100%;overflow:hidden;min-height:100%}#page-content{clear:both;position:relative;width:100%;min-height:100%}#page-content #region-main-box{float:left;margin-left: -200px;position:relative;width:200%;right:100%;min-height:100%}#page-content #region-post-box{float:left;margin-left: -200px;width:100%;min-height:100%}#page-content #region-main-wrap{float:left;width:50%;min-height:100%}#page-content #region-main{position:relative;margin-left:400px;left:100%;min-height:100%}#page-content #region-pre{float:right;position:relative;width:200px;left:200px;min-height:100%}#page-content #region-post{float:right;position:relative;left:600px;width:200px;min-height:100%}#page-content #region-main .region-content{overflow:hidden;padding:20px
 20px 20px 0;min-height:100%}.pagelayout-report #page-content #region-main .region-content{overflow:auto;padding-bottom:0;margin-bottom:20px}#page-content #region-pre .region-content,
 #page-content #region-post .region-content{overflow:hidden;padding:20px
 10px;min-height:100%}#page-footer{clear:both;float:left;width:100%}.side-pre-only #page-content #region-main-box{margin-left:0px}.side-pre-only #page-content #region-main-box #region-post-box{margin-left: -200px}.side-pre-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main{margin-left:200px}.side-pre-only #page-content #region-main-box #region-post-box #region-pre{left:200px;width:200px}.side-pre-only #page-content #region-main-box #region-post-box #region-post{width:0%}.side-post-only #page-content #region-main-box{margin-left:0px}.side-post-only #page-content #region-main-box #region-post-box{margin-left: -200px}.side-post-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main{margin-left:200px}.side-post-only #page-content #region-main-box #region-post-box #region-post{left:400px;width:200px}.has_dock.side-post-only .page-middle #region-main-box #region-post-box #region-main-wrap #region-main{margin-left:200px}.content-only #page-content #region-main-box{margin-left:0px}.content-only #page-content #region-main-box #region-post-box{margin-left:0px}.content-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main{margin-left:0px}.content-only #page-content #region-main-box #region-post-box #region-pre{width:0px}.content-only #page-content #region-main-box #region-post-box #region-post{width:0px}
