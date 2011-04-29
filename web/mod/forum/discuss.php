@@ -121,7 +121,9 @@
         set_user_preference('forum_displaymode', $mode);
     }
 
-    $displaymode = get_user_preferences('forum_displaymode', $CFG->forum_displaymode);
+    //jamesbrennan
+    //$displaymode = get_user_preferences('forum_displaymode', $CFG->forum_displaymode);
+    $displaymode = FORUM_MODE_FLATOLDEST;
 
     if ($parent) {
         // If flat AND parent, then force nested display this time
@@ -207,9 +209,10 @@
     }
 
     // groups selector not needed here
-    echo '<div class="discussioncontrol displaymode">';
-    forum_print_mode_form($discussion->id, $displaymode);
-    echo "</div>";
+    //jamesbrennan
+//    echo '<div class="discussioncontrol displaymode">';
+//    forum_print_mode_form($discussion->id, $displaymode);
+//    echo "</div>";
 
     if ($forum->type != 'single'
                 && has_capability('mod/forum:movediscussions', $modcontext)) {
