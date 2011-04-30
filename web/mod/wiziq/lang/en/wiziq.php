@@ -1,7 +1,7 @@
 <?php
 /*
  * wiziq.com Module
- * WiZiQ's Live Class modules enable Moodle users to use WiZiQ’s web based virtual classroom equipped with real-time collaboration tools 
+ * WiZiQ's Live Class modules enable Moodle users to use WiZiQ's web based virtual classroom equipped with real-time collaboration tools 
  * This is file where module name is initialized 
  */
  /**
