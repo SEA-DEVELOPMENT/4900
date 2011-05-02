@@ -77,12 +77,12 @@ select,input,button,textarea{
 }
 
 #logo {
-	background:#39589a url([[pix:theme|logo]]) no-repeat top left;
+	background:#39589a url([[pix:theme|SEAminiLogo]]) no-repeat top left;
 	width:  150px;
 	height:  25px;
 	float: left;
-	margin-top: 8px;
-}
+	margin-top: 4px;
+}4
 /* @group Profile */
 
 #header-profileoptions ul{
