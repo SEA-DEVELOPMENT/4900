@@ -269,11 +269,53 @@
     if ($move == -1 and confirm_sesskey()) {
         echo $OUTPUT->notification(get_string('discussionmoved', 'forum', format_string($forum->name,true)));
     }
-
+    
     $canrate = has_capability('mod/forum:rate', $modcontext);
     forum_print_discussion($course, $cm, $forum, $discussion, $post, $displaymode, $canreply, $canrate);
+?>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        // Find out if there is hash, do showRelated on that forum post
+        hash = location.hash;
+        if(hash){
+            e = $(hash).find(".showrelated");
+            if(e){
+                showRelated(e);
+            }
+        }
+        
+        // Hide all posts except for the one selected and its parents.
+        $(".showrelated").click(function(){
+            showRelated(this);
+        });
+    });
+    function showRelated(e){
+        // Reset any previously clicked
+        reset(".showall");
 
+        $(e).removeClass("showrelated").text("Show All").addClass("showall");
+
+        id = $(e).parents(".forumpost").attr("id");
+        parent_ids = $(e).attr("data-parent");
+
+        if(parent_ids){
+            $(".forumpost").hide();
+            $("#"+id).show().css("background-color", "#EDEFF5");
+            $(parent_ids).show();
+            $("[data-parent$=#"+id+"]").parents(".forumpost").show();
+        }
+        
+        $(e).unbind("click").bind("click", function(){showAll(this);});
+    }
+    function showAll(e){
+        reset(e);
+        $(".forumpost").show();
+    }
+    function reset(e){
+        $(e).parents(".forumpost").css("background-color", "");
+        $(e).removeClass("showall").text("Show Related").addClass("showrelated").unbind("click").bind("click",function(){showRelated(this);});
+    }
+</script>
+<?php
     echo $OUTPUT->footer();
-
-
-

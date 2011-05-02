@@ -3152,8 +3152,9 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
             echo $output;
             return;
         }
-        $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
-        $output .= html_writer::start_tag('div', array('class'=>'forumpost clearfix p1', 'data-parent'=>'p1'));
+        //jamesbrennan
+        //$output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
+        $output .= html_writer::start_tag('div', array('id'=>'p'.$post->id, 'class'=>'forumpost clearfix'));
         $output .= html_writer::start_tag('div', array('class'=>'row header'));
         $output .= html_writer::tag('div', '', array('class'=>'left picture')); // Picture
         if ($post->parent) {
@@ -3245,15 +3246,15 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     }
 
     // Zoom in to the parent specifically
-    if ($post->parent) {
-        $url = new moodle_url($discussionlink);
-        if ($str->displaymode == FORUM_MODE_THREADED) {
-            $url->param('parent', $post->parent);
-        } else {
-            $url->set_anchor('p'.$post->parent);
-        }
-        $commands[] = array('url'=>$url, 'text'=>$str->parent);
-    }
+//    if ($post->parent) {
+//        $url = new moodle_url($discussionlink);
+//        if ($str->displaymode == FORUM_MODE_THREADED) {
+//            $url->param('parent', $post->parent);
+//        } else {
+//            $url->set_anchor('p'.$post->parent);
+//        }
+//        $commands[] = array('url'=>$url, 'text'=>$str->parent);
+//    }
 
     // Hack for allow to edit news posts those are not displayed yet until they are displayed
     $age = time() - $post->created;
@@ -3316,8 +3317,9 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
         $topicclass = ' firstpost starter';
     }
 
-    $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
-    $output .= html_writer::start_tag('div', array('class'=>'forumpost clearfix'.$forumpostclass.$topicclass));
+    //jamesbrennan
+    //$output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
+    $output .= html_writer::start_tag('div', array('id'=>'p'.$post->id,'class'=>'forumpost clearfix'.$forumpostclass.$topicclass));
     $output .= html_writer::start_tag('div', array('class'=>'row header clearfix'));
     $output .= html_writer::start_tag('div', array('class'=>'left picture'));
     $output .= $OUTPUT->user_picture($postuser, array('courseid'=>$course->id));
@@ -3395,6 +3397,15 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
 
     // Output the commands
     $commandhtml = array();
+    
+    //jamesbrennan
+    //The show related button
+    if($post->parent){
+        $url = new moodle_url($discussionlink);
+        $url->set_anchor('p'.$post->id);
+        $commandhtml[] = html_writer::tag('a','Show Related', array('class'=>'showrelated','href'=>$url,'data-parent'=>$post->parent));
+    }
+    
     foreach ($commands as $command) {
         if (is_array($command)) {
             $commandhtml[] = html_writer::link($command['url'], $command['text']);
@@ -5280,7 +5291,6 @@ function forum_print_latest_discussions($course, $forum, $maxdiscussions=-1, $di
  * @param bool $cancreate
  */
 function forum_print_discussion($course, $cm, $forum, $discussion, $post, $mode, $canreply=NULL, $canrate=false) {
-
     global $USER, $CFG, $DB, $PAGE, $OUTPUT;
     require_once($CFG->dirroot.'/rating/lib.php');
 
@@ -5358,10 +5368,8 @@ function forum_print_discussion($course, $cm, $forum, $discussion, $post, $mode,
     $post->subject = format_string($post->subject);
 
     $postread = !empty($post->postread);
-
     forum_print_post($post, $discussion, $forum, $cm, $course, $ownpost, $reply, false,
                          '', '', $postread, true, $forumtracked);
-
     switch ($mode) {
         case FORUM_MODE_FLATOLDEST :
         case FORUM_MODE_FLATNEWEST :
@@ -5405,11 +5413,27 @@ function forum_print_posts_flat($course, &$cm, $forum, $discussion, $post, $mode
     } else {
         $sort = "ORDER BY created ASC";
     }
-
+    
+    //jamesbrennan
+    // This array serves to concatenate the parent ids
+    $parent_ids = array();
+    
     foreach ($posts as $post) {
+        
         if (!$post->parent) {
             continue;
+            //jamesbrennan
+        } else {
+            if(!isset($parent_ids[$post->parent])){
+                $post->parent = '#p'.$post->parent;
+                $parent_ids[$post->id] = $post->parent;
+
+            } else {
+                $parent_ids[$post->id] = $parent_ids[$post->parent].',#p'.$post->parent;
+                $post->parent = $parent_ids[$post->id];
+            }
         }
+        
         $post->subject = format_string($post->subject);
         $ownpost = ($USER->id == $post->userid);
 
