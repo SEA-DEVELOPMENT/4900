@@ -1,0 +1,169 @@
+<script type='text/javascript'>window.onerror = handleError; function handleError(){return true;}</script>
+
+<script language="javascript" type="text/javascript">
+function Validate()
+{
+	
+	if(document.getElementById("type_group").checked==true)
+	{
+		var IsGroupSelected=false;
+		var i;
+		for(i = 0; i <document.getElementById("groupid").options.length; i++)
+		{ 
+			if(document.getElementById("groupid").options[i].selected==true)
+			{
+				IsGroupSelected=true;
+				break;
+			}
+	
+		}
+			if(IsGroupSelected)
+			{
+			
+					document.form1.action="event.php?section=<?php echo $_REQUEST['section']; ?>&sesskey=<?php echo $_REQUEST['sesskey']; ?>&add=<?php echo $_REQUEST['add']; ?>&id=<?php echo  $_REQUEST['id']; ?>&module=<?php echo  $_REQUEST['module']; ?>&mode=<?php echo  $_REQUEST['mode']; ?>&instance=<?php echo  $_REQUEST['instance']; ?>&eventtype=<?php echo $_REQUEST['type']; ?>&course=<?php echo $course; ?>";
+					return true;
+			}	
+			
+	return false;
+	}
+	else
+	{
+		document.form1.action="event.php?section=<?php echo $_REQUEST['section']; ?>&sesskey=<?php echo $_REQUEST['sesskey']; ?>&add=<?php echo $_REQUEST['add']; ?>&id=<?php echo  $_REQUEST['id']; ?>&module=<?php echo  $_REQUEST['module']; ?>&mode=<?php echo  $_REQUEST['mode']; ?>&instance=<?php echo  $_REQUEST['instance']; ?>&eventtype=<?php echo $_REQUEST['type']; ?>&course=<?php echo $course; ?>";
+	return true;
+	}
+}
+
+function showMe (it, radio) {
+	
+	var sel = (radio.checked);
+  document.getElementById(it).style.display = "block";
+ 
+  if(it=='sc')
+ {
+	 hideMe('sg',this);
+ }
+else if(it=='su')
+ {
+	 hideMe('sg',this);
+ }
+ else if(it!='sg' && it!='su' && it!='sc') 
+ {
+ 	
+	hideMe('sg',this);
+	
+ }
+  }
+  function hideMe (it,radio) {
+	  
+	  document.getElementById(it).style.display = "none";
+  
+  }
+</script>
+<form method="post" action="" name="form1"  >
+    <table class="formtable" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#444; line-height:35px; width:500px; text-align:left; margin-left:200px">
+        <tr><td>&nbsp;</td></tr>
+         <tr>
+            <td><div style="width:400px; height:20px; padding:10px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#444;  font-weight:bold">Type of Events</div></td></tr>
+        
+        <tr>
+            <td>
+            
+            <?php if(!empty($allowed->site)) {  ?>
+                <div  style="width:400px; float:left">
+                    <input type='radio' name='type' value='site' id='type_site' onclick="showMe('site',this);" checked='checked'/>
+                    <label for='type_site'><?php print_string('typesite', 'calendar') ?></label>
+                </div><div id="site"></div>
+<?php } ?>
+</td></tr>
+<tr><td>
+<?php if(!empty($allowed->user)) {  ?>
+<div style="  width:300px;">
+                <div style="float:left; margin-right:20px" id="su">
+                
+                    <input type='radio' name='type' value='user' id='type_user'  onclick="showMe('su',this);" />
+                    <label for='type_user'><?php print_string('typeuser', 'calendar') ?></label>
+                 </div>
+                </div>
+<?php } ?>
+</td></tr>
+<tr><td>
+<?php if(!empty($allowed->groups) && is_array($allowed->groups)) {  ?>
+             <div style=" width:300px;">
+                <div style="float:left; margin-right:20px">
+                    <input type='radio' name='type' value='group' id='type_group' onclick="showMe('sg',this);" />
+                    <label for='type_group'><?php echo get_string('typegroup', 'calendar').' '.get_string('groupfor'); ?></label>
+                   </div> 
+                   <div id="sg" style="display:none;float:left; position:absolute; margin-left:173px; height:auto; width:auto; margin-top:13px">
+                    <select name='groupid[]' size="3" multiple="multiple" id="groupid" >
+                <?php foreach($allowed->groups as $group) {?>
+                        <option value='<?php echo $group->id; ?>'
+       <?php echo '>' . $group->name; ?></option>
+    <?php }?>
+             </select>
+             
+                </div></div>
+<?php } ?>
+</td></tr>
+<tr><td>
+<?php if(!empty($allowed->courses)) {  ?>
+             
+             <div style="  width:300px;">
+               <div style=" float:left; margin-right:20px" id="sc">
+                    <input type='radio' name='type' value='course' id='type_course' onclick="showMe('sc',this);" />
+                    <input type="hidden" name="courseid" value="<?php echo($courseid); ?>" />
+                    <label for='type_course'><?php print_string('typecourse', 'calendar') ?></label>
+               </div>
+                    <!--<div style="display:none;float:left; position:absolute; margin-left:280px; height:auto; width:auto" id="sc" >
+                    <select name='courseid[]' size="4" multiple="multiple" id="courseid"   >
+                <?php $result=mysql_query("select distinct c.fullname as name,c.id as cid,cd.userid as userid,cd.course as course from ".$CFG->prefix."course c, ".$CFG->prefix."course_display cd where cd.userid=".$USER->id." and c.id=cd.course");
+				while($r=mysql_fetch_array($result))
+				{
+					$name=$r['name'];
+                    $cid=$r['cid'];
+				?>
+                        <option value='<?php echo $cid; ?>'
+       <?php echo '>' . $name ?></option>
+    			
+                <?php } ?>
+                    </select> <?php echo '<script language="javascript" type="text/javascript">
+		var val = "'.$course.'";
+		myFormElem = document.getElementById("courseid");
+		for(var i = 0; i < myFormElem .options.length; i++)
+		{  
+			 if(myFormElem.options[i].value == val  )
+			 { 
+				myFormElem.selectedIndex = i;
+				break;
+			 }
+		}	
+		</script>'; ?> 
+                </div>--></div>
+<?php } ?>
+</td>
+</tr>
+            
+        <tr>
+            <td style="text-align: left;">
+                <input type="submit" value=" <?php print_string('ok') ?> " onClick="return Validate()" />
+                <input type="button" onClick="document.location.href='<?php echo $CFG->wwwroot."/course/view.php?id=$course"; ?>';" value=" <?php print_string('cancel') ?> " />
+            </td>
+        </tr>
+    </table>
+    <p>
+    	<input type="hidden" name="eventtype" value="<?php echo $_REQUEST['type']; ?>"  />
+        <input type="hidden" name="action" value="new" />
+        <input type="hidden" name="timestart" value="<?php echo $form->timestart; ?>" />
+        
+        <input type="hidden" name="sesskey" value="<?php echo $_REQUEST['sesskey']; ?>" />
+        <input type="hidden" name="section" value="<?php echo $_REQUEST['section']; ?>" />
+        <input type="hidden" name="add" value="<?php echo $_REQUEST['add']; ?>" />
+        <input type="hidden" name="id" value="<?php echo  $_REQUEST['id']; ?>" />
+        <input type="hidden" name="modulename" value="<?php echo  $_REQUEST['modulename']; ?>" />
+        <input type="hidden" name="module" value="<?php echo  $_REQUEST['module']; ?>" />
+        <input type="hidden" name="mode" value="<?php echo  $_REQUEST['mode']; ?>" />
+        <input type="hidden" name="instance" value="<?php echo  $_REQUEST['instance']; ?>" />
+        <input type="hidden" name="courseid" value="<?php echo $COURSE->id; ?>" />
+        <input type="hidden" name="userid" value="<?php echo $USER->id; ?>" />
+        <input type="hidden" name="groupid[]" value="<?php echo $_REQUEST['groupid']; ?>" />
+    </p>
+</form>
