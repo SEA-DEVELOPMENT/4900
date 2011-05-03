@@ -278,7 +278,7 @@
     $(document).ready(function(){
         // Find out if there is hash, do showRelated on that forum post
         hash = location.hash;
-        if(hash){
+        if(hash.substring(0, 2) == "#r"){
             e = $(hash).find(".showrelated");
             if(e){
                 showRelated(e);
@@ -289,10 +289,14 @@
         $(".showrelated").click(function(){
             showRelated(this);
         });
+        // Reset posts when going to a parent post
+        $(".resetrelated").click(function(){
+            showAll(".showall");
+        });
     });
     function showRelated(e){
         // Reset any previously clicked
-        reset(".showall");
+        resetRelated(".showall");
 
         $(e).removeClass("showrelated").text("Show All").addClass("showall");
 
@@ -309,10 +313,10 @@
         $(e).unbind("click").bind("click", function(){showAll(this);});
     }
     function showAll(e){
-        reset(e);
+        resetRelated(e);
         $(".forumpost").show();
     }
-    function reset(e){
+    function resetRelated(e){
         $(e).parents(".forumpost").css("background-color", "");
         $(e).removeClass("showall").text("Show Related").addClass("showrelated").unbind("click").bind("click",function(){showRelated(this);});
     }
