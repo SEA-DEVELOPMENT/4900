@@ -30,6 +30,29 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
         return $content;
     }
 
+    //Shaughn's Navigation Tree
+    public function navigation_tree2(global_navigation $navigation) {
+        global $CFG;
+        $content = html_writer::start_tag('ul', array('id' => 'MainHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
+        $content .= html_writer::start_tag('li');
+        $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'home'));
+        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
+        $content .= html_writer::end_tag('a');
+        $content .= html_writer::end_tag('li');
+        $content .= html_writer::start_tag('li');
+        //$content .= html_writer::start_tag('span', array('id' =>'MainNavMenu'));
+	$content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'profile'));
+        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('user_silhouette', 'theme')));
+	$content .= html_writer::end_tag('a');
+        //$content .= html_writer::end_tag('span');
+        $content .= $this->navigation_node($navigation, array());
+        $content .= html_writer::end_tag('li');
+        $content .= html_writer::end_tag('ul');
+        return $content;
+    }
+
+	
+
     protected function navigation_node(navigation_node $node, $attrs=array()) {
         $items = $node->children;
 
