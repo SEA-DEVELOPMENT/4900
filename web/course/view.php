@@ -6,7 +6,9 @@
     require_once('lib.php');
     require_once($CFG->dirroot.'/mod/forum/lib.php');
     require_once($CFG->libdir.'/completionlib.php');
-
+    require_once($CFG->libdir.'/formslib.php');
+    
+    
     $id          = optional_param('id', 0, PARAM_INT);
     $name        = optional_param('name', '', PARAM_RAW);
     $edit        = optional_param('edit', -1, PARAM_BOOL);
@@ -17,6 +19,9 @@
     $move        = optional_param('move', 0, PARAM_INT);
     $marker      = optional_param('marker',-1 , PARAM_INT);
     $switchrole  = optional_param('switchrole',-1, PARAM_INT);
+    $course = $DB->get_record('course', array('id'=>$id), '*', MUST_EXIST);
+    $context = get_context_instance(CONTEXT_COURSE, $course->id, MUST_EXIST);
+    
 
     if (empty($id) && empty($name) && empty($idnumber)) {
         print_error('unspecifycourseid', 'error');
@@ -85,10 +90,28 @@
 
     require_once($CFG->dirroot.'/calendar/lib.php');    /// This is after login because it needs $USER
 
+//option to enrol in courses with guest view
+if (!is_enrolled($context, $USER, '', false)) {
+// get all enrol forms available in this course
+$enrols = enrol_get_plugins(true);
+$enrolinstances = enrol_get_instances($course->id, true);
+$forms = array();
+foreach($enrolinstances as $instance) {
+    if (!isset($enrols[$instance->enrol])) {
+        continue;
+    }
+    $form = $enrols[$instance->enrol]->enrol_page_hook($instance);
+    if ($form) {
+        $forms[$instance->id] = $form;
+    }
+}
+
+}
+
     add_to_log($course->id, 'course', 'view', "view.php?id=$course->id", "$course->id");
 
     $course->format = clean_param($course->format, PARAM_ALPHA);
-    if (!file_exists($CFG->dirroot.'/course/format/'.$course->format.'/format.php')) {
+        if (!file_exists($CFG->dirroot.'/course/format/'.$course->format.'/format.php')) {
         $course->format = 'weeks';  // Default format is weeks
     }
 
@@ -210,6 +233,16 @@
 
     // Course wrapper start.
     echo html_writer::start_tag('div', array('class'=>'course-content'));
+    
+    
+    //print out enrolment methods for users who is currently not enrolled in the course
+if (!is_enrolled($context, $USER, '', false)) {
+    echo html_writer::start_tag('br');
+    echo html_writer::end_tag('br');
+    foreach ($forms as $form) {
+        echo $form;
+    }
+}
 
     $modinfo =& get_fast_modinfo($COURSE);
     get_all_mods($course->id, $mods, $modnames, $modnamesplural, $modnamesused);

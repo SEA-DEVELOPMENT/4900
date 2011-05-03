@@ -1,0 +1,545 @@
+<!--/*
+ * wiziq.com Module
+ * WiZiQ's Live Class modules enable Moodle users to use WiZiQ’s web based virtual classroom equipped with real-time collaboration tools 
+ * Scheduling page html 
+ */
+ /**
+ * @package mod
+ * @subpackage wiziq
+ * @author preeti chauhan(preetic@wiziq.com)
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */-->
+<?php 
+ 
+ require_once("wiziqconf.php");
+ require_once("cryptastic.php");
+	$content = file_get_contents($ConfigFile);
+	if ($content !== false) {
+	   // do something with the content
+	   //echo "file is read".$content;
+	} else {
+	   // an error happened
+	   echo "file is not read";
+	}
+
+	
+	try
+	{
+	  $objDOM = new DOMDocument();
+	  $objDOM->loadXML($content); 
+	  
+	}
+	catch(Exception $e)
+	{
+			
+		echo $e->getMessage();
+	}
+  
+    $MaxDurationPerSession = $objDOM->getElementsByTagName("MaxDurationPerSession");
+	$MaxUsersPerSession = $objDOM->getElementsByTagName("MaxUsersPerSession");
+	$PresenterEntryBeforeTime = $objDOM->getElementsByTagName("PresenterEntryBeforeTime");
+	$PrivateChat = $objDOM->getElementsByTagName("PrivateChat");
+	$RecordingCreditLimit = $objDOM->getElementsByTagName("RecordingCreditLimit");
+	$ConcurrentSessions = $objDOM->getElementsByTagName("ConcurrentSessions");	
+	$RecordingCreditPending=$objDOM->getElementsByTagName("RecordingCreditPending");
+    $subscription_url=$objDOM->getElementsByTagName("subscription_url");
+    $buynow_url=$objDOM->getElementsByTagName("buynow_url");
+    $Package_info_message=$objDOM->getElementsByTagName("Package_info_message");
+    $pricing_url=$objDOM->getElementsByTagName("pricing_url");
+    
+	$maxdur=$MaxDurationPerSession->item(0)->nodeValue;
+	$maxuser=$MaxUsersPerSession->item(0)->nodeValue;
+	$prsenterentry=$PresenterEntryBeforeTime->item(0)->nodeValue;
+	$privatechat=$PrivateChat->item(0)->nodeValue;
+	$recordingcredit=$RecordingCreditLimit->item(0)->nodeValue;
+	$concurrsession=$ConcurrentSessions->item(0)->nodeValue;
+	$creditpending=$RecordingCreditPending->item(0)->nodeValue;
+    $subscription_url=$subscription_url->item(0)->nodeValue;
+    $buynow_url=$buynow_url->item(0)->nodeValue;
+    $Package_info_message=$Package_info_message->item(0)->nodeValue;
+    $pricing_url=$pricing_url->item(0)->nodeValue;
+ 
+ //**********$tmzone=$USER->timezone;
+/// First we check that form variables have been initialised
+if (!isset($form->name)) {
+    $form->name = '';
+}
+// check timezone of user
+        $timezones = get_list_of_timezones();
+        
+        
+         if ($CFG->forcetimezone != 99)
+         
+            {
+                $tmzone=$CFG->forcetimezone;
+            }
+            else {
+               $tmzone=$USER->timezone;
+            	}
+
+switch($tmzone)
+{
+case("-13.0"):
+{
+$timezone="GMT-13";
+break;
+}
+
+case("-12.5"):
+{
+$timezone="GMT-12.5";
+break;
+}
+case("-12.0"):
+{
+$timezone="GMT-12";
+break;
+}
+
+case("-11.5"):
+{
+$timezone="GMT-11.5";
+break;
+}
+
+case("-11.0"):
+{
+$timezone="GMT-11";
+break;
+}
+case("-10.5"):
+{
+$timezone="GMT-10.5";
+break;
+}
+case("-10.0"):
+{
+$timezone="GMT-10";
+break;
+}
+
+case("-9.5"):
+{
+$timezone="GMT-9.5";
+break;
+}
+
+case("-9.0"):
+{
+$timezone="GMT-9";
+break;
+}
+
+case("-8.5"):
+{
+$timezone="GMT-8.5";
+break;
+}
+
+case("-8.0"):
+{
+$timezone="GMT-8";
+break;
+}
+case("-7.5"):
+{
+$timezone="GMT-7.5";
+break;
+}
+
+case("-7.0"):
+{
+$timezone="GMT-7";
+break;
+}
+
+case("-6.5"):
+{
+$timezone="GMT-6.5";
+break;
+}
+case("-6.0"):
+{
+$timezone="GMT-6";
+break;
+}
+case("-5.5"):
+{
+$timezone="GMT-5.5";
+break;
+}
+case("-5.0"):
+{
+$timezone="GMT-5";
+break;
+}
+case("-4.5"):
+{
+$timezone="GMT-4.5";
+break;
+}
+case("-4.0"):
+{
+$timezone="GMT-4";
+break;
+}
+case("-3.5"):
+{
+$timezone="GMT-3.5";
+break;
+}
+case("-3.0"):
+{
+$timezone="GMT-3";
+break;
+}
+case("-2.5"):
+{
+$timezone="GMT-2.5";
+break;
+}
+case("-2.0"):
+{
+$timezone="GMT-2";
+break;
+}
+case("-1.5"):
+{
+$timezone="GMT-1.5";
+break;
+}
+case("-1.0"):
+{
+$timezone="GMT-1";
+break;
+}
+case("-0.5"):
+{
+$timezone="GMT-0.5";
+break;
+}
+case("0.0"):
+{
+$timezone="GMT";
+break;
+}
+case("0.5"):
+{
+$timezone="GMT+0.5";
+break;
+}
+case("1.0"):
+{
+$timezone="GMT+1";
+break;
+}
+case("1.5"):
+{
+$timezone="GMT+1.5";
+break;
+}
+case("2.0"):
+{
+$timezone="GMT+2";
+break;
+}
+case("2.5"):
+{
+$timezone="GMT+2.5";
+break;
+}
+case("3.0"):
+{
+$timezone="GMT+3";
+break;
+}
+case("3.5"):
+{
+$timezone="GMT+3.5";
+break;
+}
+case("4.0"):
+{
+$timezone="GMT+4";
+break;
+}
+case("4.5"):
+{
+$timezone="GMT+4.5";
+break;
+}
+case("5.0"):
+{
+$timezone="GMT+5";
+break;
+}
+case("5.5"):
+{
+$timezone="GMT+5.5";
+break;
+}
+case("6.0"):
+{
+$timezone="GMT+6";
+break;
+}
+case("6.5"):
+{
+$timezone="GMT+6.5";
+break;
+}
+case("7.0"):
+{
+$timezone="GMT+7";
+break;
+}
+case("7.5"):
+{
+$timezone="GMT+7.5";
+break;
+}
+case("8.0"):
+{
+$timezone="GMT+8";
+break;
+}
+case("8.5"):
+{
+$timezone="GMT+8.5";
+break;
+}
+case("9.0"):
+{
+$timezone="GMT+9";
+break;
+}
+case("9.5"):
+{
+$timezone="GMT+9.5";
+break;
+}
+case("10.0"):
+{
+$timezone="GMT+10";
+break;
+}
+case("10.5"):
+{
+$timezone="GMT+10.5";
+break;
+}
+case("11.0"):
+{
+$timezone="GMT+11";
+break;
+}
+case("11.5"):
+{
+$timezone="GMT+11.5";
+break;
+}
+case("12.0"):
+{
+$timezone="GMT+12";
+break;
+}
+case("12.5"):
+{
+$timezone="GMT+12.5";
+break;
+}
+case("13.0"):
+{
+$timezone="GMT+13";
+break;
+}
+default:
+  {
+$timezone="GMT-6.0";
+  }
+}
+$todaydate=usergetdate(time());
+  
+  if($todaydate['hours']>12)
+  {
+  $hours=intval($todaydate['hours'])-12;
+  $ampm="PM";
+  }
+  else
+  {
+  $hours=$todaydate['hours'];
+  $ampm="AM";
+  }
+  $DatetimeUser=$todaydate['mon']."/".$todaydate['mday']."/".$todaydate['year']." ".$hours.":".$todaydate['minutes']." ".$ampm ;
+ 
+class mode1_form extends moodleform {
+    
+    function definition () {
+        global $CFG, $USER, $OUTPUT,$isGroupAllow,$isCourseAllow;
+        $mform = $this->_form;
+		
+       $isGroupAllow=false;
+       $isCourseAllow=false;
+        $formoptions = new stdClass;
+        
+        calendar_get_allowed_types($formoptions->eventtypes, $USER->id); //getting the course allowed event types
+        
+            $eventtypes = $formoptions->eventtypes;
+            if(!empty($eventtypes->courses)){
+            $isCourseAllow=true;
+            }
+            if (!empty($eventtypes->groups) && is_array($eventtypes->groups)) {
+            $isGroupAllow=true;
+                
+            }
+    }
+    }
+ //----------------------------------------------------------------
+ //finding the roleid of user in current course   
+    $params=array($USER->id,$courseid);	
+  $query="select ra.roleid from {context} c,{role_assignments} ra where c.id=ra.contextid and ra.userid=? and (c.instanceid=? or c.instanceid=0 )";
+$query1=$DB->get_record_sql($query, $params);
+$i=0;
+foreach($query1 as $rows)
+{
+$resultant[$i]= $rows['roleid'];
+$i++;
+}
+
+sort($resultant);
+$role=$resultant[0];
+    ?>
+
+
+<body >
+<table width="100%" ><?php if($role==1 || $role==2 || $role==3 ){ ?><tr><td ><table width="100%"><tr><th class="header" style="text-align:left;"><span style="float:left; width:80px;margin-left:20px;  border-right:solid 1px #ddd;font-size:12px;font-family:Arial, Helvetica, sans-serif;"><img src="pix/icon.gif" align="absbottom"/>&nbsp;WiZiQ</span> <span style="float:left; width:120px;margin-left:20px;  border-right:solid 1px #ddd;font-size:12px "><a href="event.php?course=<?php echo $courseid;?>&section=0&add=wiziq">Schedule a Class</a></span><span style="float:left; width:120px;margin-left:20px;  border-right:solid 1px #ddd;font-size:12px "> <a href="wiziq_list.php?course=<?php echo $courseid;?>">Manage Classes</a></span><span style="float:left; width:120px;margin-left:20px; font-size:12px" > <a href="managecontent.php?course=<?php echo $courseid;?>">Manage Content</a></span></th></tr></table></td></tr><?php } ?><tr>
+<td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+  <form name="form"  method="post" action="<?php echo $CFG->wwwroot; ?>/mod/wiziq/session.php" >
+<input type="hidden" id="maxDuration" value="<?php echo $maxdur; ?>"/>
+<input type="hidden" id="MoodleDateTime" value="<?php echo $DatetimeUser ;?>" />
+ <tr>
+    <td align="center" valign="top"><table width="100%" border="0" cellpadding="10" cellspacing="0">
+      <tr><td colspan="2" valign="top" align="left" style="font-weight:bold">Schedule WiZiQ Live Class</td></tr>
+        <tr>
+        <td width="23%" align="right" valign="middle" class="m_12b585858">Type of Class: </td>
+        <td colspan="2" align="left" valign="middle" class="m_12b585858"><?php $formoptions = new stdClass;
+        
+        calendar_get_allowed_types($formoptions->eventtypes, $USER->id);
+    $eventtypes = $formoptions->eventtypes;
+    //print_r($formoptions->eventtypes);
+    $mform = new mode1_form();
+//$mform->display();
+    ?><select name="eventType" onChange="GroupEnable(this)" id="eventType">
+    <option value="site">Site</option>
+    <?php if($isCourseAllow==true) 
+    {
+    ?>
+    <option value="course">Course</option> 
+    <?php } ?>
+    <option value="user" selected="selected">User</option>
+    <?php if($isGroupAllow==true)
+    {
+    ?>
+    <option value="group">Group</option>
+    <?php } ?>
+    </select></td>
+        </tr>
+        <?php if($isGroupAllow==true){ ?>
+        <tr>
+        <td width="23%" align="right" valign="middle" class="m_12b585858">Group Class:</td>
+        <td colspan="2" align="left" valign="middle" class="m_12b585858"> 
+        <select name="Groups" disabled="disabled" id="Groups" >
+        <option value="-1" selected="selected">Select</option>
+        <?php foreach ($eventtypes->groups as $group) { ?>
+        <option value="<?php echo $group->id; ?>"><?php echo $group->name; ?></option>
+        <?php } ?>
+        </select><div id="id_groups">
+        </div>
+        </td>
+        </tr> <?php }   ?>
+     <tr>
+        <td width="23%" align="right" valign="middle" class="m_12b585858"><span style="font-weight:bold; font-size:14px">*</span>Title:</td>
+        <td colspan="2" align="left" valign="middle" class="m_12b"><input name="name" type="text" class="m_textinput" id="name" onBlur="validate_mod_wiki_mod_form_name(this)" onChange="validate_mod_wiki_mod_form_name(this)"  value="<?php  p($form->name) ?>" style="width:225px"/><div id="id_name">
+        </div></td><tr><td width="23%" align="right" valign="middle" class="m_12b585858"></td><td colspan="2" align="left" valign="middle" class="m_12b585858">
+        <input type="checkbox" id="chkNow" name="chkNow" value="checked" onClick="chkScheduleNow(this)" onChange="chkScheduleNow(this)" /> Schedule for right now
+        </td>
+        </tr>
+        </tr>
+        
+      <tr id="rowDate">
+        <td width="23%" align="right" valign="middle" class="m_12b585858"><span style="font-weight:bold; font-size:14px">*</span> Date:</td>
+        <td colspan="2" align="left" valign="middle" class="m_12b"><input name="date" id="date" type="text" class="m_textinput" style="width:225px" />
+        <a href="javascript:var cal2 = new calendar2(document.form.date);cal2.popup();"><img src="cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the date" /></a><div id="id_date"></div> </td>
+        </tr>
+      <tr id="rowTime">
+        <td align="right" valign="top" class="m_12b585858"  style="padding-top:27px;padding-bottom:15px"><span style="font-weight:bold; font-size:14px">*</span> Time: </td>
+        <td colspan="2" align="left" valign="top" class="m_12b" style="vertical-align:middle;"><div>e.g. 6:30 am or 4 PM</div>
+        <input name="time" class="m_textinput" type="text" onBlur="IsValidTime(this)" onChange="IsValidTime(this)" id="time" style="width:225px"/><div id="id_time"> </div>
+       </td>
+        </tr>
+             <tr>
+        <td align="right" valign="top" class="m_12b585858"  style="padding-top:27px;padding-bottom:15px"><span style="font-weight:bold; font-size:14px">*</span>Duration:</td>
+        <td colspan="2" align="left" valign="top" class="m_12b" style="vertical-align:middle;"><div><span style="font-size:11px"> <span style="font-size:10px">(Max. <?php echo $maxdur; ?> mins )</span> &nbsp;<?php if($maxdur<=60)  { ?>(<a href="<?php echo $buynow_url; ?>" target="_blank" >Buy subscription </a> for classes up to 300 minutes) <?php } ?></span></div><input name="duration" id="duration"  class="m_textinput" type="text" onBlur="validate_mod_wiki_mod_form_duration(this)" onChange="validate_mod_wiki_mod_form_duration(this)" value="30" style="width:225px"/> <div id="id_duration"></div>   
+        </td>
+        </tr>
+       
+         <tr>
+        <td align="right" valign="top" class="m_12b585858">Timezone:</td><?php if(!is_numeric($tmzone)) { 
+        if ($CFG->forcetimezone != 99)
+ 	{
+ 		$timezone=$CFG->forcetimezone;
+ 	}
+	else
+	$timezone=$USER->timezone;
+        } ?>
+			<td colspan="2" align="left" valign="middle" class="m_12b"><?php  echo $timezone; ?> </td>
+          </tr>
+      <tr>
+        <td align="right" valign="top" class="m_12b585858">Type:</td>
+			<td colspan="2" align="left" valign="middle" class="m_12b">
+			  <input name="audio" type="radio" value="Video" checked="checked"/>
+		    Audio and Video 
+            <input name="audio" type="radio" value="Audio" />
+		    Only Audio</td>
+          </tr>
+      <tr>
+      <tr>
+        <td align="right" valign="top" class="m_12b585858">Record this class:</td>
+			<td  colspan="2" align="left" valign="middle" class="m_12b">
+                  		
+			  <input name="type" id="yes" type="radio" value="yes" checked="checked"/> Yes
+			  <input name="type" id="no" type="radio" value="no" /> No 
+              
+             </td>
+          </tr>
+      <tr>
+        <td align="right" valign="top" class="m_12b585858">&nbsp;</td>
+        <td width="11%" align="left" valign="top"><input name="Submit" type="image" src="images/sch.gif" value="Schedule" onClick="return validate_mod_wiki_mod_form(this.form)" style="cursor:default" /></td>
+		<td width="64%" align="left" valign="top" style="vertical-align:middle">
+        <a href="javascript:history.go(-1)" ><span class="ulink">Cancel</span></a></td>
+      </tr>
+    </table></td>
+  </tr><input type='hidden' name='section' value='<?php  echo $section; ?>' id='section'  />
+  <input type='hidden' name='course'  value='<?php  echo $courseid; ?>' id='course' />
+  </form>
+  <tr><td colspan="">
+  <div align="center">
+   <iframe  src="package_message.php" id="remote_iframe_1" name="remote_iframe_1" style="border:0;padding:0;margin:0;width:520px;height:120px;overflow:auto" frameborder=0 scrolling="no" onload=" "  ></iframe>
+                         </div>   </td>
+  </tr>
+</table>
+</td></tr></table>  
+</body>
+</html>
+<?php
+  echo '</div>';
+    echo '</td>';
+
+
+    
+?>
+
+
+
+

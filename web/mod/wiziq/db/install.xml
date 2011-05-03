@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/wiziq/db" VERSION="20071202" COMMENT="XMLDB file for Moodle mod/wiziq"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="wiziq" COMMENT="WiZiQ Acitivty Module" NEXT="wiziq_attendee_info">
+           <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" COMMENT="Wizq Table. Instances etc go in   here" NEXT="name"/>
+
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances"
+		PREVIOUS="id" NEXT="url"/>
+
+		<FIELD NAME="url" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="name" NEXT="attendeeurl"/>
+		
+		<FIELD NAME="attendeeurl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="url" NEXT="recordingurl"/>
+
+       <FIELD NAME="recordingurl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="attendeeurl" NEXT="reviewurl"/>
+
+     <FIELD NAME="reviewurl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="recordingurl" NEXT="wtime"/>
+
+    <FIELD NAME="wtime" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="reviewurl" NEXT="wdur"/>
+     
+	 <FIELD NAME="wdur" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="wtime" NEXT="wdate"/>
+
+    <FIELD NAME="wdate" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances"  PREVIOUS="wdur" NEXT="wtype"/>
+
+	 <FIELD NAME="wtype" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="wdate" NEXT="insescod"/>
+
+	 <FIELD NAME="insescod" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="wtype" NEXT="statusrecording"/>
+
+	 <FIELD NAME="statusrecording" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="insescod" NEXT="timezone"/>
+	 
+	 <FIELD NAME="timezone" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="statusrecording" NEXT="oldclasses"/>
+    
+	<FIELD NAME="oldclasses" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="timezone" NEXT="course"/>
+      	  
+	  <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="oldclasses" NEXT="classstatus"/>
+	  
+	  <FIELD NAME="classstatus" TYPE="char" LENGTH="1" DEFAULT="S" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="course" NEXT="downloadrec"/>
+	  
+	  <FIELD NAME="downloadrec" TYPE="int" LENGTH="1" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="classstatus" NEXT="attendancerep"/>
+	  
+	  <FIELD NAME="attendancerep" TYPE="int" LENGTH="1" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="downloadrec" NEXT="viewrec"/>
+	  
+	  <FIELD NAME="viewrec" TYPE="int" LENGTH="1" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle instances" PREVIOUS="attendancerep" />
+	  
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for WiZiQ"/>
+      </KEYS>
+    </TABLE>
+	
+	<TABLE NAME="wiziq_attendee_info" COMMENT="WiZiQ Acitivty Module" PREVIOUS="wiziq" NEXT="wiziq_content">
+           <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" COMMENT="Wizq Table. Instances etc go in   here" NEXT="username"/>
+
+        <FIELD NAME="username" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle users" PREVIOUS="id" NEXT="attendeeurl"/>
+
+		<FIELD NAME="attendeeurl" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="url field for moodle attendees" PREVIOUS="username" NEXT="insescod"/>
+ 
+	 <FIELD NAME="insescod" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="session code field for moodle wiziq classes" PREVIOUS="attendeeurl" NEXT="userid"/>
+
+     <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle userid" PREVIOUS="insescod"/>
+	 
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for wiziq_attendee_info table"/>
+      </KEYS>
+    </TABLE>
+	
+	<TABLE NAME="wiziq_content" COMMENT="WiZiQ Acitivty Module" PREVIOUS="wiziq_attendee_info">
+           <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="20" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" COMMENT="Wizq Table. Instances etc go in   here" NEXT="name"/>
+
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="name field for moodle users" PREVIOUS="id" NEXT="filepath"/>
+
+		<FIELD NAME="filepath" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="filepath for wiziq content" PREVIOUS="name" NEXT="parentid"/>
+ 
+	 <FIELD NAME="parentid" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="parentidfield for wiziq content" PREVIOUS="filepath" NEXT="type"/>
+
+     <FIELD NAME="type" TYPE="int" LENGTH="1" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle type" PREVIOUS="parentid" NEXT="uploaddatetime"/>
+	 
+	 <FIELD NAME="uploaddatetime" TYPE="int" LENGTH="20" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle uploaddatetime" PREVIOUS="type" NEXT="description"/>
+	 
+	 <FIELD NAME="description" TYPE="char" LENGTH="255" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle description" PREVIOUS="uploaddatetime" NEXT="userid"/>
+	 
+	 <FIELD NAME="userid" TYPE="int" LENGTH="20" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle userid" PREVIOUS="description" NEXT="title"/>
+	 
+	 <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle title" PREVIOUS="userid" NEXT="contentid"/>
+	 
+	 <FIELD NAME="contentid" TYPE="int" LENGTH="20" DEFAULT="0" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle contentid" PREVIOUS="title" NEXT="icon"/>
+	 
+	 <FIELD NAME="icon" TYPE="char" LENGTH="50" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle icon" PREVIOUS="contentid" NEXT="status"/>
+	 
+	 <FIELD NAME="status" TYPE="int" LENGTH="10" DEFAULT="1" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle status" PREVIOUS="icon" NEXT="isDeleted"/>
+	 
+	 <FIELD NAME="isDeleted" TYPE="int" LENGTH="1" DEFAULT="0" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" ENUM="false" COMMENT="Wizq Table. moodle isDeleted" PREVIOUS="status" />
+	 
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for wiziq_content table"/>
+      </KEYS>
+    </TABLE>
+	
+  </TABLES>
+</XMLDB>
