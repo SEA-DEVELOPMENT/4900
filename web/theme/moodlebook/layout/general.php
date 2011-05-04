@@ -20,7 +20,7 @@ if ($hassidepre && !$hassidepost) {
 }
 
 if (!empty($PAGE->theme->settings->footnote)) {
-    $footnote = $PAGE->theme->settings->footnote;
+    $footnote =  $PAGE->theme->settings->footnote;
 } else {
     $footnote = '<!-- There was no custom footnote set -->';
 }
