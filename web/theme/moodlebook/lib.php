@@ -15,7 +15,7 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
     public function navigation_tree(global_navigation $navigation) {
         //Matt's profile login check, hides the profile link if guest or not logged in
         if (!isloggedin() or isguestuser()) {
-            global $CFG;
+        global $CFG;
         $content = html_writer::start_tag('ul', array('id' => 'MainHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
         $content .= html_writer::start_tag('li');
         $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'home'));
@@ -34,16 +34,15 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::end_tag('a');
         $content .= html_writer::end_tag('li');
         $content .= html_writer::start_tag('li');
-        $content .= html_writer::start_tag('span', array('id' =>'MainNavMenu'));
+        $content .= html_writer::start_tag('a', array('href' =>"$CFG->wwwroot/my", 'id' =>'myhome'));
         $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('user_silhouette', 'theme')));
-        $content .= html_writer::end_tag('span');
-        $content .= $this->navigation_node($navigation, array());
+        $content .= html_writer::end_tag('a');
         $content .= html_writer::end_tag('li');
         $content .= html_writer::end_tag('ul');
         return $content;
         }
     }
-    
+//end of Matt's edit
 
 
     //Shaughn's Navigation Tree
