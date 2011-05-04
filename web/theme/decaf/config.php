@@ -1,6 +1,6 @@
 <?php
 
-$THEME->name = 'moodlebook';
+$THEME->name = 'decaf';
 
 ////////////////////////////////////////////////////
 // Name of the theme. Most likely the name of
@@ -21,7 +21,7 @@ $THEME->parents = array('canvas','base');
 ////////////////////////////////////////////////////
 
 
-$THEME->sheets = array('menubar', 'selected', 'core', 'course', 'mods', 'blocks', 'pagelayout','user');
+$THEME->sheets = array('awesomebar', 'selected', 'core', 'course', 'mods', 'blocks', 'pagelayout');
 
 ////////////////////////////////////////////////////
 // Name of the stylesheet(s) you've including in 
@@ -127,7 +127,7 @@ $THEME->layouts = array(
 // specific page.
 ///////////////////////////////////////////////////////////////
 
-$THEME->csspostprocess = 'moodlebook_process_css';
+$THEME->csspostprocess = 'decaf_process_css';
 	
 ////////////////////////////////////////////////////
 // Allows the user to provide the name of a function 

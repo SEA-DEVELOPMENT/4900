@@ -1,6 +1,6 @@
 <?php
 
-class moodlebook_topsettings_renderer extends plugin_renderer_base {
+class decaf_topsettings_renderer extends plugin_renderer_base {
 
     public function settings_tree(settings_navigation $navigation) {
         global $CFG;
@@ -11,62 +11,24 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::empty_tag('br', array('clear' => 'all'));
         return $content;
     }
-    
+
     public function navigation_tree(global_navigation $navigation) {
-        //Matt's profile login check, hides the profile link if guest or not logged in
-        if (!isloggedin() or isguestuser()) {
         global $CFG;
-        $content = html_writer::start_tag('ul', array('id' => 'MainHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
-        $content .= html_writer::start_tag('li');
-        $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'home'));
-        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
-        $content .= html_writer::end_tag('a');
-        $content .= html_writer::end_tag('li');
-        $content .= html_writer::end_tag('ul');
-        return $content;
-        }
-        else{
-        global $CFG;
-        $content = html_writer::start_tag('ul', array('id' => 'MainHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
+        $content = html_writer::start_tag('ul', array('id' => 'awesomeHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
         $content .= html_writer::start_tag('li');
         $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'home'));
         $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
         $content .= html_writer::end_tag('a');
         $content .= html_writer::end_tag('li');
         $content .= html_writer::start_tag('li');
-        $content .= html_writer::start_tag('a', array('href' =>"$CFG->wwwroot/my", 'id' =>'myhome'));
+        $content .= html_writer::start_tag('span', array('id' =>'awesomeNavMenu'));
         $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('user_silhouette', 'theme')));
-        $content .= html_writer::end_tag('a');
-        $content .= html_writer::end_tag('li');
-        $content .= html_writer::end_tag('ul');
-        return $content;
-        }
-    }
-//end of Matt's edit
-
-
-    //Shaughn's Navigation Tree
-    public function navigation_tree2(global_navigation $navigation) {
-        global $CFG;
-        $content = html_writer::start_tag('ul', array('id' => 'MainHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
-        $content .= html_writer::start_tag('li');
-        $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'home'));
-        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
-        $content .= html_writer::end_tag('a');
-        $content .= html_writer::end_tag('li');
-        $content .= html_writer::start_tag('li');
-        //$content .= html_writer::start_tag('span', array('id' =>'MainNavMenu'));
-	$content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'profile'));
-        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('user_silhouette', 'theme')));
-	$content .= html_writer::end_tag('a');
-        //$content .= html_writer::end_tag('span');
+        $content .= html_writer::end_tag('span');
         $content .= $this->navigation_node($navigation, array());
         $content .= html_writer::end_tag('li');
         $content .= html_writer::end_tag('ul');
         return $content;
     }
-
-	
 
     protected function navigation_node(navigation_node $node, $attrs=array()) {
         $items = $node->children;
@@ -78,6 +40,8 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
 
         // array of nested li elements
         $lis = array();
+        $dummypage = new decaf_dummy_page();
+        $dummypage->set_context(get_context_instance(CONTEXT_SYSTEM));
         foreach ($items as $item) {
             if (!$item->display) {
                 continue;
@@ -93,9 +57,7 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
             $content = $this->output->render($item);
             if(substr($item->id, 0, 17)=='expandable_branch' && $item->children->count()==0) {
                 // Navigation block does this via AJAX - we'll merge it in directly instead
-                $dummypage = new moodlebook_dummy_page();
-                $dummypage->set_context(get_context_instance(CONTEXT_SYSTEM));
-                $subnav = new moodlebook_expand_navigation($dummypage, $item->type, $item->key);
+                $subnav = new decaf_expand_navigation($dummypage, $item->type, $item->key);
                 if (!isloggedin() || isguestuser()) {
                     $subnav->set_expansion_limit(navigation_node::TYPE_COURSE);
                 }
@@ -150,7 +112,7 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
  *
  * @return string
  */
-function moodlebook_performance_output($param) {
+function decaf_performance_output($param) {
 	
     $html = '<div class="performanceinfo"><ul>';
 	if (isset($param['realtime'])) $html .= '<li><a class="red" href="#"><var>'.$param['realtime'].' secs</var><span>Load Time</span></a></li>';
@@ -169,21 +131,21 @@ function moodlebook_performance_output($param) {
  * @param theme_config $theme
  * @return string
  */
-function moodlebook_process_css($css, $theme) {
+function decaf_process_css($css, $theme) {
 
     if (!empty($theme->settings->backgroundcolor)) {
         $backgroundcolor = $theme->settings->backgroundcolor;
     } else {
         $backgroundcolor = null;
     }
-    $css = moodlebook_set_backgroundcolor($css, $backgroundcolor);
+    $css = decaf_set_backgroundcolor($css, $backgroundcolor);
 
     if (!empty($theme->settings->customcss)) {
         $customcss = $theme->settings->customcss;
     } else {
         $customcss = null;
     }
-    $css = moodlebook_set_customcss($css, $customcss);
+    $css = decaf_set_customcss($css, $customcss);
 
     return $css;
 }
@@ -195,11 +157,11 @@ function moodlebook_process_css($css, $theme) {
  * @param mixed $backgroundcolor
  * @return string
  */
-function moodlebook_set_backgroundcolor($css, $backgroundcolor) {
+function decaf_set_backgroundcolor($css, $backgroundcolor) {
     $tag = '[[setting:backgroundcolor]]';
     $replacement = $backgroundcolor;
     if (is_null($replacement)) {
-        $replacement = '#ffffff';
+        $replacement = '#EEEEEE';
     }
     $css = str_replace($tag, $replacement, $css);
     return $css;
@@ -212,7 +174,7 @@ function moodlebook_set_backgroundcolor($css, $backgroundcolor) {
  * @param mixed $customcss
  * @return string
  */
-function moodlebook_set_customcss($css, $customcss) {
+function decaf_set_customcss($css, $customcss) {
     $tag = '[[setting:customcss]]';
     $replacement = $customcss;
     if (is_null($replacement)) {
@@ -223,7 +185,7 @@ function moodlebook_set_customcss($css, $customcss) {
 }
 
 
-class moodlebook_expand_navigation extends global_navigation {
+class decaf_expand_navigation extends global_navigation {
 
     /** @var array */
     protected $expandable = array();
@@ -328,7 +290,7 @@ class moodlebook_expand_navigation extends global_navigation {
     }
 }
 
-class moodlebook_dummy_page extends moodle_page {
+class decaf_dummy_page extends moodle_page {
     /**
      * REALLY Set the main context to which this page belongs.
      * @param object $context a context object, normally obtained with get_context_instance.
