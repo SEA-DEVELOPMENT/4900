@@ -46,7 +46,7 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
 
 
     //Shaughn's Navigation Tree
-    public function navigation_tree2(global_navigation $navigation) {
+   /** public function navigation_tree2(global_navigation $navigation) {
         global $CFG;
         $content = html_writer::start_tag('ul', array('id' => 'MainHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
         $content .= html_writer::start_tag('li');
@@ -64,7 +64,7 @@ class moodlebook_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::end_tag('li');
         $content .= html_writer::end_tag('ul');
         return $content;
-    }
+    }*/
 
 	
 
