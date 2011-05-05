@@ -24,7 +24,7 @@ if ($hassidepre || $hassidepost) {
 if (!empty($PAGE->theme->settings->logo)) {
     $logourl = $PAGE->theme->settings->logo;
 } else {
-    //$logourl = NULL;
+    $logourl = NULL;
 }
 
 if (!empty($PAGE->theme->settings->footnote)) {
@@ -51,13 +51,15 @@ echo $OUTPUT->doctype() ?>
 
     <div id="page-header" class="clearfix">
 		<div id="page-header-wrapper">
-			<?php if($logourl == NULL) { ?>
+			<!-- <?php if($logourl == NULL) { ?> -->
+			<div class="logo"></div>
+			 <!-- <img class="logo" /> -->
 			 <h1 class="headermain">
 	        	<?php echo $PAGE->heading ?>
-	        </h1>
-	        <?php } else { ?>
-	        <img class="logo" src="<?php echo $logourl;?>" alt="Custom logo here" />
-	        <?php } ?>
+	        	</h1>
+	        <!-- <?php } else { ?>
+	        <img class="logo" alt="Custom logo here" />
+	        <?php } ?> -->
 
 
     	    <div class="headermenu">
