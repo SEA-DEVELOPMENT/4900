@@ -10,7 +10,7 @@
 .pagelayout-mypublic,
 .pagelayout-login,
 .pagelayout-report {
-    background:url([[pix:theme|body]]) top left repeat-x #dcecf9;
+    background:url([[pix:theme|body2]]) top left repeat-x #dcecf9;
 }
 
 body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
@@ -89,6 +89,7 @@ a:hover, a:active, a:focus {
     padding-left: 10px;
     padding-top: 18px;
     padding-right: 0px;
+    background:#97d3f4 url([[pix:theme|Logo]]) no-repeat;
 }
 
 .headermain { 
