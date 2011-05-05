@@ -24,7 +24,7 @@ if ($hassidepre || $hassidepost) {
 if (!empty($PAGE->theme->settings->logo)) {
     $logourl = $PAGE->theme->settings->logo;
 } else {
-    $logourl = NULL;
+    //$logourl = NULL;
 }
 
 if (!empty($PAGE->theme->settings->footnote)) {
