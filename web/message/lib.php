@@ -163,6 +163,14 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     $pagingbar = new paging_bar($countparticipants, $page, MESSAGE_CONTACTS_PER_PAGE, $PAGE->url, 'page');
     echo $OUTPUT->render($pagingbar);
 
+    //Sean - Group Messaging feature
+
+    echo '<form action="../user/action_redir.php" method="post" id="participantsform">';
+    echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
+    echo '<input type="hidden" name="returnto" value="'.s(me()).'" />';
+    echo '<input type="hidden" name="formaction" value="messageselect.php"/>';
+    echo '<input type="hidden" name="id" value="4"/>';
+
     echo html_writer::start_tag('table', array('id' => 'message_participants', 'class' => 'boxaligncenter', 'cellspacing' => '2', 'cellpadding' => '0', 'border' => '0'));
 
     echo html_writer::start_tag('tr');
@@ -180,6 +188,8 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     }
 
     echo html_writer::end_tag('table');
+    echo '<input type="submit" value="bulk send"/>';
+    echo '</form>';
 }
 
 /**
@@ -2041,7 +2051,7 @@ function message_print_contactlist_user($contact, $incontactlist = true, $isbloc
 
     echo html_writer::end_tag('td');
 
-    echo html_writer::tag('td', '&nbsp;'.$strcontact.$strblock.'&nbsp;'.$strhistory, array('class' => 'link'));
+    echo html_writer::tag('td', '&nbsp;'.$strcontact.$strblock.'&nbsp;'.$strhistory.'<input type="checkbox" name="user'.$contact->id.'" />', array('class' => 'link'));
 
     echo html_writer::end_tag('tr');
 }
