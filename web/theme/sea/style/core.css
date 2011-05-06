@@ -251,6 +251,7 @@ body.has_dock {
 #dock {
     border-right: 0px none;
     background: url([[pix:theme|dock]]) repeat-y top right #fff;
+    z-index:1000;
 }
 #dock .controls {
     bottom:auto;
