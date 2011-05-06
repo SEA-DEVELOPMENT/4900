@@ -48,7 +48,7 @@ echo $OUTPUT->doctype() ?>
 	<div id="wrapper" class="clearfix">
 
 <!-- START OF HEADER -->
-
+<!-- Shaughn, Took out the Logo URL and put in a static image that calls the Logo class in core.css -->
     <div id="page-header" class="clearfix">
 		<div id="page-header-wrapper">
 			<!-- <?php if($logourl == NULL) { ?> -->
@@ -58,7 +58,7 @@ echo $OUTPUT->doctype() ?>
 	        	<?php echo $PAGE->heading ?>
 	        	</h1>
 	        <!-- <?php } else { ?>
-	        <img class="logo" alt="Custom logo here" />
+	        <img class="logo" src="<?php echo $logourl;?>" alt="Custom logo here" />
 	        <?php } ?> -->
 
 
