@@ -44,6 +44,14 @@ echo $OUTPUT->doctype() ?>
 <body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
+        <div id="awesomebar">
+        <?php
+            $topsettings = new decaf_topsettings_renderer($this->page, null);
+            echo $topsettings->navigation_tree($this->page->navigation);
+            echo $topsettings->settings_tree($this->page->settingsnav);
+        ?>
+    </div>
+    
 <div id="page">
 	<div id="wrapper" class="clearfix">
 
