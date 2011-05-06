@@ -188,6 +188,8 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     }
 
     echo html_writer::end_tag('table');
+
+    //Sean Hall - formend
     echo '<input type="submit" value="bulk send"/>';
     echo '</form>';
 }
@@ -265,6 +267,10 @@ function message_print_blocked_users($blockedusers, $contactselecturl=null, $sho
 
         $isuserblocked = true;
         $isusercontact = false;
+
+        //Sean Hall - Varible to enable the checkbox for bulk messaging
+        $bulkcheckbox = true;
+
         foreach ($blockedusers as $blockeduser) {
             message_print_contactlist_user($blockeduser, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
         }
@@ -378,6 +384,13 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         echo html_writer::tag('div', get_string('contactlistempty', 'message'), array('class' => 'heading'));
     }
 
+    //Sean Hall - formstart
+    echo '<form action="../user/action_redir.php" method="post" id="participantsform">';
+    echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
+    echo '<input type="hidden" name="returnto" value="'.s(me()).'" />';
+    echo '<input type="hidden" name="formaction" value="messageselect.php"/>';
+    echo '<input type="hidden" name="id" value="4"/>';
+
     echo html_writer::start_tag('table', array('id' => 'message_contacts', 'class' => 'boxaligncenter'));
 
     if (!empty($titletodisplay)) {
@@ -432,6 +445,10 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
 
     echo html_writer::end_tag('table');
 
+    //Sean Hall - formend
+    echo '<input type="submit" value="bulk send"/>';
+    echo '</form>';
+    
     if ($countstrangers && ($countonlinecontacts + $countofflinecontacts == 0)) {  // Extra help
         echo html_writer::tag('div','('.get_string('addsomecontactsincoming', 'message').')',array('class' => 'note'));
     }
@@ -1999,8 +2016,9 @@ function message_get_participants() {
  * @param string $selectcontacturl the url to send the user to when a contact's name is clicked
  * @param bool $showactionlinks display action links next to the other users (add contact, block user etc)
  * @param object $selecteduser the user the current user is viewing (if any). They will be highlighted.
+ * @param bool
  */
-function message_print_contactlist_user($contact, $incontactlist = true, $isblocked = false, $selectcontacturl = null, $showactionlinks = true, $selecteduser=null) {
+function message_print_contactlist_user($contact, $incontactlist = true, $isblocked = false, $selectcontacturl = null, $showactionlinks = true, $selecteduser=null, $bulkcheckbox = true) {
     global $OUTPUT, $USER;
     $fullname  = fullname($contact);
     $fullnamelink  = $fullname;
