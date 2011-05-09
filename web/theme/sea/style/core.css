@@ -42,12 +42,12 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
 }
 
 a:link, a:visited {
-    color: #003466;
+    color: #025167;
     text-decoration: none;
 }
 
 a:hover, a:active, a:focus {
-    color: #4785ac;
+    color: #991b1e;
     text-decoration: none;
 }
 
@@ -93,8 +93,11 @@ a:hover, a:active, a:focus {
     height: 60px;
     width:177px;
     float: left;
+<<<<<<< HEAD
+=======
     padding-left: 10px;
     padding-right: 0px;
+>>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a
     margin-top:10px;
     margin-left:10px;
     background:url([[pix:theme|SEA_Logo2]]) no-repeat top;
@@ -108,8 +111,12 @@ a:hover, a:active, a:focus {
 }
 
 h1.headermain {
+<<<<<<< HEAD
+    color: #025167;
+=======
     /*color: #006699;*/
     color: #ffffff;
+>>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a
     font-weight: normal;
     font-size: 3em !important;
     padding-left: 0px;
@@ -221,10 +228,10 @@ p.helplink {
 
 .headingblock { 
     border: 0px none;
-    border-bottom: 1px solid #98bcd6;
+    border-bottom: 1px solid #188a00;
     padding-bottom: 0px;
     padding-top: 5px;
-    color: #336699;
+    color: #0b0974;
     font-size: 1.8em;
     font-weight: normal;
 }
