@@ -11,6 +11,7 @@
 .pagelayout-login,
 .pagelayout-report {
     background:url([[pix:theme|body4]]) top left repeat-x #00cccc;
+    /*background: #000000;*/
 }
 
 body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
@@ -77,7 +78,7 @@ a:hover, a:active, a:focus {
 /* @group Header */
 
 #page-header {
-    background:#97d3f4 url([[pix:theme|header]]) no-repeat top right;
+    background:#97d3f4 url([[pix:theme|header2]]) no-repeat top right;
     margin-bottom: 0px;
     height: 80px;
     border-bottom: 1px solid #fff;
@@ -87,8 +88,14 @@ a:hover, a:active, a:focus {
     height: 60px;
     width:177px;
     float: left;
+<<<<<<< HEAD
+=======
+    padding-left: 10px;
+    padding-right: 0px;
+>>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a
     margin-top:10px;
-    background:url([[pix:theme|SEA_Logo]]) no-repeat top;
+    margin-left:10px;
+    background:url([[pix:theme|SEA_Logo2]]) no-repeat top;
 }
 
 }
@@ -99,7 +106,12 @@ a:hover, a:active, a:focus {
 }
 
 h1.headermain {
+<<<<<<< HEAD
     color: #025167;
+=======
+    /*color: #006699;*/
+    color: #ffffff;
+>>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a
     font-weight: normal;
     font-size: 3em !important;
     padding-left: 0px;
@@ -248,6 +260,7 @@ body.has_dock {
 #dock {
     border-right: 0px none;
     background: url([[pix:theme|dock]]) repeat-y top right #fff;
+    z-index:1000;
 }
 #dock .controls {
     bottom:auto;

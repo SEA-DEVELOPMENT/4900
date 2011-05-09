@@ -43,12 +43,20 @@ echo $OUTPUT->doctype() ?>
 </head>
 <body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
-
+<!--Create the Awesome Bar-->
+    <div id="awesomebar">
+        <?php
+            $topsettings = new decaf_topsettings_renderer($this->page, null);
+            echo $topsettings->navigation_tree($this->page->navigation);
+            echo $topsettings->settings_tree($this->page->settingsnav);
+        ?>
+    </div>
+<!-- End Awesome Bar-->
 <div id="page">
 	<div id="wrapper" class="clearfix">
 
 <!-- START OF HEADER -->
-
+<!-- Shaughn, Took out the Logo URL and put in a static image that calls the Logo class in core.css -->
     <div id="page-header" class="clearfix">
 		<div id="page-header-wrapper">
 			<!-- <?php if($logourl == NULL) { ?> -->
@@ -58,7 +66,7 @@ echo $OUTPUT->doctype() ?>
 	        	<?php echo $PAGE->heading ?>
 	        	</h1>
 	        <!-- <?php } else { ?>
-	        <img class="logo" alt="Custom logo here" />
+	        <img class="logo" src="<?php echo $logourl;?>" alt="Custom logo here" />
 	        <?php } ?> -->
 
 
@@ -71,6 +79,11 @@ echo $OUTPUT->doctype() ?>
 	    	</div>
 	    </div>
     </div>
+
+<!--addition->
+<?php if ($hascustommenu) { ?>
+      <div id="custommenu"><?php echo $custommenu; ?></div>
+ 	<?php } ?>
 
 <!-- END OF HEADER -->
 

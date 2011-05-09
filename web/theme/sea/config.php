@@ -38,6 +38,7 @@ $THEME->name = 'sea';
 $THEME->parents = array(
     'canvas',
     'base',
+    'decaf',
 );
 
 /////////////////////////////////////////////////////
@@ -54,22 +55,14 @@ $THEME->parents = array(
 $THEME->sheets = array(
     'core',
     'pagelayout',
-    'menu'
+    'menu',
+    'awesomebar',
 );
 
 ////////////////////////////////////////////////////
 // Name of the stylesheet(s) you've including in
 // this theme's /styles/ directory.
 ////////////////////////////////////////////////////
-
-$THEME->parents_exclude_sheets = array(
-        'base'=>array(
-            'pagelayout',
-        ),
-        'canvas'=>array(
-            'pagelayout',
-        ),
-);
 
 
 $THEME->enable_dock = true;
@@ -229,7 +222,23 @@ $THEME->csspostprocess = 'sea_process_css';
 // the themes parents
 ////////////////////////////////////////////////////
 
-// $THEME->parents_exclude_sheets
+$THEME->parents_exclude_sheets = array(
+        'base'=>array(
+            'pagelayout',
+        ),
+        'canvas'=>array(
+            'pagelayout',
+        ),
+        'decaf'=>array(
+            'pagelayout',
+            'blocks',
+            'core',
+            'course',
+            'editor',
+            'mods',
+            'selected.css',    
+        ),
+);
 
 ////////////////////////////////////////////////////
 // An array of stylesheets not to inherit from the

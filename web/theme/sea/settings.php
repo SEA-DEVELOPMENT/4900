@@ -8,12 +8,15 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
  
+//This takes out the settings (logo) for administrators
+
 // Logo file setting
-$name = 'theme_sea/logo';
-$title = get_string('logo','theme_sea');
-$description = get_string('logodesc', 'theme_sea');
-$setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
-$settings->add($setting);
+//$name = 'theme_sea/logo';
+//$title = get_string('logo','theme_sea');
+//$description = get_string('logodesc', 'theme_sea');
+//$setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+//$settings->add($setting);
+
  
 // Block region width
 $name = 'theme_sea/regionwidth';
