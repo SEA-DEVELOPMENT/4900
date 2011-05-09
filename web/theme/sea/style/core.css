@@ -19,6 +19,7 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
     color:#333;
 }
 
+/*Shaughn, Changes Top Login Info Color*/
 #page-header-wrapper .logininfo{
     color:#fff;
 }
@@ -82,7 +83,7 @@ a:hover, a:active, a:focus {
 /* @group Header */
 
 #page-header {
-    background:#97d3f4 url([[pix:theme|header2]]) no-repeat top right;
+    background:#97d3f4 url([[pix:theme|header2]]) no-repeat top;
     margin-bottom: 0px;
     height: 80px;
     border-bottom: 1px solid #fff;
@@ -319,7 +320,7 @@ body.has_dock {
 #page-footer{
     padding: 20px 0 30px;
     clear: both;
-    background: url([[pix:theme|footer]]) no-repeat top right #dfdfdf;
+    background: url([[pix:theme|footer2]]) no-repeat top #dfdfdf;
     margin-top: 0px;
     border: 1px solid #98bcd6;
     border-top: 5px solid #98bcd6;
