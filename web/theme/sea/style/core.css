@@ -10,7 +10,7 @@
 .pagelayout-mypublic,
 .pagelayout-login,
 .pagelayout-report {
-    background:url([[pix:theme|body4]]) top left repeat-x #00cccc;
+    background:url([[pix:theme|body4]]) top left repeat-x #ccffff;
     /*background: #000000;*/
 }
 
@@ -106,7 +106,7 @@ a:hover, a:active, a:focus {
 }
 
 h1.headermain {
-    color: #025167;
+    color: #ffffff;
     font-weight: normal;
     font-size: 3em !important;
     padding-left: 0px;
