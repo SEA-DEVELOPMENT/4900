@@ -93,16 +93,8 @@ a:hover, a:active, a:focus {
     height: 62px;
     width:182px;
     float: left;
-<<<<<<< HEAD
     padding-left: 10px;
     padding-right: 0px;
-=======
-/*<<<<<<< HEAD
-=======
-    padding-left: 10px;
-    padding-right: 0px;
->>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a*/
->>>>>>> b194ec2378f3aa9fd086e463c86a1cbcaa8d4c69
     margin-top:10px;
     margin-left:10px;
     background:url([[pix:theme|SEA_Logo2]]) no-repeat top;
