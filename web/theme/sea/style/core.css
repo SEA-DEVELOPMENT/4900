@@ -10,7 +10,7 @@
 .pagelayout-mypublic,
 .pagelayout-login,
 .pagelayout-report {
-    background:url([[pix:theme|body4]]) top left repeat-x #00cccc;s
+    background:url([[pix:theme|body4]]) top left repeat-x #00cccc;
     /*background: #000000;*/
 }
 
@@ -90,14 +90,14 @@ a:hover, a:active, a:focus {
 }
 
 .logo {
-    height: 60px;
-    width:177px;
+    height: 62px;
+    width:182px;
     float: left;
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 =======
     padding-left: 10px;
     padding-right: 0px;
->>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a
+>>>>>>> 6494e35b409d6ba1cd7e23bc1f3590a40edf8e0a*/
     margin-top:10px;
     margin-left:10px;
     background:url([[pix:theme|SEA_Logo2]]) no-repeat top;
