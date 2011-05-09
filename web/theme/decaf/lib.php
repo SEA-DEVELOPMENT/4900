@@ -11,7 +11,7 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::empty_tag('br', array('clear' => 'all'));
         return $content;
     }
-
+//Matt: added message link with login requirement
     public function navigation_tree(global_navigation $navigation) {
         global $CFG;
         $content = html_writer::start_tag('ul', array('id' => 'awesomeHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
@@ -26,9 +26,20 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::end_tag('span');
         $content .= $this->navigation_node($navigation, array());
         $content .= html_writer::end_tag('li');
+        //if user is logged in, display message link in navigation
+         if (isloggedin()) {
+            $content .= html_writer::start_tag('li');
+            $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot/message/index.php", 'id' =>'home'));
+            $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
+            $content .= html_writer::end_tag('a');
+            $content .= html_writer::end_tag('li');
+         }
         $content .= html_writer::end_tag('ul');
         return $content;
     }
+
+    
+    
 
     protected function navigation_node(navigation_node $node, $attrs=array()) {
         $items = $node->children;
