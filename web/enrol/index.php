@@ -89,6 +89,8 @@ foreach ($forms as $form) {
     echo $form;
 }
 
+
+
 if (!$forms) {
     if (isguestuser()) {
         notice(get_string('noguestaccess', 'enrol'), get_login_url());

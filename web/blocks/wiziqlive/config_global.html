@@ -1,0 +1,95 @@
+
+<!--/*
+ * wiziq.com Module
+ * WiZiQ's Live Class modules enable Moodle users to use WiZiQ’s web based virtual classroom equipped with real-time collaboration tools 
+ * Html page for block setting page for wiziq in moodle 
+ */
+ /**
+ * @package mod
+ * @subpackage wiziq
+ * @author preeti chauhan(preetic@wiziq.com)
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */-->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+<tr>
+    <td valign="top">
+        <table cellpadding="0" cellspacing="5" border="0" class="maintblbrdr" width="100%">
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>
+        <tr>
+            <td valign="middle" style="width:20%;text-align:right;padding-right:5px;">Customer Email</td>
+            
+  <td valign="top" style="width:80%;"><input type="text" class="moddletxtbox" name="customer_email" value="#$customer_email#" id="customer_email"  disabled /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td valign="top" align="left">The email address your account is registered with WiZiQ. You may change your customer email and the change gets automatically saved in WiZiQ. Your scheduling permissions are validated against this customer email and customer key. Refer this email for all your correspondence with WiZiQ.</td>
+        </tr>
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>
+        <tr>
+            <td valign="middle" style="text-align:right;padding-right:5px;">Customer Key</td>
+            <td valign="top"><input type="text" class="moddletxtbox" name="customer_key" value="#$customer_key#"  disabled/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td valign="top" align="left">A unique key assigned to your account. The combination of customer email and customer key is used to validate your scheduling and recording permissions.</td>
+        </tr>
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>
+        <tr><td valign="top" colspan="2" align="center" style="font-size:16px;font-weight:bold;">Module Configuration</td></tr>
+        <tr><td valign="top" style="height:5px;" colspan="2"></td></tr>
+        <tr><td valign="top" colspan="2" ><div align="center">
+   <iframe  src="../mod/wiziq/package_message.php " id="remote_iframe_1" name="remote_iframe_1" style="border:1;padding:0;margin:0;width:520px;height:125px;overflow:auto" frameborder=1 scrolling="no" onload=" " ></iframe>
+                         </div></td></tr>
+        <tr>
+            <td valign="top" align="center" colspan="2">
+                <table width="98%" cellpadding="0" cellspacing="0" style="border:solid 1px #BBBBBB;text-align:left;">
+                <tr><td valign="top" style="padding:5px;">These parameters are specific to your account subscription. They change as and when you upgrade, downgrade or cancel your subscription on WiZiQ.<br /> For upgrade, downgrade or cancellation of a purchased pack please contact <a href="mailto:support@wiziq.com">support@wiziq.com.</a></td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr><td valign="top" style="height:5px;" colspan="2"></td></tr>
+        <tr>
+            <td valign="middle" style="text-align:right;padding-right:5px;">Number of rooms</td>
+            <td valign="top"><input type="text" class="moddletxtbox" value="#$concurrsession#"  name="no_rooms" disabled/>&nbsp; <a href="#$subscription_url#" target="_blank">Change subscription</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td valign="top" align="left">This is the maximum number of simultaneous classes that can be scheduled by a user subject to the user permissions set for the course by the course administrator.</td>
+        </tr>
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>
+        <tr>
+            <td valign="middle" style="text-align:right;padding-right:5px;">Participants in a room</td>
+            <td valign="top"><input type="text" class="moddletxtbox" value="#$maxuser#"  name="part_room" disabled/>
+        </tr>
+        <tr>
+            <td></td>
+            <td valign="top" align="left">Maximum number of participants allowed in a class</td>
+        </tr>        
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>
+        <tr>
+            <td valign="middle" style="text-align:right;padding-right:5px;">Time for a class</td>
+            <td valign="top"><input type="text" class="moddletxtbox" value="#$maxdur#"  name="time_class" disabled/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td valign="top" align="left">Maximum time in minutes for which a class can be scheduled and max extended.</td>
+        </tr>
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>
+        <tr>
+            <td valign="middle" style="text-align:right;padding-right:5px;">Number of recordings</td>
+            <td valign="top"><input type="text" class="moddletxtbox" value="#$recordingcredit#"  name="no_recordings" disabled/>&nbsp; <a href="#$buynow_url#" target="_blank">Purchase more recordings</a></td>
+                           </tr><tr>
+            <td></td>
+            <td valign="top" align="left">Total number of recordings that can be built. All the recordings are hosted max for 12 months from the date of their capture. You may purchase additional credits to build more recordings.</td>
+        </tr> 
+        <tr><td valign="top" style="height:15px;" colspan="2"></td></tr>       
+        </table>
+    </td>
+</tr>
+<tr><td valign="top" style="height:15px;"></td></tr>
+
+<tr><td valign="top" style="height:15px;"></td></tr>
+</table>
+
+
