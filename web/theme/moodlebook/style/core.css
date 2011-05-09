@@ -31,7 +31,7 @@ select,input,button,textarea{
 }
 
 #page-header-wrapper{
-	margin:0 50px;
+	margin:0 50px 0 0;
 }
 
 #page-header{
@@ -45,9 +45,9 @@ select,input,button,textarea{
 
 #page-header .logininfo {
 	font-size: .75em;
-	padding-top: 50px;
+	padding-top: 9px;
 	float: right;
-	text-align: right;
+	/*text-align: right;*/
 }
 #page-header .sitelogo {
 	float:left;
@@ -56,15 +56,15 @@ select,input,button,textarea{
 
 #page-header .headermain{
 	color:#000;
-	font-size:2em;
+	font-size:1.6em;
 	font-weight:700;
 	letter-spacing:-1px;
 	text-decoration:none;
 	text-transform:none;
-	margin:0.75em 20px;
+	margin: 2px 5px 7px 5px;
 	position:absoulte;
-	left:0.5em;
-	top:50px;
+	left:10px;
+	top:5px;
 }
 
 #page-header .headermenu a:hover{
@@ -72,17 +72,16 @@ select,input,button,textarea{
 }
 
 #page-site-index .headermain{
-	font-size: 2.0em;
-	margin:0.85em 0;
+	
 }
 
 #logo {
-	background:#39589a url([[pix:theme|logo]]) no-repeat top left;
+	background:#39589a url([[pix:theme|SEAminiLogo2]]) no-repeat top left;
 	width:  150px;
 	height:  25px;
 	float: left;
-	margin-top: 8px;
-}
+	margin-top: 4px;
+}4
 /* @group Profile */
 
 #header-profileoptions ul{

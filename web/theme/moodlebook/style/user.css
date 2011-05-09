@@ -1,0 +1,4 @@
+/*Edi: Overrides the default css in core. Styles the table headings for course participants*/
+.userlist table#participants td,
+.userlist table#participants th {vertical-align: middle;text-align: left;padding: 4px; font-weight: normal;}
+
