@@ -56,7 +56,7 @@ $THEME->sheets = array(
     'core',
     'pagelayout',
     'menu',
-    'awesomebar',
+    'awesomebar_2',
 );
 
 ////////////////////////////////////////////////////
