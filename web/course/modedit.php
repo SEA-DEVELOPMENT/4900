@@ -216,6 +216,7 @@ if (file_exists($modlib)) {
 }
 
 $mformclassname = 'mod_'.$module->name.'_mod_form';
+
 $mform = new $mformclassname($data, $cw->section, $cm, $course);
 $mform->set_data($data);
 
