@@ -2,19 +2,19 @@
 .calendartable {width: 100%;}
 .calendartable th,
 .calendartable td {width:14%;vertical-align:top;text-align: center;border-width:1px;}
-
-.calendar_event_course {background-color:#FFD3BD;}
-.calendar_event_global {background-color:#D6F8CD;}
-.calendar_event_group {background-color:#FEE7AE;}
-.calendar_event_user {background-color:#DCE7EC;}
-
+/*Border when there is something on that day*/
+.calendar_event_course {background-color:#59EA3A;}
+.calendar_event_global {background-color:#8OEA69;}
+.calendar_event_group {background-color:#39AECF;}
+.calendar_event_user {background-color:#61B7CF;}
+/*Calendar controls*/
 .path-calendar .calendar-controls .previous,
 .path-calendar .calendar-controls .next,
 .path-calendar .calendar-controls .current {display: block;float: left;width: 12%;}
 .path-calendar .calendar-controls .previous {text-align: left;}
 .path-calendar .calendar-controls .current {text-align: center;width: 76%;}
 .path-calendar .calendar-controls .next {text-align: right;}
-
+/*Main calendar styling*/
 .path-calendar {}
 .path-calendar .maincalendar {vertical-align: top;padding:0;}
 .path-calendar .maincalendar .bottom {text-align: center;padding:5px 0 0 0;}
@@ -36,11 +36,12 @@
 .path-calendar .maincalendar .header .buttons {float: right;}
 .path-calendar .filters table {border-collapse:separate;border-spacing: 2px;width: 100%;}
 #page-calendar-export .indent {padding-left: 20px;}
-
+/*Mini calendar styling*/
 .block .minicalendar {width:100%;margin:10px auto;}
 .block .minicalendar th,
 .block .minicalendar td {padding:2px;font-size:0.8em;}
-.block .minicalendar td.weekend {color:#A00;}
+.block .minicalendar td.day {color:#333333;}
+.block .minicalendar td.weekend {color:#676662;}
 .block .calendar-controls .previous {text-align: left;display: block;float: left;width: 12%;}
 .block .calendar-controls .current {float:left;text-align: center;display: block;width:76%;}
 .block .calendar-controls .next {text-align: right;display: block;float: left;width: 12%;}

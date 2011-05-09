@@ -56,7 +56,9 @@ $THEME->sheets = array(
     'core',
     'pagelayout',
     'menu',
+    'calendar',
     'awesomebar_2',
+    
 );
 
 ////////////////////////////////////////////////////
@@ -225,6 +227,7 @@ $THEME->csspostprocess = 'sea_process_css';
 $THEME->parents_exclude_sheets = array(
         'base'=>array(
             'pagelayout',
+            'calendar',
         ),
         'canvas'=>array(
             'pagelayout',
@@ -236,7 +239,7 @@ $THEME->parents_exclude_sheets = array(
             'course',
             'editor',
             'mods',
-            'selected.css',    
+            'selected',    
         ),
 );
 
