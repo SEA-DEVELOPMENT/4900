@@ -195,6 +195,8 @@ switch ($action) {
             throw new enrol_ajax_exception('enrolnotpermitted');
         }
         $outcome->success = true;
+        
+        
         break;
 
     default:

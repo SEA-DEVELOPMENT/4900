@@ -185,8 +185,10 @@ $string['trackdrafts_help'] = 'The "Send for marking" button allows students to 
 $string['typeblog'] = 'Blog post';
 $string['typeoffline'] = 'Offline activity';
 $string['typeonline'] = 'Online text';
-$string['typeupload'] = 'Advanced uploading of files';
-$string['typeuploadsingle'] = 'Upload a single file';
+//jamesbrennan
+$string['typeupload'] = 'Multiple file upload';//'Advanced uploading of files';
+$string['typeuploadsingle'] = 'Single file upload';//'Upload a single file';
+//jb end
 $string['unfinalize'] = 'Revert to draft';
 $string['unfinalize_help'] = 'Reverting to draft enables the student to make further updates to their assignment';
 $string['unfinalizeerror'] = 'An error occurred and that submission could not be reverted to draft';
@@ -206,3 +208,8 @@ $string['viewfeedback'] = 'View assignment grades and feedback';
 $string['viewmysubmission'] = 'View my submission';
 $string['viewsubmissions'] = 'View {$a} submitted assignments';
 $string['yoursubmission'] = 'Your submission';
+//jamesbrennan
+$string['allowedfiletypes'] = 'Allowed filetypes (ctrl-click/cmd-click for multiple)';
+$string['allowall'] = 'Allow all';
+$string['otherfiletypes'] = 'Other filetypes (comma separated ex: .doc, .docx)';
+//jb end

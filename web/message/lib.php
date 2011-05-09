@@ -171,6 +171,10 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     $pagingbar = new paging_bar($countparticipants, $page, MESSAGE_CONTACTS_PER_PAGE, $PAGE->url, 'page');
     echo $OUTPUT->render($pagingbar);
 
+    //Sean - Group Messaging feature
+
+    $bulk = print_bulk_message_tag(true);
+
     echo html_writer::start_tag('table', array('id' => 'message_participants', 'class' => 'boxaligncenter', 'cellspacing' => '2', 'cellpadding' => '0', 'border' => '0'));
 
     echo html_writer::start_tag('tr');
@@ -183,11 +187,14 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     foreach ($participants as $participant) {
         if ($participant->id != $USER->id) {
             $participant->messagecount = 0;//todo it would be nice if the course participant could report new messages
-            message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2);
+            message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
         }
     }
 
     echo html_writer::end_tag('table');
+    print_bulk_message_tag(false);
+    //Sean Hall - formend
+    
 }
 
 /**
@@ -263,6 +270,10 @@ function message_print_blocked_users($blockedusers, $contactselecturl=null, $sho
 
         $isuserblocked = true;
         $isusercontact = false;
+
+        //Sean Hall - Varible to enable the checkbox for bulk messaging
+        $bulkcheckbox = true;
+
         foreach ($blockedusers as $blockeduser) {
             message_print_contactlist_user($blockeduser, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
         }
@@ -534,6 +545,9 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         echo html_writer::tag('div', get_string('contactlistempty', 'message'), array('class' => 'heading'));
     }
 
+    //Sean Hall - formstart
+   $bulk = print_bulk_message_tag(true);
+
     echo html_writer::start_tag('table', array('id' => 'message_contacts', 'class' => 'boxaligncenter'));
 
     if (!empty($titletodisplay)) {
@@ -551,7 +565,7 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         $isusercontact = true;
         foreach ($onlinecontacts as $contact) {
             if ($minmessages == 0 || $contact->messagecount >= $minmessages) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
             }
         }
     }
@@ -567,7 +581,7 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         $isusercontact = true;
         foreach ($offlinecontacts as $contact) {
             if ($minmessages == 0 || $contact->messagecount >= $minmessages) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2,$bulk);
             }
         }
 
@@ -588,6 +602,9 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
 
     echo html_writer::end_tag('table');
 
+    //Sean Hall - formend
+    print_bulk_message_tag(false);
+    
     if ($countstrangers && ($countonlinecontacts + $countofflinecontacts == 0)) {  // Extra help
         echo html_writer::tag('div','('.get_string('addsomecontactsincoming', 'message').')',array('class' => 'note'));
     }
@@ -2162,11 +2179,13 @@ function message_get_participants() {
  * @param string $selectcontacturl the url to send the user to when a contact's name is clicked
  * @param bool $showactionlinks display action links next to the other users (add contact, block user etc)
  * @param object $selecteduser the user the current user is viewing (if any). They will be highlighted.
+ * @param bool
  */
-function message_print_contactlist_user($contact, $incontactlist = true, $isblocked = false, $selectcontacturl = null, $showactionlinks = true, $selecteduser=null) {
+function message_print_contactlist_user($contact, $incontactlist = true, $isblocked = false, $selectcontacturl = null, $showactionlinks = true, $selecteduser=null, $bulk = false) {
     global $OUTPUT, $USER;
     $fullname  = fullname($contact);
     $fullnamelink  = $fullname;
+    $bulkcheckbox = '';
 
     $linkclass = '';
     if (!empty($selecteduser) && $contact->id == $selecteduser->id) {
@@ -2184,6 +2203,11 @@ function message_print_contactlist_user($contact, $incontactlist = true, $isbloc
         $strcontact = message_get_contact_add_remove_link($incontactlist, $isblocked, $contact);
         $strblock   = message_get_contact_block_link($incontactlist, $isblocked, $contact);
         $strhistory = message_history_link($USER->id, $contact->id, true, '', '', 'icon');
+    }
+
+    //Sean Hall
+    if($bulk){
+        $bulkcheckbox = '<input type="checkbox" name="user'.$contact->id.'" />';
     }
 
     echo html_writer::start_tag('tr');
@@ -2214,7 +2238,7 @@ function message_print_contactlist_user($contact, $incontactlist = true, $isbloc
 
     echo html_writer::end_tag('td');
 
-    echo html_writer::tag('td', '&nbsp;'.$strcontact.$strblock.'&nbsp;'.$strhistory, array('class' => 'link'));
+    echo html_writer::tag('td', '&nbsp;'.$strcontact.$strblock.'&nbsp;'.$strhistory.$bulkcheckbox, array('class' => 'link'));
 
     echo html_writer::end_tag('tr');
 }
@@ -2337,4 +2361,28 @@ function message_print_heading($title, $colspan=3) {
     echo html_writer::start_tag('tr');
     echo html_writer::tag('td', $title, array('colspan' => $colspan, 'class' => 'heading'));
     echo html_writer::end_tag('tr');
+}
+
+
+//Sean Hall
+/**
+ * A function that prints a the tags to open and close the bulk messaging form
+ * @param bool $open true if open tag, false if close
+ * @param int $id context id
+ * @return bool $chkbox boolean to enable writing of checkbox
+ */
+function print_bulk_message_tag($open, $id= 4) {
+    if($open){
+        echo '<form action="../user/action_redir.php" method="post" id="participantsform">';
+        echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
+        echo '<input type="hidden" name="returnto" value="'.s(me()).'" />';
+        echo '<input type="hidden" name="formaction" value="messageselect.php"/>';
+        echo '<input type="hidden" name="id" value="4"/>';
+    }
+    else{
+        echo '<input type="submit" value="bulk send"/>';
+        echo '</form>';
+    }
+    
+    return true;
 }

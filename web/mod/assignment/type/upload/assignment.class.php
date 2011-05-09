@@ -994,6 +994,23 @@ class assignment_upload extends assignment_base {
         $choices[0] = get_string('courseuploadlimit') . ' ('.display_size($COURSE->maxbytes).')';
         $mform->addElement('select', 'maxbytes', get_string('maximumsize', 'assignment'), $choices);
         $mform->setDefault('maxbytes', $CFG->assignment_maxbytes);
+        
+        //jamesbrennan
+        $fileoptions = array( 
+            '0' => get_string('allowall', 'assignment'), 
+            'doc' => '.doc',
+            'docx' => '.docx',
+            'xls' => '.xls',
+            'xlsx' => '.xlsx',
+            'ppt' => '.ppt',
+            'pptx' => '.pptx',
+            'rtf' => '.rtf',
+            'txt' => '.txt',
+            'php' => '.php');
+        $mform->addElement('select', 'allowedfiletypes', get_string('allowedfiletypes', 'assignment'), $fileoptions, array('multiple' => 'multiple', 'size' => '8'));
+        $mform->setDefault('allowedfiletypes', '0');
+        $mform->addElement('text', 'otherfiletypes', get_string('otherfiletypes', 'assignment'));
+        //jb end
 
         $mform->addElement('select', 'resubmit', get_string('allowdeleting', 'assignment'), $ynoptions);
         $mform->addHelpButton('resubmit', 'allowdeleting', 'assignment');

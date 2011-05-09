@@ -59,10 +59,17 @@ $PAGE->set_heading($title);
 $instance = new assignment_upload($cm->id, $assignment, $cm, $course);
 $submission = $instance->get_submission($formdata->userid, true);
 
-$filemanager_options = array('subdirs'=>1, 'maxbytes'=>$assignment->maxbytes, 'maxfiles'=>$assignment->var1, 'accepted_types'=>'*', 'return_types'=>FILE_INTERNAL);
+//jamesbrennan
+if($assignment->allowedfiletypes)
+    $allowedfiletypes = explode(',',$assignment->allowedfiletypes);
+else
+    $allowedfiletypes = '*';
 
+$filemanager_options = array('subdirs'=>1, 'maxbytes'=>$assignment->maxbytes, 'maxfiles'=>$assignment->var1, 'accepted_types'=>'application/msword', 'return_types'=>FILE_INTERNAL);
+//$filemanager_options = array('subdirs'=>1, 'maxbytes'=>$assignment->maxbytes, 'maxfiles'=>$assignment->var1, 'accepted_types'=>'*', 'return_types'=>FILE_INTERNAL);
     $mform = new mod_assignment_upload_form(null, array('contextid'=>$contextid, 'userid'=>$formdata->userid, 'options'=>$filemanager_options));
-
+//jb end
+    
 if ($mform->is_cancelled()) {
         redirect(new moodle_url('/mod/assignment/view.php', array('id'=>$cm->id)));
 } else if ($formdata = $mform->get_data()) {

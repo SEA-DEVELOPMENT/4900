@@ -219,6 +219,12 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
     $post->subject     = $parent->subject;
     $post->userid      = $USER->id;
     $post->message     = '';
+    //jamesbrennan
+    $post->parent_id = $parent->id;
+    $post->parent_fullname = $parent->firstname.' '.$parent->lastname;
+    $post->parent_subject = $parent->subject;
+    $post->parent_userid = $parent->userid;
+    //jb end
 
     $post->groupid = ($discussion->groupid == -1) ? 0 : $discussion->groupid;
 
@@ -844,6 +850,16 @@ if (!empty($parent)) {
         print_error('notpartofdiscussion', 'forum');
     }
 
+    //jamesbrennan
+    // Get the parent's parent
+    $grandparent = forum_get_post_full($parent->parent);
+    // Assign needed parents info
+    $parent->parent_id = $grandparent->id;
+    $parent->parent_fullname = $grandparent->firstname.' '.$grandparent->lastname;
+    $parent->parent_subject = $grandparent->subject;
+    $parent->parent_userid = $grandparent->userid;
+    //jb end
+    
     forum_print_post($parent, $discussion, $forum, $cm, $course, false, false, false);
     if (empty($post->edit)) {
         if ($forum->type != 'qanda' || forum_user_can_see_discussion($forum, $discussion, $modcontext)) {

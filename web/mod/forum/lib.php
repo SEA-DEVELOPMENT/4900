@@ -3152,9 +3152,11 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
             echo $output;
             return;
         }
+        //jamesbrennan
         $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
-        $output .= html_writer::start_tag('div', array('class'=>'forumpost clearfix p1', 'data-parent'=>'p1'));
+        $output .= html_writer::start_tag('div', array('id'=>'r'.$post->id, 'class'=>'forumpost clearfix'));
         $output .= html_writer::start_tag('div', array('class'=>'row header'));
+        //jb end
         $output .= html_writer::tag('div', '', array('class'=>'left picture')); // Picture
         if ($post->parent) {
             $output .= html_writer::start_tag('div', array('class'=>'topic'));
@@ -3162,7 +3164,29 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
             $output .= html_writer::start_tag('div', array('class'=>'topic starter'));
         }
         $output .= html_writer::tag('div', get_string('forumsubjecthidden','forum'), array('class'=>'subject')); // Subject
-        $output .= html_writer::tag('div', get_string('forumauthorhidden','forum'), array('class'=>'author')); // author
+        
+        //jamesbrennan
+//        $output .= html_writer::tag('div', get_string('forumauthorhidden','forum'), array('class'=>'author')); // author
+        $output .= html_writer::start_tag('div', array('class'=>'author')); // author
+        $output .= get_string('forumauthorhidden','forum');
+
+        if($post->parent) {
+            $url = new moodle_url($discussionlink);
+            $url->set_anchor('p'.$post->parent_id);
+
+            // Print In reponse to text and links
+            $output .= html_writer::start_tag('span');
+            $output .= ' in response to ';
+            $output .= html_writer::tag('a', $post->parent_subject, array('href'=>$url, 'class' => 'resetrelated'));
+            $output .= ' by ';
+            $url = new moodle_url('/user/view.php', array('id'=>$post->parent_userid, 'course'=>$course->id));
+            $output .= html_writer::tag('a', $post->parent_fullname, array('href'=>$url));
+            $output .= html_writer::end_tag('span'); // In response to
+        }
+
+        $output .= html_writer::end_tag('div'); // author
+        // jb end
+        
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div'); // row
         $output .= html_writer::start_tag('div', array('class'=>'row'));
@@ -3245,15 +3269,15 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     }
 
     // Zoom in to the parent specifically
-    if ($post->parent) {
-        $url = new moodle_url($discussionlink);
-        if ($str->displaymode == FORUM_MODE_THREADED) {
-            $url->param('parent', $post->parent);
-        } else {
-            $url->set_anchor('p'.$post->parent);
-        }
-        $commands[] = array('url'=>$url, 'text'=>$str->parent);
-    }
+//    if ($post->parent) {
+//        $url = new moodle_url($discussionlink);
+//        if ($str->displaymode == FORUM_MODE_THREADED) {
+//            $url->param('parent', $post->parent);
+//        } else {
+//            $url->set_anchor('p'.$post->parent);
+//        }
+//        $commands[] = array('url'=>$url, 'text'=>$str->parent);
+//    }
 
     // Hack for allow to edit news posts those are not displayed yet until they are displayed
     $age = time() - $post->created;
@@ -3316,9 +3340,11 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
         $topicclass = ' firstpost starter';
     }
 
+    //jamesbrennan
     $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
-    $output .= html_writer::start_tag('div', array('class'=>'forumpost clearfix'.$forumpostclass.$topicclass));
+    $output .= html_writer::start_tag('div', array('id'=>'r'.$post->id,'class'=>'forumpost clearfix'.$forumpostclass.$topicclass));
     $output .= html_writer::start_tag('div', array('class'=>'row header clearfix'));
+    //jb end
     $output .= html_writer::start_tag('div', array('class'=>'left picture'));
     $output .= $OUTPUT->user_picture($postuser, array('courseid'=>$course->id));
     $output .= html_writer::end_tag('div');
@@ -3335,7 +3361,25 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     $by = new stdClass();
     $by->name = html_writer::link($postuser->profilelink, $postuser->fullname);
     $by->date = userdate($post->modified);
-    $output .= html_writer::tag('div', get_string('bynameondate', 'forum', $by), array('class'=>'author'));
+    $output .= html_writer::start_tag('div', array('class'=>'author'));
+    $output .= get_string('bynameondate', 'forum', $by);
+    
+    //jamesbrennan
+    if($post->parent) {
+        $url = new moodle_url($discussionlink);
+        $url->set_anchor('p'.$post->parent_id);
+        
+        // Print In reponse to text and links
+        $output .= html_writer::start_tag('span');
+        $output .= ' in response to ';
+        $output .= html_writer::tag('a', $post->parent_subject, array('href'=>$url,'class' => 'resetrelated'));
+        $output .= ' by ';
+        $output .= html_writer::link(new moodle_url('/user/view.php', array('id'=>$post->parent_userid, 'course'=>$course->id)), $post->parent_fullname);
+        $output .= html_writer::end_tag('span'); // In response to
+    }
+    
+    $output .= html_writer::end_tag('div'); // author
+    // jb end
 
     $output .= html_writer::end_tag('div'); //topic
     $output .= html_writer::end_tag('div'); //row
@@ -3395,6 +3439,16 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
 
     // Output the commands
     $commandhtml = array();
+    
+    //jamesbrennan
+    //The show related button
+    if($post->parent){
+        $url = new moodle_url($discussionlink);
+        $url->set_anchor('r'.$post->id);
+        $commandhtml[] = html_writer::tag('a','Show Related', array('class'=>'showrelated','href'=>$url,'data-parent'=>$post->parent));
+    }
+    //jb end
+    
     foreach ($commands as $command) {
         if (is_array($command)) {
             $commandhtml[] = html_writer::link($command['url'], $command['text']);
@@ -5280,7 +5334,6 @@ function forum_print_latest_discussions($course, $forum, $maxdiscussions=-1, $di
  * @param bool $cancreate
  */
 function forum_print_discussion($course, $cm, $forum, $discussion, $post, $mode, $canreply=NULL, $canrate=false) {
-
     global $USER, $CFG, $DB, $PAGE, $OUTPUT;
     require_once($CFG->dirroot.'/rating/lib.php');
 
@@ -5358,10 +5411,8 @@ function forum_print_discussion($course, $cm, $forum, $discussion, $post, $mode,
     $post->subject = format_string($post->subject);
 
     $postread = !empty($post->postread);
-
     forum_print_post($post, $discussion, $forum, $cm, $course, $ownpost, $reply, false,
                          '', '', $postread, true, $forumtracked);
-
     switch ($mode) {
         case FORUM_MODE_FLATOLDEST :
         case FORUM_MODE_FLATNEWEST :
@@ -5405,11 +5456,39 @@ function forum_print_posts_flat($course, &$cm, $forum, $discussion, $post, $mode
     } else {
         $sort = "ORDER BY created ASC";
     }
-
+    
+    //jamesbrennan
+    // This array serves to concatenate the parent ids
+    $parent_ids = array();
+    $parent_info = array();
+        
     foreach ($posts as $post) {
+        //jamesbrennan
+        // In reply to message
+        $parent_info[$post->id] = array('subject' => $post->subject, 
+            'fullname' => $post->firstname.' '.$post->lastname,
+            'userid' => $post->userid);
+        
         if (!$post->parent) {
             continue;
+        } else {
+            // In reply to message
+                $post->parent_subject = $parent_info[$post->parent]['subject'];
+                $post->parent_fullname = $parent_info[$post->parent]['fullname'];
+                $post->parent_userid = $parent_info[$post->parent]['userid'];
+                $post->parent_id = $post->parent;
+            
+            if(!isset($parent_ids[$post->parent])){
+                $post->parent = '#r'.$post->parent;
+                $parent_ids[$post->id] = $post->parent;
+
+            } else {
+                $parent_ids[$post->id] = $parent_ids[$post->parent].',#r'.$post->parent;
+                $post->parent = $parent_ids[$post->id];
+            }
         }
+        //jb end 
+        
         $post->subject = format_string($post->subject);
         $ownpost = ($USER->id == $post->userid);
 
