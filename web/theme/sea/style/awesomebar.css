@@ -7,10 +7,9 @@ ul.dropdown li{float:left;line-height:1.3em;vertical-align:middle;background-col
 ul.dropdown ul{display:none;position:absolute;top:100%;z-index:598;left:auto;right:0;margin-top:-1px;border-top:1px solid #1a1a1a;border-left:solid 1px #4c4c4c;font:13px "Trebuchet MS",Arial,Helvetica,sans-serif;}
 /*Styles the background of the second layer*/
 ul.dropdown ul li{float:none;background-color:#0b0974;padding:0;}
-ul.dropdown ul span, ul.dropdown ul span a, ul.dropdown ul li.clickable-with-children > a{background-image:url([[pix:theme|nav-arrow-right]]);background-position:100% 50%;background-repeat:no-repeat;}
-ul.dropdown ul ul span, ul.dropdown ul ul span a, ul.dropdown ul ul li.clickable-with-children > a{background-image:url([[pix:theme|nav-arrow-right2]]);}
 /*Styles the list for when there are no child nodes*/
 ul.dropdown a:hover{border-top-color:#188A0 !important;border-left-color:#5db1e0;background-color:#188A0;color:#fff;}
+/*Border for the hovered items */
 ul.dropdown li.clickable-with-children > a:hover {border-top-color:#1D1AB2 !important;}
 ul.dropdown ul a.dir:hover{background-color:#1D1AB2;background-image:url([[pix:theme|ab-arrowon]]);color:#fff;}
 /*Styles the background of the thrid tier*/
