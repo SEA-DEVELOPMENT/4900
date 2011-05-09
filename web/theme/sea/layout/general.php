@@ -44,20 +44,29 @@ echo $OUTPUT->doctype() ?>
 <body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
+        <div id="awesomebar">
+        <?php
+            $topsettings = new decaf_topsettings_renderer($this->page, null);
+            echo $topsettings->navigation_tree($this->page->navigation);
+            echo $topsettings->settings_tree($this->page->settingsnav);
+        ?>
+    </div>
+    
 <div id="page">
 	<div id="wrapper" class="clearfix">
 
 <!-- START OF HEADER -->
-
+<!-- Shaughn, Took out the Logo URL and put in a static image that calls the Logo class in core.css -->
     <div id="page-header" class="clearfix">
 		<div id="page-header-wrapper">
-			<?php if($logourl == NULL) { ?>
+			<!-- <?php if($logourl == NULL) { ?> -->
+			 <div class="logo"></div>		
 			 <h1 class="headermain">
 	        	<?php echo $PAGE->heading ?>
 	        </h1>
-	        <?php } else { ?>
+	        <!-- <?php } else { ?>
 	       <img class="logo" src="<?php echo $logourl;?>" alt="Custom logo here" /><h1 class="headerwlogo">- <?php echo $PAGE->heading ?></h1>
-	        <?php } ?>
+	        <?php } ?>  -->
 
 
     	    <div class="headermenu">
