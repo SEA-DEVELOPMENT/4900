@@ -1077,6 +1077,27 @@ abstract class enrol_plugin {
             $ue->timecreated  = time();
             $ue->timemodified = $ue->timecreated;
             $ue->id = $DB->insert_record('user_enrolments', $ue);
+            
+            //jamesbrennan
+            $teacher_roles = $DB->get_records('role_assignments', array('contextid'=>$context->id));
+            foreach($teacher_roles as $teacher_role){
+                $record = new stdClass();
+                $record->userid         = $userid;
+                $record->contactid = $teacher_role->userid;
+                $record->blocked = '0';
+                try {
+                    $DB->insert_record('message_contacts', $record, false);
+                } catch(dml_exception $e) { } // There is already a userid/contactid combination for this
+                
+                $record = new stdClass();
+                $record->userid         = $teacher_role->userid;
+                $record->contactid = $userid;
+                $record->blocked = '0';
+                try {
+                    $DB->insert_record('message_contacts', $record, false);
+                } catch(dml_exception $e) { } // There is already a userid/contactid combination for this
+            }
+            //jb end
 
             $inserted = true;
         }

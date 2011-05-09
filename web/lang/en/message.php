@@ -51,6 +51,8 @@ $string['emailtagline'] = 'This is a copy of a message sent to you at "{$a->site
 $string['emptysearchstring'] = 'You must search for something';
 $string['errorcallingprocessor'] = 'Error calling defined processor';
 $string['formorethan'] = 'For more than';
+//custome get_string msg for group contact
+$string['groupcontacts'] = 'Group contacts ({$a})';
 $string['guestnoeditmessage'] = 'Guest user can not edit messaging options';
 $string['guestnoeditmessageother'] = 'Guest user can not edit other user messaging options';
 $string['gotomessages'] = 'Go to messages';
@@ -110,6 +112,9 @@ $string['settings'] = 'Settings';
 $string['settingssaved'] = 'Your settings have been saved';
 $string['showmessagewindow'] = 'Popup window on new message';
 $string['strftimedaydatetime'] = '%A, %d %B %Y, %I:%M %p';
+//custom get_string msg used for contact list (student/teacher)
+$string['studentcontacts'] = 'Student contacts ({$a})';
+$string['teachercontacts'] = 'Teacher contacts ({$a})';
 $string['timenosee'] = 'Minutes since I was last seen online';
 $string['timesent'] = 'Time sent';
 $string['unblockcontact'] = 'Unblock contact';

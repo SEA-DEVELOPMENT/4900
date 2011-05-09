@@ -44,6 +44,8 @@ define('MESSAGE_VIEW_UNREAD_MESSAGES','unread');
 define('MESSAGE_VIEW_RECENT_CONVERSATIONS','recentconversations');
 define('MESSAGE_VIEW_RECENT_NOTIFICATIONS','recentnotifications');
 define('MESSAGE_VIEW_CONTACTS','contacts');
+//custom viewing for contact lists...(teacher, students, teams)
+define('MESSAGE_VIEW_ROLE_CONTACTS','rolecontacts');
 define('MESSAGE_VIEW_BLOCKED','blockedusers');
 define('MESSAGE_VIEW_COURSE','course_');
 define('MESSAGE_VIEW_SEARCH','search');
@@ -92,7 +94,10 @@ function message_print_contact_selector($countunreadtotal, $viewing, $user1, $us
     if (count($blockedusers) == 0 && $viewing == MESSAGE_VIEW_BLOCKED) {
         $viewing = MESSAGE_VIEW_CONTACTS;
     }
-
+    
+    //executing the function to grab the teacher/student/group contact in order to list them later
+    list($teachercontact, $studentcontact, $groupcontact) = message_get_role_contacts($user1, $user2);
+    
     $onlyactivecourses = true;
     $courses = enrol_get_users_courses($user1->id, $onlyactivecourses);
     $coursecontexts = message_get_course_contexts($courses);//we need one of these again so holding on to them
@@ -108,6 +113,9 @@ function message_print_contact_selector($countunreadtotal, $viewing, $user1, $us
         message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $PAGE->url, 1, $showcontactactionlinks,$strunreadmessages, $user2);
     } else if ($viewing == MESSAGE_VIEW_CONTACTS || $viewing == MESSAGE_VIEW_SEARCH || $viewing == MESSAGE_VIEW_RECENT_CONVERSATIONS || $viewing == MESSAGE_VIEW_RECENT_NOTIFICATIONS) {
         message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $PAGE->url, 0, $showcontactactionlinks, $strunreadmessages, $user2);
+     //view method for role contact sort view
+     } else if ($viewing == MESSAGE_VIEW_ROLE_CONTACTS){
+         message_print_role_contacts($teachercontact, $studentcontact, $groupcontact, $PAGE->url, 1, $showcontactactionlinks,$strunreadmessages, $user2);
     } else if ($viewing == MESSAGE_VIEW_BLOCKED) {
         message_print_blocked_users($blockedusers, $PAGE->url, $showcontactactionlinks, null, $user2);
     } else if (substr($viewing, 0, 7) == MESSAGE_VIEW_COURSE) {
@@ -163,6 +171,10 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     $pagingbar = new paging_bar($countparticipants, $page, MESSAGE_CONTACTS_PER_PAGE, $PAGE->url, 'page');
     echo $OUTPUT->render($pagingbar);
 
+    //Sean - Group Messaging feature
+
+    $bulk = print_bulk_message_tag(true);
+
     echo html_writer::start_tag('table', array('id' => 'message_participants', 'class' => 'boxaligncenter', 'cellspacing' => '2', 'cellpadding' => '0', 'border' => '0'));
 
     echo html_writer::start_tag('tr');
@@ -175,11 +187,14 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     foreach ($participants as $participant) {
         if ($participant->id != $USER->id) {
             $participant->messagecount = 0;//todo it would be nice if the course participant could report new messages
-            message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2);
+            message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
         }
     }
 
     echo html_writer::end_tag('table');
+    print_bulk_message_tag(false);
+    //Sean Hall - formend
+    
 }
 
 /**
@@ -255,6 +270,10 @@ function message_print_blocked_users($blockedusers, $contactselecturl=null, $sho
 
         $isuserblocked = true;
         $isusercontact = false;
+
+        //Sean Hall - Varible to enable the checkbox for bulk messaging
+        $bulkcheckbox = true;
+
         foreach ($blockedusers as $blockeduser) {
             message_print_contactlist_user($blockeduser, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
         }
@@ -262,6 +281,91 @@ function message_print_blocked_users($blockedusers, $contactselecturl=null, $sho
 
     echo html_writer::end_tag('table');
 }
+
+/*
+*Retrieve $user1's contacts (teachers, students, groups)
+*@param object $user1 the user whose messages are being viewed
+*@param object $user2 the user $user1 is talking to. If they are a contact
+*                       they will have a variable called 'iscontact' added to their user object
+*@return array containing 3 or more arrays.  array($teachers, $students, $groups)
+*                       possible other arrays include @admin?
+* Author: Jack Chiang
+* Date: May 4th, 2011
+*/
+function message_get_role_contacts($user1=null, $user2=null) {
+    global $DB, $CFG, $USER;
+    
+    if (empty($usr1)) {
+        $user1=$USER;
+        }
+        
+        if (!empty($user2)) {
+            $user2->iscontact = false;
+        }
+    
+    //contacts who are teachers
+    $teachercontact = array();
+    //contacts who are students
+    $studentcontact = array();
+    //contacts who are in the same group
+    $groupcontact = array();
+    
+    $userfields = user_picture::fields('u', array('lastaccess'));
+
+                 
+    //sql statement to grab contacts who are teachers
+    $teachercontactsql = "SELECT $userfields, COUNT(m.id) AS messagecount
+FROM mdl_message_contacts mc
+JOIN mdl_user u ON u.id = mc.contactid
+JOIN mdl_role_assignments role ON role.userid = u.id
+LEFT OUTER JOIN mdl_message m ON m.useridfrom = mc.contactid AND m.useridto = ?
+WHERE mc.userid = ? AND mc.blocked = 0 AND role.roleid =3
+GROUP BY $userfields
+ORDER BY u.firstname ASC";
+                 
+    //sql statement to grab contacts who are students
+    $studentcontactsql = "SELECT $userfields, COUNT(m.id) AS messagecount
+                     FROM {message_contacts} mc
+                     JOIN {user} u ON u.id = mc.contactid
+                     JOIN {role_assignments} role ON role.userid = u.id
+                     LEFT OUTER JOIN {message} m ON m.useridfrom = mc.contactid AND m.useridto = ?
+                    WHERE mc.userid = ? AND mc.blocked = 0 AND role.roleid = 5
+                 GROUP BY $userfields
+                 ORDER BY u.firstname ASC";
+                 
+    //sql statement to grab contacts who are in the same group
+    $groupcontactsql = "SELECT $userfields, COUNT(m.id) AS messagecount
+                     FROM {message_contacts} mc
+                     JOIN {user} u ON u.id = mc.contactid
+                     JOIN {role_assignments} role ON role.userid = u.id
+                     LEFT OUTER JOIN {message} m ON m.useridfrom = mc.contactid AND m.useridto = ?
+                    WHERE mc.userid = ? AND mc.blocked = 0 AND role.roleid = 11
+                 GROUP BY $userfields
+                 ORDER BY u.firstname ASC";
+                 
+    //placing the results from the sql statements into arrays
+    $rteacher = $DB->get_recordset_sql($teachercontactsql, array($user1->id, $user1->id));
+    foreach ($rteacher as $rd) {
+            $teachercontact[] = $rd;
+     }
+     $rteacher->close();
+     
+     $rstudent = $DB->get_recordset_sql($studentcontactsql, array($user1->id, $user1->id));
+    foreach ($rstudent as $rd) {
+            $studentcontact[] = $rd;
+     }
+     $rstudent->close();
+     
+     $rgroup = $DB->get_recordset_sql($groupcontactsql, array($user1->id, $user1->id));
+    foreach ($rgroup as $rd) {
+            $groupcontact[] = $rd;
+     }
+    $rgroup->close();
+    
+    
+    return array($teachercontact, $studentcontact, $groupcontact);
+    }
+
 
 /**
 * Retrieve $user1's contacts (online, offline and strangers)
@@ -344,6 +448,79 @@ function message_get_contacts($user1=null, $user2=null) {
 }
 
 /**
+* Print $user1's contacts grouped by roles.  Called by message_print_contact_selector()
+* @param array $teachercontact $user1's contacts which have the teacher role
+* @param array $studentcontact $user1's contacts which have the student role
+* @param array $groupcontacgt $user1's contacts which is in the same group/team
+* @param string $contactselecturl the url to send the user to when a contact's name is clicked
+* @param int $minmessages The minimum number of unread messages required from a user for them to be displayed
+                            Typically 0 (show all contacts) or 1 (only show contacts from whom we have a new message)
+* @param bool $showactionlinks show action links (add/remove contact etc) next to the users
+* @param string $titletodisplay Optionally specify a title to display above the participants
+* @param object $user2 the user $user1 is talking to. They will be highlighted if they appear in the list of contacts
+* @return void
+* Author: Jack Chiang
+* Date: May 5th, 2011
+*/
+function message_print_role_contacts($teachercontact, $studentcontact, $groupcontact, $contactselecturl=null, $minmessages=0, $showactionlinks=true, $titletodisplay=null, $user2=null){
+    global $CFG, $PAGE, $OUTPUT;
+    
+    $countteachercontact = count($teachercontact);
+    $countstudentcontact = count($studentcontact);
+    $countgroupcontact = count($groupcontact);
+    $isuserblocked = null;
+    
+    if ($countteachercontact + $countstudentcontact + $countgroupcontact == 0){
+        echo html_write::tag('div', get_string('contactlistempty', 'message'), array('class' => 'heading'));
+        }
+    echo html_writer::start_tag('table', array('id' => 'message_contacts', 'class' => 'boxaligncenter'));
+
+    if (!empty($titletodisplay)) {
+        message_print_heading($titletodisplay);
+    }
+    
+    if($countteachercontact) {
+        /// print out list of teacher contacts
+
+        if (empty($titletodisplay)) {
+            message_print_heading(get_string('teachercontacts', 'message', $countteachercontact));
+        }
+
+        $isuserblocked = false;
+        $isusercontact = true;
+        foreach ($teachercontact as $contact) {
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+        }
+    }
+    
+    if ($countstudentcontact) {
+        //print out list of student contacts
+        message_print_heading(get_string('studentcontacts', 'message', $countstudentcontact));
+
+        $isuserblocked = false;
+        $isusercontact = true;
+        foreach ($studentcontact as $contact) {
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+        }
+    }
+
+    if($countgroupcontact) {
+        /// print out list of group contacts
+
+        if (empty($titletodisplay)) {
+            message_print_heading(get_string('groupcontacts', 'message', $countgroupcontact));
+        }
+
+        $isuserblocked = false;
+        $isusercontact = true;
+        foreach ($groupcontact as $contact) {
+            message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+        }
+    }
+    echo html_writer::end_tag('table');
+    }
+
+/**
 * Print $user1's contacts. Called by message_print_contact_selector()
 * @param array $onlinecontacts $user1's contacts which are online
 * @param array $offlinecontacts $user1's contacts which are offline
@@ -368,6 +545,9 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         echo html_writer::tag('div', get_string('contactlistempty', 'message'), array('class' => 'heading'));
     }
 
+    //Sean Hall - formstart
+   $bulk = print_bulk_message_tag(true);
+
     echo html_writer::start_tag('table', array('id' => 'message_contacts', 'class' => 'boxaligncenter'));
 
     if (!empty($titletodisplay)) {
@@ -385,7 +565,7 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         $isusercontact = true;
         foreach ($onlinecontacts as $contact) {
             if ($minmessages == 0 || $contact->messagecount >= $minmessages) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
             }
         }
     }
@@ -401,7 +581,7 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
         $isusercontact = true;
         foreach ($offlinecontacts as $contact) {
             if ($minmessages == 0 || $contact->messagecount >= $minmessages) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2,$bulk);
             }
         }
 
@@ -422,6 +602,9 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
 
     echo html_writer::end_tag('table');
 
+    //Sean Hall - formend
+    print_bulk_message_tag(false);
+    
     if ($countstrangers && ($countonlinecontacts + $countofflinecontacts == 0)) {  // Extra help
         echo html_writer::tag('div','('.get_string('addsomecontactsincoming', 'message').')',array('class' => 'note'));
     }
@@ -447,10 +630,14 @@ function message_print_usergroup_selector($viewing, $courses, $coursecontexts, $
     }
 
     $str = get_string('mycontacts', 'message');
-    $options[MESSAGE_VIEW_CONTACTS] = $str;
-
-    $options[MESSAGE_VIEW_RECENT_CONVERSATIONS] = get_string('mostrecentconversations', 'message');
-    $options[MESSAGE_VIEW_RECENT_NOTIFICATIONS] = get_string('mostrecentnotifications', 'message');
+    
+    
+    $contact_options = array();
+    $contact_options[MESSAGE_VIEW_CONTACTS] = 'Online/offline';
+    
+    //additional option to view contacts by roles
+    $contact_options[MESSAGE_VIEW_ROLE_CONTACTS] = 'Roles';
+    $options[] = array('My contacts' => $contact_options);
 
     if (!empty($courses)) {
         $courses_options = array();
@@ -470,6 +657,9 @@ function message_print_usergroup_selector($viewing, $courses, $coursecontexts, $
             $options[] = array(get_string('courses') => $courses_options);
         }
     }
+    
+    $options[MESSAGE_VIEW_RECENT_CONVERSATIONS] = get_string('mostrecentconversations', 'message');
+    $options[MESSAGE_VIEW_RECENT_NOTIFICATIONS] = get_string('mostrecentnotifications', 'message');
 
     if ($countblocked>0) {
         $str = get_string('blockedusers','message', $countblocked);
@@ -1989,11 +2179,13 @@ function message_get_participants() {
  * @param string $selectcontacturl the url to send the user to when a contact's name is clicked
  * @param bool $showactionlinks display action links next to the other users (add contact, block user etc)
  * @param object $selecteduser the user the current user is viewing (if any). They will be highlighted.
+ * @param bool
  */
-function message_print_contactlist_user($contact, $incontactlist = true, $isblocked = false, $selectcontacturl = null, $showactionlinks = true, $selecteduser=null) {
+function message_print_contactlist_user($contact, $incontactlist = true, $isblocked = false, $selectcontacturl = null, $showactionlinks = true, $selecteduser=null, $bulk = false) {
     global $OUTPUT, $USER;
     $fullname  = fullname($contact);
     $fullnamelink  = $fullname;
+    $bulkcheckbox = '';
 
     $linkclass = '';
     if (!empty($selecteduser) && $contact->id == $selecteduser->id) {
@@ -2011,6 +2203,11 @@ function message_print_contactlist_user($contact, $incontactlist = true, $isbloc
         $strcontact = message_get_contact_add_remove_link($incontactlist, $isblocked, $contact);
         $strblock   = message_get_contact_block_link($incontactlist, $isblocked, $contact);
         $strhistory = message_history_link($USER->id, $contact->id, true, '', '', 'icon');
+    }
+
+    //Sean Hall
+    if($bulk){
+        $bulkcheckbox = '<input type="checkbox" name="user'.$contact->id.'" />';
     }
 
     echo html_writer::start_tag('tr');
@@ -2041,7 +2238,7 @@ function message_print_contactlist_user($contact, $incontactlist = true, $isbloc
 
     echo html_writer::end_tag('td');
 
-    echo html_writer::tag('td', '&nbsp;'.$strcontact.$strblock.'&nbsp;'.$strhistory, array('class' => 'link'));
+    echo html_writer::tag('td', '&nbsp;'.$strcontact.$strblock.'&nbsp;'.$strhistory.$bulkcheckbox, array('class' => 'link'));
 
     echo html_writer::end_tag('tr');
 }
@@ -2164,4 +2361,28 @@ function message_print_heading($title, $colspan=3) {
     echo html_writer::start_tag('tr');
     echo html_writer::tag('td', $title, array('colspan' => $colspan, 'class' => 'heading'));
     echo html_writer::end_tag('tr');
+}
+
+
+//Sean Hall
+/**
+ * A function that prints a the tags to open and close the bulk messaging form
+ * @param bool $open true if open tag, false if close
+ * @param int $id context id
+ * @return bool $chkbox boolean to enable writing of checkbox
+ */
+function print_bulk_message_tag($open, $id= 4) {
+    if($open){
+        echo '<form action="../user/action_redir.php" method="post" id="participantsform">';
+        echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
+        echo '<input type="hidden" name="returnto" value="'.s(me()).'" />';
+        echo '<input type="hidden" name="formaction" value="messageselect.php"/>';
+        echo '<input type="hidden" name="id" value="4"/>';
+    }
+    else{
+        echo '<input type="submit" value="bulk send"/>';
+        echo '</form>';
+    }
+    
+    return true;
 }
