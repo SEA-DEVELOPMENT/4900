@@ -313,7 +313,7 @@ body.has_dock {
 #page-footer{
     padding: 20px 0 30px;
     clear: both;
-    background: url([[pix:theme|footer]]) no-repeat top right #dfdfdf;
+    background: url([[pix:theme|footer2]]) no-repeat top right #dfdfdf;
     margin-top: 0px;
     border: 1px solid #98bcd6;
     border-top: 5px solid #98bcd6;
