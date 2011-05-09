@@ -10,13 +10,17 @@
 .pagelayout-mypublic,
 .pagelayout-login,
 .pagelayout-report {
-    background:url([[pix:theme|body4]]) top left repeat-x #00cccc;
+    background:url([[pix:theme|body4]]) top left repeat-x #00cccc;s
     /*background: #000000;*/
 }
 
 body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
     font-family:Arial, Helvetica, sans-serif;
     color:#333;
+}
+
+#page-header-wrapper .logininfo{
+    color:#fff;
 }
 
 #wrapper {
@@ -324,6 +328,7 @@ body.has_dock {
 #page-footer .logininfo {
     padding-top: 80px;
     text-align: right;
+
 }
 /* @end */
 
