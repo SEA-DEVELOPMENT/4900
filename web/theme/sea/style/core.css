@@ -93,8 +93,6 @@ a:hover, a:active, a:focus {
     height: 62px;
     width:182px;
     float: left;
-    padding-left: 10px;
-    padding-right: 0px;
     margin-top:10px;
     margin-left:10px;
     background:url([[pix:theme|SEA_Logo2]]) no-repeat top;
@@ -108,8 +106,6 @@ a:hover, a:active, a:focus {
 }
 
 h1.headermain {
-    color: #025167;
-    /*color: #006699;*/
     color: #ffffff;
     font-weight: normal;
     font-size: 3em !important;
@@ -311,13 +307,14 @@ body.has_dock {
 /* @end */
 
 /* @group Footer */
+/* Matt: fixed the border issue */
 #page-footer{
     padding: 20px 0 30px;
     clear: both;
     background: url([[pix:theme|footer2]]) no-repeat top #dfdfdf;
     margin-top: 0px;
-    border: 1px solid #98bcd6;
-    border-top: 5px solid #98bcd6;
+    border-bottom: 1px solid #98bcd6;
+    border-top: 1px solid #98bcd6;
     height: 75px;
 }
 
