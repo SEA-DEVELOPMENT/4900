@@ -10,7 +10,7 @@
 .pagelayout-mypublic,
 .pagelayout-login,
 .pagelayout-report {
-    background:url([[pix:theme|body4]]) top left repeat-x #00cccc;
+    background:url([[pix:theme|body4]]) top left repeat-x #ccffff;
     /*background: #000000;*/
 }
 
