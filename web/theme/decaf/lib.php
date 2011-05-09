@@ -30,7 +30,7 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
          if (isloggedin()) {
             $content .= html_writer::start_tag('li');
             $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot/message/index.php", 'id' =>'home'));
-            $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
+            $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('message_icon', 'theme')));
             $content .= html_writer::end_tag('a');
             $content .= html_writer::end_tag('li');
          }
