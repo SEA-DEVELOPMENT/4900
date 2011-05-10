@@ -1,0 +1,49 @@
+/*Sytles the main bar, also positions it to stay at the top of the page*/
+#awesomebar{height:25px;background-image:url([[pix:theme|body4]]);background-attachment:scroll;margin:0;text-shadow: 0 1px 0 #000; padding-left: 30px; position:fixed; top: 0; width: 98%; z-index: 1000;}
+/*Styles the main bar's border, and the border between elements*/
+#awesomebar #home, #awesomebar #awesomeNavMenu{float:left;border-color:#1D1AB2 #025167 #025167 #514ED9; border-style: solid; border-width: 1px; padding:2px 8px 1px;width:auto;height:20px;}
+/*Styles the child drop downs*/
+ul.dropdown li{float:left;line-height:1.3em;vertical-align:middle;background-color:#0b0974;color:#fff;zoom:1 !important;}
+ul.dropdown ul{display:none;position:absolute;top:100%;z-index:598;left:auto;right:0;margin-top:-1px;border-top:1px solid #1a1a1a;border-left:solid 1px #4c4c4c;font:13px "Trebuchet MS",Arial,Helvetica,sans-serif;}
+/*Styles the background of the second layer*/
+ul.dropdown ul li{float:none;background-color:#0b0974;padding:0;}
+/*Styles the list for when there are no child nodes*/
+ul.dropdown a:hover{border-top-color:#188A0 !important;border-left-color:#5db1e0;background-color:#188A0;color:#fff;}
+/*Border for the hovered items */
+ul.dropdown li.clickable-with-children > a:hover {border-top-color:#1D1AB2 !important;}
+ul.dropdown ul a.dir:hover{background-color:#1D1AB2;background-image:url([[pix:theme|ab-arrowon]]);color:#fff;}
+/*Styles the background of the thrid tier*/
+ul.dropdown ul ul li{background-color:#1D1AB2;}
+/*Styles the thrid layer*/
+ul.dropdown ul ul ul li{background-color:#323086;}
+/*Styles other borders*/
+ul.dropdown li a,ul.dropdown span,ul.dropdown span a{border-color:#1D1AB2 #025167 #025167 #514ED9;border-style:solid;border-width:1px;}
+ul.dropdown ul li a,ul.dropdown ul span,ul.dropdown ul span a{border-left:none;border-color:#1D1AB2 #025167 #025167 #514ED9;;}
+ul.dropdown ul ul li a,ul.dropdown ul ul span, ul.dropdown ul ul span a{border-color:#595959 #333 #333;}
+ul.dropdown ul ul ul li a,ul.dropdown ul ul ul span, ul.dropdown ul ul ul span a{border-color:#767676 #404040 #404040;}
+ul.dropdown a,ul.dropdown span{display:block;}
+ul.dropdown ul a{width:166px;padding:2px 0 4px 5px;}
+ul.dropdown ul a.dir{width:111px;}
+ul.dropdown ul *.open{background-color:#4c4c4c;background-image:url([[pix:theme|ab-arrowover]]);color:#fff;}
+ul.dropdown ul a.open:hover{background-image:url([[pix:theme|ab-arrowon]]);color:#fff;}
+/*Modifys the hover efect for the 2nd layer*/
+ul.dropdown ul li:hover > span, ul.dropdown ul li:hover > span a{background-color:#1D1AB2;background-image:url([[pix:theme|ab-arrowover]]);}
+ul.dropdown li.clickable-with-children:hover > a{background-image:url([[pix:theme|ab-arrowover]]);}
+/*Styles the hover effect for elements with children*/
+ul.dropdown *.open,ul.dropdown li:hover > span, ul.dropdown li:hover > span a{background-color:#1D1AB2;}
+ul.dropdown ul ul *.open,ul.dropdown ul ul li:hover > span, ul.dropdown ul ul li:hover > span a{background-color:#323086;background-image:url([[pix:theme|ab-arrowover2]]);color:#fff;}
+ul.dropdown a.open:hover,ul.dropdown li:hover > a.dir:hover{background-color:#4698ca;color:#fff;}
+ul.dropdown a:active,ul.dropdown ul li:hover > a.dir:hover{color:#fff;}
+
+/* Child Nodes
+-------------------------- */
+#custommenu{height:30px;background-color:#0b0974;margin:0;text-shadow: 0 1px 0 #000;}
+#awesomebar ul.dropdown {z-index: 697; }
+#awesomebar ul.dropdown ul {z-index: 698;}
+#awesomebar ul.dropdown li {z-index: 699;}
+ul.dropdown span.customitem {padding:0;border:0; width: auto;}
+ul.dropdown span.customitem a {padding:6px 20px 6px 20px;}
+ul.dropdown span.customitem a:hover {border-left-color: #505050;border-top-color: #404040 !important;}
+#custommenu ul.dropdown ul {padding:0;width:185px;}
+#custommenu ul.dropdown ul a {padding:4px 0px 4px 18px;}
+#custommenu ul.dropdown > li span a {height:16px;}
