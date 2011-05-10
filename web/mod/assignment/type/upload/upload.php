@@ -60,12 +60,12 @@ $instance = new assignment_upload($cm->id, $assignment, $cm, $course);
 $submission = $instance->get_submission($formdata->userid, true);
 
 //jamesbrennan
-if($assignment->acceptedfiletypes)
-    $allowedfiletypes = explode(',',$assignment->acceptedfiletypes);
+if($assignment->accepted_types)
+    $accepted_types = explode(',',$assignment->accepted_types);
 else
-    $allowedfiletypes = '*';
+    $accepted_types = '*';
 
-$filemanager_options = array('subdirs'=>1, 'maxbytes'=>$assignment->maxbytes, 'maxfiles'=>$assignment->var1, 'accepted_types'=>$allowedfiletypes, 'return_types'=>FILE_INTERNAL);
+$filemanager_options = array('subdirs'=>1, 'maxbytes'=>$assignment->maxbytes, 'maxfiles'=>$assignment->var1, 'accepted_types'=>$accepted_types, 'return_types'=>FILE_INTERNAL);
 //$filemanager_options = array('subdirs'=>1, 'maxbytes'=>$assignment->maxbytes, 'maxfiles'=>$assignment->var1, 'accepted_types'=>'*', 'return_types'=>FILE_INTERNAL);
     $mform = new mod_assignment_upload_form(null, array('contextid'=>$contextid, 'userid'=>$formdata->userid, 'options'=>$filemanager_options));
 //jb end
