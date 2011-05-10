@@ -1,5 +1,5 @@
 /*Sytles the main bar, also positions it to stay at the top of the page*/
-#awesomebar{height:25px;background-color:#0b0974;margin:0;text-shadow: 0 1px 0 #000; padding-left: 30px; position:fixed; top: 0; width: 98%; z-index: 1000;}
+#awesomebar{height:25px;background-image:url([[pix:theme|body4]]);background-attachment:scroll;margin:0;text-shadow: 0 1px 0 #000; padding-left: 30px; position:fixed; top: 0; width: 98%; z-index: 1000;}
 /*Styles the main bar's border, and the border between elements*/
 #awesomebar #home, #awesomebar #awesomeNavMenu{float:left;border-color:#1D1AB2 #025167 #025167 #514ED9; border-style: solid; border-width: 1px; padding:2px 8px 1px;width:auto;height:20px;}
 /*Styles the child drop downs*/
