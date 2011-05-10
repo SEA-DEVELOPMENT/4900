@@ -473,6 +473,9 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
     if ($countteachercontact + $countstudentcontact + $countgroupcontact == 0){
         echo html_write::tag('div', get_string('contactlistempty', 'message'), array('class' => 'heading'));
         }
+
+    $bulk = print_bulk_message_tag(true);
+
     echo html_writer::start_tag('table', array('id' => 'message_contacts', 'class' => 'boxaligncenter'));
 
     if (!empty($titletodisplay)) {
@@ -489,7 +492,7 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
         $isuserblocked = false;
         $isusercontact = true;
         foreach ($teachercontact as $contact) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
         }
     }
     
@@ -500,7 +503,7 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
         $isuserblocked = false;
         $isusercontact = true;
         foreach ($studentcontact as $contact) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
         }
     }
 
@@ -518,7 +521,9 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
         }
     }
     echo html_writer::end_tag('table');
+    print_bulk_message_tag(false);
     }
+    
 
 /**
 * Print $user1's contacts. Called by message_print_contact_selector()
