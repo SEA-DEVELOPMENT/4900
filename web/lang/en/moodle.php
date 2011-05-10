@@ -24,6 +24,9 @@
  */
 
 $string['abouttobeinstalled'] = 'about to be installed';
+//jamesbrennan
+$string['acceptedfiletypes'] = 'Accepted file types';
+//jb end
 $string['action'] = 'Action';
 $string['actions'] = 'Actions';
 $string['active'] = 'Active';
