@@ -273,6 +273,12 @@ function form_filemanager_render($options) {
     }
 
     $maxsize = get_string('maxfilesize', 'moodle', display_size(get_max_upload_file_size($CFG->maxbytes, $course_maxbytes, $options->maxbytes)));
+    //jamesbrennan
+    if(empty($options->accepted_types))
+        $filetypes = '';
+    else
+        $filetypes = get_string('acceptedfiletypes', 'moodle', implode(', ', $options->accepted_types));
+    //jb end
     $html .= <<<FMHTML
 <div class="filemanager-loading mdl-align" id='filemanager-loading-{$client_id}'>
 $icon_progress
@@ -284,6 +290,7 @@ $icon_progress
         <input type="button" class="fm-btn-mkdir" id="btncrt-{$client_id}" onclick="return false" value="{$strmakedir}" />
         <input type="button" class="fm-btn-download" id="btndwn-{$client_id}" onclick="return false" {$extra} value="{$strdownload}" />
         <span> $maxsize </span>
+        <span> $filetypes </span>
     </div>
     <div class="filemanager-container" id="filemanager-{$client_id}">
         <ul id="draftfiles-{$client_id}" class="fm-filelist">

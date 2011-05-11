@@ -111,7 +111,10 @@ $string['instancesforcourses'] = '{$a} Course-wide common instance(s)';
 $string['instancesforusers'] = '{$a} User private instance(s)';
 $string['invalidjson'] = 'Invalid JSON string';
 $string['invalidplugin'] = 'Invalid repository {$a} plug-in';
-$string['invalidfiletype'] = '{$a} filetype cannot be accepted.';
+// jamesbrennan
+//$string['invalidfiletype'] = 'Filetype cannot be accepted. Valid filetypes are: {$a}';
+$string['invalidfiletype'] = '{$a} filetype cannot be accepted';
+//jb end
 $string['invalidrepositoryid'] = 'Invalid repository ID';
 $string['isactive'] = 'Active?';
 $string['keyword'] = 'Keyword';

@@ -174,7 +174,10 @@ switch ($action) {
                 $mimetypes[] = mimeinfo('type', $type);
             }
             if (!in_array(mimeinfo('type', $saveas_filename), $mimetypes)) {
+                //jamesbrennan , implode(', ', $mimetypes)
+                //throw new moodle_exception('invalidfiletype', 'repository', '', 'work');//implode(', ', $accepted_types));
                 throw new moodle_exception('invalidfiletype', 'repository', '', get_string(mimeinfo('type', $saveas_filename), 'mimetypes'));
+                //jb end
             }
         }
 
