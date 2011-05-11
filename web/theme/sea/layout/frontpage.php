@@ -80,7 +80,7 @@ echo $OUTPUT->doctype() ?>
 	    </div>
     </div>
 
-<!--addition->
+<!--addition-->
 <?php if ($hascustommenu) { ?>
       <div id="custommenu"><?php echo $custommenu; ?></div>
  	<?php } ?>

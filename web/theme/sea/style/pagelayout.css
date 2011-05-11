@@ -124,26 +124,20 @@ body {
 
 /* @group Post Side Only */
 
-.side-post-only #page-content #region-main-box {
-    margin-left: 0px;
-}
+/*Shaughn, Modified the layout so that the side post would be visible*/
 
-.side-post-only #page-content #region-main-box #region-post-box {
-    margin-left: -[[setting:regionwidth]];
-}
+.side-post-only #page-content #region-main-box { margin-left: 0px; }
 
-.side-post-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main {
-    margin-left: [[setting:regionwidth]];
-}
-/*Edi Trying to fix block position bug*/
-.side-post-only #page-content #region-main-box #region-post-box #region-post {
-    left: [[setting:regionwidth]];
-    width: [[setting:regionwidth]];
-}
+.side-post-only #page-content #region-main-box #region-post-box { margin-left: -[[setting:regionwidth]]; }
 
-.has_dock.side-post-only .page-middle #region-main-box #region-post-box #region-main-wrap #region-main {
-    margin-left: 200px;
-}
+.side-post-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main { margin-left: [[setting:regionwidth]]; }
+
+.pagelayout-frontpage.side-post-only #page-content #region-main-box #region-post-box #region-post,
+.editing.side-post-only #page-content #region-main-box #region-post-box #region-post { left: [[setting:regionwidthdouble]]; width: [[setting:regionwidth]]; }
+
+.side-post-only #page-content #region-main-box #region-post-box #region-post { left: [[setting:regionwidth]]; width: [[setting:regionwidth]]; }
+
+.has_dock.side-post-only .page-middle #region-main-box #region-post-box #region-main-wrap #region-main { margin-left: 200px; }
 
 
 
