@@ -998,17 +998,47 @@ class assignment_upload extends assignment_base {
         //jamesbrennan
         $fileoptions = array( 
             '0' => get_string('allowall', 'assignment'), 
-            'doc' => '.doc',
-            'docx' => '.docx',
-            'xls' => '.xls',
-            'xlsx' => '.xlsx',
-            'ppt' => '.ppt',
-            'pptx' => '.pptx',
-            'rtf' => '.rtf',
-            'txt' => '.txt',
-            'php' => '.php');
-        $mform->addElement('select', 'allowedfiletypes', get_string('allowedfiletypes', 'assignment'), $fileoptions, array('multiple' => 'multiple', 'size' => '8'));
-        $mform->setDefault('allowedfiletypes', '0');
+            '.doc' => '.doc',
+            '.docx' => '.docx',
+            '.pages'=> '.pages',
+            '.xls' => '.xls',
+            '.xlsx' => '.xlsx',
+            '.csv' => '.csv',
+            '.ppt' => '.ppt',
+            '.pps' => '.pps',
+            '.pptx' => '.pptx',
+            '.rtf' => '.rtf',
+            '.txt' => '.txt',
+            '.xml' => '.xml',
+            '.php' => '.php',
+            '.acc' => '.acc',
+            '.aif' => '.aif',
+            '.mpa' => '.mpa',
+            '.ra' => '.ra',
+            '.wav' => '.wav',
+            '.wma' => '.wma',
+            '.mp3' => '.mp3',
+            '.m4a' => '.m4a',
+            '.mpg' => '.mpg',
+            '.mpeg' => '.mpeg',
+            '.flv' => '.flv',
+            '.swf' => '.swf',
+            '.wmv' => '.wmv',
+            '.mov' => '.mov',
+            '.bmp' => '.bmp',
+            '.psd' => '.psd',
+            '.ai' => '.ai',
+            '.indd' => '.indd',
+            '.eps' => '.eps',
+            '.ps' => '.ps',
+            '.svg' => '.svg',
+            '.tiff' => '.tiff',
+            '.jpg' => '.jpg',
+            '.jpeg' => '.jpeg',
+            '.gif' => '.gif',
+            '.png' => '.png');
+        $mform->addElement('select', 'accepted_types', get_string('accepted_types', 'assignment'), $fileoptions, array('multiple' => 'multiple', 'size' => '8'));
+        $mform->setDefault('accepted_types', '0');
         $mform->addElement('text', 'otherfiletypes', get_string('otherfiletypes', 'assignment'));
         //jb end
 

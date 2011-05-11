@@ -4,6 +4,8 @@ unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
+$CFG->usepaypalsandbox = true;
+
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = 'jamesbrennan.ca';
