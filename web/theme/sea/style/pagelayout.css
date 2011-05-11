@@ -124,6 +124,8 @@ body {
 
 /* @group Post Side Only */
 
+/*Shaughn, Modified the layout so that the side post would be visible*/
+
 .side-post-only #page-content #region-main-box { margin-left: 0px; }
 
 .side-post-only #page-content #region-main-box #region-post-box { margin-left: -[[setting:regionwidth]]; }
