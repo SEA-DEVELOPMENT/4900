@@ -14,6 +14,8 @@ $bodyclasses = array();
 //    $bodyclasses[] = 'side-pre-only';
 //} else if ($showsidepost && !$showsidepre) {
 //  $bodyclasses[] = 'side-post-only';
+
+//Made it show side-post only
 if ($showsidepost && !$showsidepre) {
 $bodyclasses[] = 'side-post-only';
 } else if (!$showsidepost && !$showsidepre) {
