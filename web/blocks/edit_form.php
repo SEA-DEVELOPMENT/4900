@@ -134,6 +134,7 @@ class block_edit_form extends moodleform {
 
 	//Shaughn, deactivated the choice to choose default region
         //$mform->addElement('select', 'bui_defaultregion', get_string('defaultregion', 'block'), $defaultregionoptions);
+	$mform->addElement('hidden', 'bui_defaultregion', 'side-post');
 
         $mform->addElement('select', 'bui_defaultweight', get_string('defaultweight', 'block'), $weightoptions);
 
@@ -148,7 +149,8 @@ class block_edit_form extends moodleform {
         }
 
 	//Shaughn, Took out the region select bar, now it defaults to the side-post
-        // $mform->addElement('select', 'bui_region', get_string('region', 'block'), $regionoptions);
+        //$mform->addElement('select', 'bui_region', get_string('region', 'block'), $regionoptions);
+	$mform->addElement('hidden', 'bui_region', 'side-post');
 
         $mform->addElement('select', 'bui_weight', get_string('weight', 'block'), $weightoptions);
 
