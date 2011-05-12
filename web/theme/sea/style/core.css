@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
 
 /*Shaughn, Changed Login Link Color*/
 .logininfo a:link {
-color:blue;
+color:#00cc00;
 }
 
 #wrapper {
