@@ -100,6 +100,7 @@ class block_edit_form extends moodleform {
             $contextoptions[0] = get_string('showoncontextonly', 'block', $parentcontextname);
             $contextoptions[1] = get_string('showoncontextandsubs', 'block', $parentcontextname);
         }
+
         $mform->addElement('select', 'bui_contexts', get_string('contexts', 'block'), $contextoptions);
 
         if ($this->page->pagetype == 'site-index') {   // No need for pagetype list on home page
@@ -130,7 +131,9 @@ class block_edit_form extends moodleform {
         if (!array_key_exists($defaultregion, $defaultregionoptions)) {
             $defaultregionoptions[$defaultregion] = $defaultregion;
         }
-        $mform->addElement('select', 'bui_defaultregion', get_string('defaultregion', 'block'), $defaultregionoptions);
+
+	//Shaughn, deactivated the choice to choose default region
+        //$mform->addElement('select', 'bui_defaultregion', get_string('defaultregion', 'block'), $defaultregionoptions);
 
         $mform->addElement('select', 'bui_defaultweight', get_string('defaultweight', 'block'), $weightoptions);
 
@@ -143,7 +146,9 @@ class block_edit_form extends moodleform {
         if (!array_key_exists($blockregion, $regionoptions)) {
             $regionoptions[$blockregion] = $blockregion;
         }
-        $mform->addElement('select', 'bui_region', get_string('region', 'block'), $regionoptions);
+
+	//Shaughn, Took out the region select bar, now it defaults to the side-post
+        // $mform->addElement('select', 'bui_region', get_string('region', 'block'), $regionoptions);
 
         $mform->addElement('select', 'bui_weight', get_string('weight', 'block'), $weightoptions);
 

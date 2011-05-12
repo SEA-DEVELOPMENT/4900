@@ -3,6 +3,10 @@
 unset($CFG);
 global $CFG;
 $CFG = new stdClass();
+//Added by Carey to use Paypal Sandbox
+$CFG->usepaypalsandbox=true;
+
+$CFG->usepaypalsandbox = true;
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';

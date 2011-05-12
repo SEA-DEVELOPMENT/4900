@@ -94,6 +94,8 @@ function message_print_contact_selector($countunreadtotal, $viewing, $user1, $us
     if (count($blockedusers) == 0 && $viewing == MESSAGE_VIEW_BLOCKED) {
         $viewing = MESSAGE_VIEW_CONTACTS;
     }
+
+
     
     //executing the function to grab the teacher/student/group contact in order to list them later
     list($teachercontact, $studentcontact, $groupcontact) = message_get_role_contacts($user1, $user2);
@@ -2376,13 +2378,13 @@ function message_print_heading($title, $colspan=3) {
  * @param int $id context id
  * @return bool $chkbox boolean to enable writing of checkbox
  */
-function print_bulk_message_tag($open, $id= 4) {
+function print_bulk_message_tag($open, $id = "bulk") {
     if($open){
         echo '<form action="../user/action_redir.php" method="post" id="participantsform">';
         echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
         echo '<input type="hidden" name="returnto" value="'.s(me()).'" />';
         echo '<input type="hidden" name="formaction" value="messageselect.php"/>';
-        echo '<input type="hidden" name="id" value="4"/>';
+        echo '<input type="hidden" name="id" value="'.$id.'"/>';
     }
     else{
         echo '<input type="submit" value="bulk send"/>';

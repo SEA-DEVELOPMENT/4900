@@ -27,6 +27,9 @@ require_once('../config.php');
 require_once($CFG->dirroot.'/message/lib.php');
 
 $id = required_param('id',PARAM_INT);
+//Sean - debug
+echo $id;
+//
 $messagebody = optional_param('messagebody','',PARAM_CLEANHTML);
 $send = optional_param('send','',PARAM_BOOL);
 $preview = optional_param('preview','',PARAM_BOOL);
@@ -60,16 +63,25 @@ if ($deluser !== 0) {
 $PAGE->set_url($url);
 $PAGE->set_context(get_context_instance(CONTEXT_SYSTEM));
 
-if (!$course = $DB->get_record('course', array('id'=>$id))) {
-    print_error('invalidcourseid');
+//Sean Hall - allows bulk messaging across courses
+if($id!="bulk"){
+    if (!$course = $DB->get_record('course', array('id'=>$id))) {
+        print_error('invalidcourseid');
+    }
 }
-
+//
+//if (!$course = $DB->get_record('course', array('id'=>$id))) {
+//        print_error('invalidcourseid');
+//    }
 require_login();
 
 $coursecontext = get_context_instance(CONTEXT_COURSE, $id);   // Course context
 $systemcontext = get_context_instance(CONTEXT_SYSTEM);   // SYSTEM context
-require_capability('moodle/course:bulkmessaging', $coursecontext);
 
+//Sean Hall - allows bulk messaging across courses
+if($id!="bulk"){
+require_capability('moodle/course:bulkmessaging', $coursecontext);
+}
 if (empty($SESSION->emailto)) {
     $SESSION->emailto = array();
 }

@@ -56,10 +56,17 @@ $PAGE->set_context($context);
 $title = strip_tags($course->fullname.': '.get_string('modulename', 'assignment').': '.format_string($assignment->name,true));
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
+//jamesbrennan
+if($assignment->accepted_types)
+    $accepted_types = explode(',',$assignment->accepted_types);
+else
+    $accepted_types = '*';
 
-$options = array('subdirs'=>0, 'maxbytes'=>get_max_upload_file_size($CFG->maxbytes, $course->maxbytes, $assignment->maxbytes), 'maxfiles'=>1, 'accepted_types'=>'*', 'return_types'=>FILE_INTERNAL);
-
+$options = array('subdirs'=>0, 'maxbytes'=>get_max_upload_file_size($CFG->maxbytes, $course->maxbytes, $assignment->maxbytes), 'maxfiles'=>1, 'accepted_types'=>$accepted_types, 'return_types'=>FILE_INTERNAL);
+//$options = array('subdirs'=>0, 'maxbytes'=>get_max_upload_file_size($CFG->maxbytes, $course->maxbytes, $assignment->maxbytes), 'maxfiles'=>1, 'accepted_types'=>'*', 'return_types'=>FILE_INTERNAL);
     $mform = new mod_assignment_uploadsingle_form(null, array('contextid'=>$contextid, 'userid'=>$formdata->userid, 'options'=>$options));
+//jb end
+
 
 if ($mform->is_cancelled()) {
         redirect(new moodle_url('/mod/assignment/view.php', array('id'=>$cm->id)));
