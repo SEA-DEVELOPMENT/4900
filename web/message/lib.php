@@ -94,6 +94,8 @@ function message_print_contact_selector($countunreadtotal, $viewing, $user1, $us
     if (count($blockedusers) == 0 && $viewing == MESSAGE_VIEW_BLOCKED) {
         $viewing = MESSAGE_VIEW_CONTACTS;
     }
+
+
     
     //executing the function to grab the teacher/student/group contact in order to list them later
     list($teachercontact, $studentcontact, $groupcontact) = message_get_role_contacts($user1, $user2);
@@ -473,6 +475,9 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
     if ($countteachercontact + $countstudentcontact + $countgroupcontact == 0){
         echo html_write::tag('div', get_string('contactlistempty', 'message'), array('class' => 'heading'));
         }
+
+    $bulk = print_bulk_message_tag(true);
+
     echo html_writer::start_tag('table', array('id' => 'message_contacts', 'class' => 'boxaligncenter'));
 
     if (!empty($titletodisplay)) {
@@ -489,7 +494,7 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
         $isuserblocked = false;
         $isusercontact = true;
         foreach ($teachercontact as $contact) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
         }
     }
     
@@ -500,7 +505,7 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
         $isuserblocked = false;
         $isusercontact = true;
         foreach ($studentcontact as $contact) {
-                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2);
+                message_print_contactlist_user($contact, $isusercontact, $isuserblocked, $contactselecturl, $showactionlinks, $user2, $bulk);
         }
     }
 
@@ -518,7 +523,9 @@ function message_print_role_contacts($teachercontact, $studentcontact, $groupcon
         }
     }
     echo html_writer::end_tag('table');
+    print_bulk_message_tag(false);
     }
+    
 
 /**
 * Print $user1's contacts. Called by message_print_contact_selector()
@@ -2371,13 +2378,13 @@ function message_print_heading($title, $colspan=3) {
  * @param int $id context id
  * @return bool $chkbox boolean to enable writing of checkbox
  */
-function print_bulk_message_tag($open, $id= 4) {
+function print_bulk_message_tag($open, $id = "bulk") {
     if($open){
         echo '<form action="../user/action_redir.php" method="post" id="participantsform">';
         echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
         echo '<input type="hidden" name="returnto" value="'.s(me()).'" />';
         echo '<input type="hidden" name="formaction" value="messageselect.php"/>';
-        echo '<input type="hidden" name="id" value="4"/>';
+        echo '<input type="hidden" name="id" value="'.$id.'"/>';
     }
     else{
         echo '<input type="submit" value="bulk send"/>';
