@@ -61,6 +61,21 @@ $THEME->sheets = array(
     
 );
 
+///////////
+//Shaughn Change --> Excluding sheets
+//Excluding pagelayout
+
+/*
+$THEME->parents_exclude_sheets = array (
+	'base'=>array(
+		'pagelayout',
+	),
+	'canvas'=>array(
+		'pagelayout',
+	),
+);
+*/
+
 ////////////////////////////////////////////////////
 // Name of the stylesheet(s) you've including in
 // this theme's /styles/ directory.
@@ -114,8 +129,8 @@ $THEME->layouts = array(
     ),
     'admin' => array(
         'file' => 'general.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
+        'regions' => array('side-post'),
+        'defaultregion' => 'side-post',
     ),
     'mydashboard' => array(
         'file' => 'general.php',
@@ -162,8 +177,8 @@ $THEME->layouts = array(
     ),
     'report' => array(
         'file' => 'general.php',
-        'regions' => array('side-pre'),
-        'defaultregion' => 'side-pre',
+        'regions' => array('side-post'),
+        'defaultregion' => 'side-post',
     )
 );
 
