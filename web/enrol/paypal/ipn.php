@@ -93,8 +93,10 @@ $header = '';
 $header .= "POST /cgi-bin/webscr HTTP/1.0\r\n";
 $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
 $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
-$paypaladdr = empty($CFG->usepaypalsandbox) ? 'www.paypal.com' : 'www.sandbox.paypal.com';
-$fp = fsockopen ($paypaladdr, 80, $errno, $errstr, 30);
+$paypaladdr = empty($CFG->usepaypalsandbox) ? 'ssl://www.paypal.com' : 'ssl://www.sandbox.paypal.com';
+//$fp = fsockopen ($paypaladdr, 80, $errno, $errstr, 30);
+//Carey added to try and fix auto enrollment
+$fp = fsockopen ($paypaladdr, 443, $errno, $errstr, 30);
 
 if (!$fp) {  /// Could not open a socket to PayPal - FAIL
     echo "<p>Error: could not access paypal.com</p>";
