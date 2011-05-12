@@ -2457,15 +2457,16 @@ function assignment_add_instance($assignment) {
     $assignment->assignmenttype = clean_param($assignment->assignmenttype, PARAM_SAFEDIR);
     
     $assignment->accepted_types = ($assignment->accepted_types) ? $assignment->accepted_types : array();
+    
     if($assignment->otherfiletypes) {
-        $accepted_types_text = implode(',', str_replace(' ','',$assignment->otherfiletypes));
-        foreach($accepted_types_text as $type){
+        $accepted_types_text = explode(',', str_replace(' ','',$assignment->otherfiletypes));
+        foreach($accepted_types_text as &$type){
             if(substr($type, 0, 1) != '.') $type = '.'.$type;
         }
         $assignment->accepted_types = array_merge($assignment->accepted_types, $accepted_types_text);
     }
-    
-    $assignment->accepted_types = explode(',',$assignment->accepted_types);
+     
+    $assignment->accepted_types = implode(',',$assignment->accepted_types);
 
     require_once("$CFG->dirroot/mod/assignment/type/$assignment->assignmenttype/assignment.class.php");
     $assignmentclass = "assignment_$assignment->assignmenttype";
