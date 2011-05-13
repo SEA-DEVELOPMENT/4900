@@ -276,13 +276,20 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        // Find out if there is hash, do showRelated on that forum post
+        // If there is a hash set when the page loads, run the correct function
+        // related to it
         hash = location.hash;
+        // If its a related hash, do showRelated on it
         if(hash.substring(0, 2) == "#r"){
             e = $(hash).find(".showrelated");
             if(e){
                 showRelated(e);
             }
+        // If its a parent hash, do showParent on it
+        } else if(hash.substring(0, 2) == "#p"){
+            // Find the anchor with the hash at the end of its href
+            e = $("[href$="+hash+"]");
+            goToParent(e);
         }
         
         // Hide all posts except for the one selected and its parents.

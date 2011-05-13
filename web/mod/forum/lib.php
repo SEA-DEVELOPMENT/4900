@@ -3454,10 +3454,9 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     //jamesbrennan
     // Add the show related button. If there are parents, attach it to the anchor
     // as well
-    $attributes = array('class'=>'showrelated','href'=>$url);
     $url = new moodle_url($discussionlink);
     $url->set_anchor('r'.$post->id);
-    
+    $attributes = array('class'=>'showrelated','href'=>$url);
     if($post->parent){
         $attributes['data-parent'] = $post->parent;
     }
