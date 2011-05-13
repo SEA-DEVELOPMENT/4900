@@ -24,7 +24,7 @@
  *             div.footer
  */
 
-.forumpost {display: block;position:relative;margin:0 0 1em 0;padding:0;border:1px solid #000;max-width:100%;}
+.forumpost {display: block;position:relative;margin:1em 0 0 0;padding:0;border:1px solid #000;max-width:100%;}
 .forumpost .row {width:100%;position:relative;}
 .forumpost .row .left {float:left;width: 43px;overflow:hidden;}
 .forumpost .row .left .grouppictures a {text-align:center;display:block;margin:6px 2px 0 2px;}

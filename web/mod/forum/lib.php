@@ -3153,8 +3153,8 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
             return;
         }
         //jamesbrennan
-        $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
         $output .= html_writer::start_tag('div', array('id'=>'r'.$post->id, 'class'=>'forumpost clearfix'));
+        $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
         $output .= html_writer::start_tag('div', array('class'=>'row header'));
         //jb end
         $output .= html_writer::tag('div', '', array('class'=>'left picture')); // Picture
@@ -3348,8 +3348,8 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     }
 
     //jamesbrennan
-    $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
     $output .= html_writer::start_tag('div', array('id'=>'r'.$post->id,'class'=>'forumpost clearfix'.$forumpostclass.$topicclass));
+    $output .= html_writer::tag('a', '', array('id'=>'p'.$post->id));
     $output .= html_writer::start_tag('div', array('class'=>'row header clearfix'));
     //jb end
     $output .= html_writer::start_tag('div', array('class'=>'left picture'));
