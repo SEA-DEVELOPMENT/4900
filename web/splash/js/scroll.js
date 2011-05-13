@@ -17,13 +17,117 @@ jQuery(function( $ ){
      * This is done so you can see them. You DON'T need to specify the commented ones.
      * A 'target' is specified, that means that #screen is the context for target, prev, next and navigation.
      */
+	 
+	 /******************************************************************************************************/
+	 /**************************************Top Navigation**************************************************/
+	 /******************************************************************************************************/
+	
+	/****************************************Go to about****************************************************/	
+	$('#about').click(function(){
+
+	$('#sections').trigger( 'goto', [ 0 ] );
+
+	});
+	/***********************************Go to contact **************************************/
+	$('#contact').click(function(){
+
+	$('#sections').trigger( 'goto', [ 1 ] );
+
+	});
+	/***********************************Go to partners **************************************/
+	$('#partners').click(function(){
+
+	$('#sections').trigger( 'goto', [ 2 ] );
+
+	});
+	/***********************************Go to course **************************************/
+	$('#course').click(function(){
+
+	$('#sections').trigger( 'goto', [ 3 ] );
+
+	});
+
+	 /******************************************************************************************************/
+	 /********************************Go to next course examples********************************************/
+	 /******************************************************************************************************/
+	 
+	 /***********************************Go to course examples page 2 **************************************/
+	$('#goTo2').click(function(){
+
+	$('#sections').trigger( 'goto', [ 4 ] );
+
+	});
+	/***********************************Go to course examples page 3 **************************************/
+	$('#goTo3').click(function(){
+
+	$('#sections').trigger( 'goto', [ 5 ] );
+
+	});
+	/***********************************Go to course examples page 4 **************************************/
+	$('#goTo4').click(function(){
+
+	$('#sections').trigger( 'goto', [ 6 ] );
+
+	});
+	/***********************************Go to course examples page 5 **************************************/
+	$('#goTo5').click(function(){
+
+	$('#sections').trigger( 'goto', [ 7 ] );
+
+	});
+	/***********************************Go to course examples page 6**************************************/
+	$('#goTo6').click(function(){
+
+	$('#sections').trigger( 'goto', [ 8 ] );
+
+	});
+	
+	/******************************************************************************************************/
+	/********************************Go to back course examples********************************************/
+	/******************************************************************************************************/
+	
+		 /***********************************Go back a course example page 1 **************************************/
+	$('#goBack1').click(function(){
+
+	$('#sections').trigger( 'goto', [ 3 ] );
+
+	});
+	/***********************************Go back a course example page 2 **************************************/
+	$('#goBack2').click(function(){
+
+	$('#sections').trigger( 'goto', [ 4 ] );
+
+	});
+	/***********************************Go back a course example page 3 **************************************/
+	$('#goBack3').click(function(){
+
+	$('#sections').trigger( 'goto', [ 5 ] );
+
+	});
+	/***********************************Go back a course example page 4 **************************************/
+	$('#goBack4').click(function(){
+
+	$('#sections').trigger( 'goto', [ 6 ] );
+
+	});
+	/***********************************Go back a course example page 5**************************************/
+	$('#goBack5').click(function(){
+
+	$('#sections').trigger( 'goto', [ 7 ] );
+
+	});
+	
+	/******************************************************************************************************/
+	/************************************Serial Scroll settings********************************************/
+	/******************************************************************************************************/
+	
     $('#screen').serialScroll({
         target:'#sections',
         items:'li', // Selector to the items ( relative to the matched elements, '#sections' in this case )
         prev:'img.prev',// Selector to the 'prev' button (absolute!, meaning it's relative to the document)
         next:'img.next',// Selector to the 'next' button (absolute too)
         axis:'xy',// The default is 'y' scroll on both ways
-        navigation:'#navigation li a',
+       // navigation:'#navigation li a',
         duration:700,// Length of the animation (if you scroll 2 axes and use queue, then each axis take half this time)
         force:true, // Force a scroll to the element specified by 'start' (some browsers don't reset on refreshes)
         
