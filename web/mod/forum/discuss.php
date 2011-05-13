@@ -311,19 +311,26 @@
         // Reset any previously clicked
         resetRelated(".showall");
 
+        // Switch the text of the anchor and its class so we know that is has changed
         $(e).removeClass("showrelated").text("Show All").addClass("showall");
 
+        // Grab necessary ids
         id = $(e).parents(".forumpost").attr("id");
         parent_ids = $(e).attr("data-parent");
 
+        // Hide all and show the active post and all posts whos first parent is 
+        // the active post
+        $(".forumpost").hide();
+        $("#"+id).show();
+        $("#"+id+" *").addClass('activepost');
+        $("[data-parent$=#"+id+"]").parents(".forumpost").show();
+        // If there are any parents, show that post
+        // Must check if parent_ids has something assigned or FF will break
         if(parent_ids){
-            $(".forumpost").hide();
-            $("#"+id).show();
-            $("#"+id+" *").addClass('activepost');//.css("background-color", "green");
             $(parent_ids).show();
-            $("[data-parent$=#"+id+"]").parents(".forumpost").show();
         }
         
+        // Switch the listener
         $(e).unbind("click").bind("click", function(){showAll(this);});
     }
     function showAll(e){
@@ -331,8 +338,9 @@
         $(".forumpost").show();
     }
     function resetRelated(e){
+        // Return the active post to normal
         $('.activepost').removeClass('activepost');
-//        $(e).parents(".forumpost").find("*").css("background-color", "");
+        // Swich the anchors text back, and its class so that we know that it has changed back
         $(e).removeClass("showall").text("Show Related").addClass("showrelated").unbind("click").bind("click",function(){showRelated(this);});
     }
 </script>

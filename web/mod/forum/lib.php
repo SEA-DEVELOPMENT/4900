@@ -3170,7 +3170,11 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
         $output .= html_writer::start_tag('div', array('class'=>'author')); // author
         $output .= get_string('forumauthorhidden','forum');
 
-        if($post->parent) {
+//        if($post->parent) {
+        // If the direct parent exists, print a "In response to" link with title,
+        // and author of parent post. Subject links to parent post on page and 
+        // user id links to that users profile
+        if($post->parent_id && $post->parent_subject && $post->parent_fullname && $post->parent_userid) { 
             $url = new moodle_url($discussionlink);
             $url->set_anchor('p'.$post->parent_id);
 
@@ -3268,6 +3272,8 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
         $commands[] = array('url'=>$url, 'text'=>$text);
     }
 
+    // jamesbrennan
+    // Added in later on
     // Zoom in to the parent specifically
 //    if ($post->parent) {
 //        $url = new moodle_url($discussionlink);
@@ -3278,6 +3284,7 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
 //        }
 //        $commands[] = array('url'=>$url, 'text'=>$str->parent);
 //    }
+    //jb end
 
     // Hack for allow to edit news posts those are not displayed yet until they are displayed
     $age = time() - $post->created;
@@ -3365,7 +3372,11 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     $output .= get_string('bynameondate', 'forum', $by);
     
     //jamesbrennan
-    if($post->parent) {
+//    if($post->parent) {
+    // If the direct parent exists, print a "In response to" link with title,
+    // and author of parent post. Subject links to parent post on page and 
+    // user id links to that users profile
+    if($post->parent_id && $post->parent_subject && $post->parent_fullname && $post->parent_userid) { 
         $url = new moodle_url($discussionlink);
         $url->set_anchor('p'.$post->parent_id);
         
@@ -3441,12 +3452,17 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
     $commandhtml = array();
     
     //jamesbrennan
-    //The show related button
+    // Add the show related button. If there are parents, attach it to the anchor
+    // as well
+    $attributes = array('class'=>'showrelated','href'=>$url);
+    $url = new moodle_url($discussionlink);
+    $url->set_anchor('r'.$post->id);
+    
     if($post->parent){
-        $url = new moodle_url($discussionlink);
-        $url->set_anchor('r'.$post->id);
-        $commandhtml[] = html_writer::tag('a','Show Related', array('class'=>'showrelated','href'=>$url,'data-parent'=>$post->parent));
+        $attributes['data-parent'] = $post->parent;
     }
+    
+    $commandhtml[] = html_writer::tag('a','Show Related', $attributes);
     //jb end
     
     foreach ($commands as $command) {
@@ -5497,10 +5513,13 @@ function forum_print_posts_flat($course, &$cm, $forum, $discussion, $post, $mode
                 $post->parent_id = $post->parent;
             
             if(!isset($parent_ids[$post->parent])){
+                // Its the first parent for this port, so append a hash to the front
+                // for jQuery to select with
                 $post->parent = '#r'.$post->parent;
                 $parent_ids[$post->id] = $post->parent;
 
             } else {
+                // Append the parent's parent to the front of this parent
                 $parent_ids[$post->id] = $parent_ids[$post->parent].',#r'.$post->parent;
                 $post->parent = $parent_ids[$post->id];
             }

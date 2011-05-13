@@ -382,6 +382,15 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
                          "post.php?delete=$delete&confirm=$delete",
                          $CFG->wwwroot.'/mod/forum/discuss.php?d='.$post->discussion.'#p'.$post->id);
 
+            //jamesbrennan
+            // Get the parent's parent
+            $grandparent = forum_get_post_full($post->parent);
+            // Assign needed parents info to the current post
+            $post->parent_id = $grandparent->id;
+            $post->parent_fullname = $grandparent->firstname.' '.$grandparent->lastname;
+            $post->parent_subject = $grandparent->subject;
+            $post->parent_userid = $grandparent->userid;
+            //jb end
             forum_print_post($post, $discussion, $forum, $cm, $course, false, false, false);
 
             if (empty($post->edit)) {
@@ -853,7 +862,7 @@ if (!empty($parent)) {
     //jamesbrennan
     // Get the parent's parent
     $grandparent = forum_get_post_full($parent->parent);
-    // Assign needed parents info
+    // Assign needed parents info to the current post
     $parent->parent_id = $grandparent->id;
     $parent->parent_fullname = $grandparent->firstname.' '.$grandparent->lastname;
     $parent->parent_subject = $grandparent->subject;
