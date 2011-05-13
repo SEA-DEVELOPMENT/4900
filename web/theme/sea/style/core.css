@@ -19,9 +19,14 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
     color:#333;
 }
 
-/*Shaughn, Changes Top Login Info Color*/
+/*Shaughn, Changed Top Login Info Color*/
 #page-header-wrapper .logininfo{
     color:#fff;
+}
+
+/*Shaughn, Changed Login Link Color*/
+.logininfo a:link {
+color:#00cc00;
 }
 
 #wrapper {
@@ -206,7 +211,7 @@ p.helplink {
     background: #fff;
     border: 1px solid #ccc;
     padding: 10px;
-    margin-top: -2px;
+    margin-top: 0px;
 }
 
 .block_calendar_month table.minicalendar.calendartable td,.block_calendar_month table.minicalendar.calendartable th {

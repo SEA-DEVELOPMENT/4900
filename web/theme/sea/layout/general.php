@@ -10,10 +10,14 @@ $custommenu = $OUTPUT->custom_menu();
 $hascustommenu = (empty($PAGE->layout_options['nocustommenu']) && !empty($custommenu));
 
 $bodyclasses = array();
-if ($showsidepre && !$showsidepost) {
-    $bodyclasses[] = 'side-pre-only';
-} else if ($showsidepost && !$showsidepre) {
-    $bodyclasses[] = 'side-post-only';
+//if ($showsidepre && !$showsidepost) {
+//    $bodyclasses[] = 'side-pre-only';
+//} else if ($showsidepost && !$showsidepre) {
+//  $bodyclasses[] = 'side-post-only';
+
+//Made it show side-post only
+if ($showsidepost && !$showsidepre) {
+$bodyclasses[] = 'side-post-only';
 } else if (!$showsidepost && !$showsidepre) {
     $bodyclasses[] = 'content-only';
 }

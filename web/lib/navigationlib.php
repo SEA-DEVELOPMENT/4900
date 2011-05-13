@@ -1643,15 +1643,15 @@ class global_navigation extends navigation_node {
                 }
             }
         }
-
-        if (!empty($CFG->messaging)) {
+//Matt removed messages link from dropdown nav
+      /*  if (!empty($CFG->messaging)) {
             $messageargs = null;
             if ($USER->id!=$user->id) {
                 $messageargs = array('id'=>$user->id);
             }
             $url = new moodle_url('/message/index.php',$messageargs);
             $usernode->add(get_string('messages', 'message'), $url, self::TYPE_SETTING, null, 'messages');
-        }
+        }*/
 
         $context = get_context_instance(CONTEXT_USER, $USER->id);
         if ($iscurrentuser && has_capability('moodle/user:manageownfiles', $context)) {

@@ -97,6 +97,7 @@ body {
 
 /* @group Pre Side Only */
 
+
 .side-pre-only #page-content #region-main-box {
     margin-left: 0px;
 }
@@ -119,33 +120,42 @@ body {
 }
 
 
+/*Shaughn, Fixed Side Pre
+.side-pre-only #region-main {left: 100%; width: 73.5%; background: white;}
+.side-pre-only #region-pre {left: setting:regionwidthdouble; width: setting:regionwidth;}
+.side-pre-only #region-post {width:0%; left:0%;}
+.has_dock_left_vertical.side-pre-only #region-main  {left: 100%; width: 73.5%; background: white;}
+.has_dock_left_vertical.side-pre-only #region-pre {left: setting:regionwidthdouble; width: setting:regionwidth;}
+.has_dock_left_vertical.side-pre-only #region-post {width:0%; left:0%;}
+*/
 
 /* @end */
 
 /* @group Post Side Only */
 
-.side-post-only #page-content #region-main-box {
-    margin-left: 0px;
-}
+/*Shaughn, Modified the layout so that the side post would be visible*/
 
-.side-post-only #page-content #region-main-box #region-post-box {
-    margin-left: -[[setting:regionwidth]];
-}
+.side-post-only #page-content #region-main-box { margin-left: 0px; }
 
-.side-post-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main {
-    margin-left: [[setting:regionwidth]];
-}
+.side-post-only #page-content #region-main-box #region-post-box { margin-left: -[[setting:regionwidth]]; }
 
-.side-post-only #page-content #region-main-box #region-post-box #region-post {
-    left: [[setting:regionwidthdouble]];
-    width: [[setting:regionwidth]];
-}
+.side-post-only #page-content #region-main-box #region-post-box #region-main-wrap #region-main { margin-left: [[setting:regionwidth]]; }
 
-.has_dock.side-post-only .page-middle #region-main-box #region-post-box #region-main-wrap #region-main {
-    margin-left: 200px;
-}
+.pagelayout-frontpage.side-post-only #page-content #region-main-box #region-post-box #region-post,
+.editing.side-post-only #page-content #region-main-box #region-post-box #region-post { left: [[setting:regionwidthdouble]]; width: [[setting:regionwidth]]; }
 
+.side-post-only #page-content #region-main-box #region-post-box #region-post { left: [[setting:regionwidth]]; width: [[setting:regionwidth]]; }
 
+.has_dock.side-post-only .page-middle #region-main-box #region-post-box #region-main-wrap #region-main { margin-left: 200px; }
+
+/*Shaughn, fixing side-post
+.side-post-only #region-main {left: 100%; width: 73.5%; background: white;}
+.side-post-only #region-pre {width:0%; left:0%;}
+.side-post-only #region-post {left: setting:regionwidthdouble; width: setting:regionwidth;}
+.has_dock_left_vertical.side-post-only #region-main {left: 100%; width: 73.5%; background: white;}
+.has_dock_left_vertical.side-post-only #region-pre {width:0%; left:0%;}
+.has_dock_left_vertical.side-post-only #region-post {left: setting:regionwidthdouble; width: setting:regionwidth;}
+*/
 
 /* @end */
 
@@ -171,7 +181,11 @@ body {
     width: 0px;
 }
 
-
+/*Shaughn, fixed no group blocks
+.content-only #region-main { left: 100%; width: 100%; background: white;}
+.content-only #region-pre {width:0%; left:0%;}
+.content-only #region-post {width:0%; left:0%;}
+*/
 
 /* @end */
 .pagelayout-report #page-content #region-main {
