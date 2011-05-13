@@ -17,20 +17,20 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         $content = html_writer::start_tag('ul', array('id' => 'awesomeHomeMenu', 'class' => 'dropdown  dropdown-horizontal'));
         $content .= html_writer::start_tag('li');
         $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot", 'id' =>'home'));
-        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('home_icon', 'theme')));
+        $content .= html_writer::empty_tag('img', array('alt' => 'Home', 'title'=>'Home', 'src' =>$this->pix_url('home_icon', 'theme')));
         $content .= html_writer::end_tag('a');
         $content .= html_writer::end_tag('li');
         $content .= html_writer::start_tag('li');
         $content .= html_writer::start_tag('span', array('id' =>'awesomeNavMenu'));
-        $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('user_silhouette', 'theme')));
+        $content .= html_writer::empty_tag('img', array('alt' => 'Navigation', 'title'=>'Navigation', 'src' =>$this->pix_url('user_silhouette', 'theme')));
         $content .= html_writer::end_tag('span');
         $content .= $this->navigation_node($navigation, array());
         $content .= html_writer::end_tag('li');
         //if user is logged in, display message link in navigation
          if (isloggedin()) {
             $content .= html_writer::start_tag('li');
-            $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot/message/index.php", 'id' =>'home'));
-            $content .= html_writer::empty_tag('img', array('alt' => '', 'src' =>$this->pix_url('message_icon', 'theme')));
+            $content .= html_writer::start_tag('a', array('href' => "$CFG->wwwroot/message/index.php", 'id' =>'awesomeNavMenu'));
+            $content .= html_writer::empty_tag('img', array('alt' => 'Messages', 'title'=>'Messages', 'src' =>$this->pix_url('message_icon', 'theme')));
             $content .= html_writer::end_tag('a');
             $content .= html_writer::end_tag('li');
          }
@@ -38,7 +38,7 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         return $content;
     }
 
-    
+    //note that to edit the navigation items you will need to modify navigationlib.php
     
 
     protected function navigation_node(navigation_node $node, $attrs=array()) {
@@ -107,7 +107,7 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::empty_tag('input', array('id' => 'topadminsearchquery', 'type' => 'text', 'name' => 'query', 'value' => s($searchvalue),
                     'onfocus' => "if(this.value == 'Search Settings..') {this.value = '';}",
                     'onblur' => "if (this.value == '') {this.value = 'Search Settings..';}"));
-        //$content .= html_writer::empty_tag('input', array('class'=>'search-go','type'=>'submit', 'value'=>''));
+        $content .= html_writer::empty_tag('input', array('class'=>'search-go','type'=>'submit', 'value'=>''));
         $content .= html_writer::end_tag('div');
         $content .= html_writer::end_tag('form');
 
