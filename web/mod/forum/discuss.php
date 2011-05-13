@@ -313,6 +313,9 @@
         // Highlight the parent post
         parent_id = $(e).attr("data-parent");
         $("#r"+parent_id+" *").addClass('activepost');
+        
+        // Hack to fix the awesomebar overlap problem
+        $("#wrapper").css("margin","42px 5% 0px 5%");
     }
     function showRelated(e){
         // Reset any previously clicked
@@ -339,6 +342,9 @@
         
         // Switch the listener
         $(e).unbind("click").bind("click", function(){showAll(this);});
+        
+        // Hack to fix the awesomebar overlap problem
+        $("#wrapper").css("margin","42px 5% 0px 5%");
     }
     function showAll(e){
         resetRelated(e);
