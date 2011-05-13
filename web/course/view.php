@@ -91,6 +91,7 @@
     require_once($CFG->dirroot.'/calendar/lib.php');    /// This is after login because it needs $USER
 
 //option to enrol in courses with guest view
+//Jack Chiang
 if (!is_enrolled($context, $USER, '', false)) {
 // get all enrol forms available in this course
 $enrols = enrol_get_plugins(true);
