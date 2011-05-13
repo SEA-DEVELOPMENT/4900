@@ -293,7 +293,20 @@
         $(".resetrelated").click(function(){
             showAll(".showall");
         });
+        // Make parent obvious
+        $(".gotoparent").click(function(){
+            showAll(".showall");
+            goToParent(this);
+        })
     });
+    function goToParent(e){
+        // Reset any previously clicked
+        resetRelated(".showall");
+        
+        // Highlight the parent post
+        parent_id = $(e).attr("data-parent");
+        $("#r"+parent_id+" *").addClass('activepost');
+    }
     function showRelated(e){
         // Reset any previously clicked
         resetRelated(".showall");
@@ -305,7 +318,8 @@
 
         if(parent_ids){
             $(".forumpost").hide();
-            $("#"+id).show().css("background-color", "#EDEFF5");
+            $("#"+id).show();
+            $("#"+id+" *").addClass('activepost');//.css("background-color", "green");
             $(parent_ids).show();
             $("[data-parent$=#"+id+"]").parents(".forumpost").show();
         }
@@ -317,9 +331,15 @@
         $(".forumpost").show();
     }
     function resetRelated(e){
-        $(e).parents(".forumpost").css("background-color", "");
+        $('.activepost').removeClass('activepost');
+//        $(e).parents(".forumpost").find("*").css("background-color", "");
         $(e).removeClass("showall").text("Show Related").addClass("showrelated").unbind("click").bind("click",function(){showRelated(this);});
     }
 </script>
+<style>
+    .activepost {
+        background-color: green !important;
+    }
+</style>
 <?php
     echo $OUTPUT->footer();

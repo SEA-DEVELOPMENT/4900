@@ -3177,7 +3177,7 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
             // Print In reponse to text and links
             $output .= html_writer::start_tag('span');
             $output .= ' in response to ';
-            $output .= html_writer::tag('a', $post->parent_subject, array('href'=>$url, 'class' => 'resetrelated'));
+            $output .= html_writer::tag('a', $post->parent_subject, array('href'=>$url, 'class' => 'gotoparent', 'data-parent' => $post->parent_id));
             $output .= ' by ';
             $url = new moodle_url('/user/view.php', array('id'=>$post->parent_userid, 'course'=>$course->id));
             $output .= html_writer::tag('a', $post->parent_fullname, array('href'=>$url));
@@ -3372,7 +3372,7 @@ function forum_print_post($post, $discussion, $forum, &$cm, $course, $ownpost=fa
         // Print In reponse to text and links
         $output .= html_writer::start_tag('span');
         $output .= ' in response to ';
-        $output .= html_writer::tag('a', $post->parent_subject, array('href'=>$url,'class' => 'resetrelated'));
+        $output .= html_writer::tag('a', $post->parent_subject, array('href'=>$url,'class' => 'gotoparent','data-parent' => $post->parent_id));
         $output .= ' by ';
         $output .= html_writer::link(new moodle_url('/user/view.php', array('id'=>$post->parent_userid, 'course'=>$course->id)), $post->parent_fullname);
         $output .= html_writer::end_tag('span'); // In response to
@@ -4269,15 +4269,33 @@ function forum_delete_post($post, $children, $course, $cm, $forum, $skipcompleti
 
     $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-    if ($children != 'ignore' && ($childposts = $DB->get_records('forum_posts', array('parent'=>$post->id)))) {
+    //jamesbrennan
+    // If the child posts are not be be deleted, set their parent id to the deleted
+    // post's parent id so they are still linked into a conversation
+    if ($childposts = $DB->get_records('forum_posts', array('parent'=>$post->id))) {
        if ($children) {
-           foreach ($childposts as $childpost) {
-               forum_delete_post($childpost, true, $course, $cm, $forum, $skipcompletion);
+           if($children != 'ignore'){
+               foreach ($childposts as $childpost) {
+                   forum_delete_post($childpost, true, $course, $cm, $forum, $skipcompletion);
+               }
+           } else {
+               // Set the childrens parent to the deleted post's parent
+               $DB->set_field('forum_posts', 'parent', $post->parent, array('parent'=>$post->id));
            }
        } else {
            return false;
        }
     }
+//    if ($children != 'ignore' && ($childposts = $DB->get_records('forum_posts', array('parent'=>$post->id)))) {
+//       if ($children) {
+//           foreach ($childposts as $childpost) {
+//               forum_delete_post($childpost, true, $course, $cm, $forum, $skipcompletion);
+//           }
+//       } else {
+//           return false;
+//       }
+//    }
+    //jb end
 
     //delete ratings
     require_once($CFG->dirroot.'/rating/lib.php');
