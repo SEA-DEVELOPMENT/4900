@@ -82,6 +82,7 @@ ul, li, h4, h3, h2, h1, p{se
 }
 .courseNav:hover{
            text-decoration: underline;
+           color: #1D1AB2;
 }
 .hide{
 	visibility:hidden;
