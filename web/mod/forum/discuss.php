@@ -340,6 +340,10 @@
             $(parent_ids).show();
         }
         
+        // Hack so that the awesomebar does not cover up the top of the active post
+        // If offsetParent is supported, scroll the page down 25px from the element
+        window.scrollBy(0, -50);
+        
         // Switch the listener
         $(e).unbind("click").bind("click", function(){showAll(this);});
         
