@@ -1,4 +1,4 @@
-ul, li, h4, h3, h2, h1, p{se
+ul, li, h4, h3, h2, h1, p{
     padding:0;
     margin:0;
     list-style:none;
@@ -29,7 +29,7 @@ ul, li, h4, h3, h2, h1, p{se
                 background-color:#EEE;
             }
                 #navigation a{
-                    color:#933;
+                    color:#0b0974;
                     font-weight:bolder;
                     text-decoration:none;
                 }
@@ -60,29 +60,41 @@ ul, li, h4, h3, h2, h1, p{se
                 font-size:85%;
                 line-height:1.4em;
             }
-		#sections p.nobreak{
-		width:930px;
-                margin:0;
-                font-size:85%;
-                line-height:1.4em;
-            }
-            
-            #sections h2{
-                color:#993333;
-                margin:20px 0pt;
-            }
-            #sections a{
-                color:#777;
-                font-weight:bolder;
-                text-decoration:none;
-            }
-.courseNav{
-           margin: 10px;  
-                
+#sections p.nobreak{
+	width:930px;
+	margin:0;
+	font-size:85%;
+	line-height:1.4em;
+	padding:0 0 20px 0;
 }
-.courseNav:hover{
-           text-decoration: underline;
-           color: #1D1AB2;
+
+#sections h2{
+	color:#0b0974;
+	margin:20px 0pt;
+}
+
+#sections h3{
+	color:#1D1AB2;
+	margin:5px 0;
+}
+
+#sections h4{
+	color:#513ED9;
+	margin:10px 0 0 0;
+}
+
+#sections a{
+	color:#323086;
+	font-weight:bolder;
+	text-decoration:none;
+}
+#sections a:hover{
+	text-decoration: underline;
+    color: #1D1AB2;
+		   }
+.courseNav{
+           margin: 10px 20px 10px 0;  
+                
 }
 .hide{
 	visibility:hidden;
@@ -100,3 +112,31 @@ ul, li, h4, h3, h2, h1, p{se
 	width:450px;
 	position:relative;
 }
+
+#signup{
+	width:150px;
+	margin:10px 40%;
+	color:#black;
+	display:block;
+	background-image:url(../images/signupbg.jpg);
+	-webkit-border-radius: 33px;
+	-moz-border-radius: 33px;
+	border-radius: 33px;
+	text-decoration:none;
+}
+#signup:hover{
+	width:150px;
+	margin:10px 40%;
+	color:#black;
+	display:block;
+	background-image:url(../images/signupbgOver.jpg);
+	-webkit-border-radius: 33px;
+	-moz-border-radius: 33px;
+	border-radius: 33px;
+	text-decoration:none;
+}
+.right img{
+	float:right; 
+	position:relative;
+	padding-top:70px;
+	}
