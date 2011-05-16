@@ -140,8 +140,9 @@ if ($count) {
 if (!empty($messagebody) && !$edit && !$deluser && ($preview || $send)) {
     if (count($SESSION->emailto[$id])) {
         if (!empty($preview)) {
+            //Sean Hall - replaced s($returnto) with $returnto
             echo '<form method="post" action="messageselect.php" style="margin: 0 20px;">
-<input type="hidden" name="returnto" value="'.s($returnto).'" />
+<input type="hidden" name="returnto" value="'.$returnto.'" />
 <input type="hidden" name="id" value="'.$id.'" />
 <input type="hidden" name="format" value="'.$format.'" />
 ';
@@ -161,7 +162,8 @@ if (!empty($messagebody) && !$edit && !$deluser && ($preview || $send)) {
             } else {
                 echo $OUTPUT->heading(get_string('messagedselectedusersfailed'));
             }
-            echo '<p align="center"><a href="index.php?id='.$id.'">'.get_string('backtoparticipants').'</a></p>';
+            //Sean Hall - Change the anchor to return you to the page you started on
+            echo '<p align="center"><a href="'.$returnto.'">'.get_string('backtoparticipants').'</a></p>';
         }
         echo $OUTPUT->footer();
         exit;
