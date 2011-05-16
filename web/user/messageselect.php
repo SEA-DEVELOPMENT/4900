@@ -27,9 +27,7 @@ require_once('../config.php');
 require_once($CFG->dirroot.'/message/lib.php');
 
 $id = required_param('id',PARAM_INT);
-//Sean - debug
-echo $id;
-//
+
 $messagebody = optional_param('messagebody','',PARAM_CLEANHTML);
 $send = optional_param('send','',PARAM_BOOL);
 $preview = optional_param('preview','',PARAM_BOOL);
