@@ -38,7 +38,7 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         return $content;
     }
 
-    //note that to edit the navigation items you will need to modify navigationlib.php
+    //note: to edit the navigation items you will need to modify navigationlib.php
     
 
     protected function navigation_node(navigation_node $node, $attrs=array()) {
