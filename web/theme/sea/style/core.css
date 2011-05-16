@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
 
 /*Shaughn, Changed Login Link Color*/
 .logininfo a:link {
-color:#00cc00;
+color:#00ff00;
 }
 
 #wrapper {
@@ -146,7 +146,6 @@ p.helplink {
 /* @group Navbar */
 
 .navbar {
-    background: #fff;
     height: 20px;
     padding-top: 5px;
     padding-bottom: 4px;
