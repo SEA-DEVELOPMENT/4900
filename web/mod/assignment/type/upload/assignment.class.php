@@ -998,7 +998,7 @@ class assignment_upload extends assignment_base {
         //jamesbrennan
         // List some common filetypes for teacher to select
         $fileoptions = array( 
-            '0' => get_string('allowall', 'assignment'), 
+            '' => get_string('allowall', 'assignment'), 
             '.doc' => '.doc',
             '.docx' => '.docx',
             '.pages'=> '.pages',
@@ -1040,7 +1040,7 @@ class assignment_upload extends assignment_base {
             '.gif' => '.gif',
             '.png' => '.png');
         $mform->addElement('select', 'accepted_types', get_string('allowedfiletypes', 'assignment'), $fileoptions, array('multiple' => 'multiple', 'size' => '8'));
-        $mform->setDefault('accepted_types', '0');
+        $mform->setDefault('accepted_types', '');
         // A textbox for additional filetypes not in the select
         $mform->addElement('text', 'otherfiletypes', get_string('otherfiletypes', 'assignment'));
         //jb end
