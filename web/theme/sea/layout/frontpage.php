@@ -147,6 +147,7 @@ echo $OUTPUT->doctype() ?>
         <?php echo page_doc_link(get_string('moodledocslink')) ?>
     </p><center>
         <?php
+        //Matt commented this out to remove the Moodle link
 	//echo $OUTPUT->home_link();
 	echo $OUTPUT->standard_end_of_body_html() ?>
 </center>
