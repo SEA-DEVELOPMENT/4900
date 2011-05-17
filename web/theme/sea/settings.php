@@ -8,7 +8,7 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
  
-//This takes out the settings (logo) for administrators
+//Shaughn, took out setting to allow user to set a url for the logo
 
 // Logo file setting
 //$name = 'theme_sea/logo';
