@@ -17,7 +17,7 @@ jQuery(function( $ ){
      * This is done so you can see them. You DON'T need to specify the commented ones.
      * A 'target' is specified, that means that #screen is the context for target, prev, next and navigation.
      */
-	 
+         /********************************Below is customized by Edi Mange for the SEA project******************************/	 
 	 /******************************************************************************************************/
 	 /**************************************Top Navigation**************************************************/
 	 /******************************************************************************************************/
@@ -83,7 +83,7 @@ jQuery(function( $ ){
 	});
 	
 	/******************************************************************************************************/
-	/********************************Go to back course examples********************************************/
+	/********************************Go back course examples********************************************/
 	/******************************************************************************************************/
 	
 		 /***********************************Go back a course example page 1 **************************************/
@@ -142,6 +142,7 @@ jQuery(function( $ ){
         //lazy:false,// (default) if true, the plugin looks for the items on each event(allows AJAX or JS content, or reordering)
         //interval:1000, // It's the number of milliseconds to automatically go to the next
         //constant:true, // constant speed
+        ///******************End customization by Edi*******************************************/
         
         onBefore:function( e, elem, $pane, $items, pos ){
             /**

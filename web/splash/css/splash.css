@@ -1,18 +1,18 @@
-ul, li, h4, h3, h2, h1, p{se
+/*Created by Edi Mange */
+
+/*Basic headings and list styling*/
+ul, li, h4, h3, h2, h1, p{
     padding:0;
     margin:0;
     list-style:none;
 }
-
-.next, .prev{
-    cursor:pointer;
-}
-
+/*The object incasing the scrolled object. Is the actual visable screen*/
 #screen{
     position:relative;
     height:500px;
     width:900px;
 }
+/*Navigation styling*/
     #navigation{
         width:900px;
         text-align:center;
@@ -29,11 +29,11 @@ ul, li, h4, h3, h2, h1, p{se
                 background-color:#EEE;
             }
                 #navigation a{
-                    color:#933;
+                    color:#0b0974;
                     font-weight:bolder;
                     text-decoration:none;
                 }
-    
+    /*The object being scrolled. Is the actual visable content area screen*/*/
 #sections{
     overflow:hidden;
     background-color:#EEE;
@@ -42,53 +42,64 @@ ul, li, h4, h3, h2, h1, p{se
     clear:left;
     margin-left:0px;
 }
-    
+    /*The list holding all the different section list items*/
     #sections ul{
         width:20000px;
 		height:450px;
     }
-    
+    /*An individual "page" or section*/
         #sections li{
 			width:900px;
 			height:500px;
             float:left;
             padding:11px 30px;
         }
-            
+     /*Styling for the content within a section with a right and left content area*/       
             #sections p{
                 margin:0;
                 font-size:85%;
                 line-height:1.4em;
             }
-		#sections p.nobreak{
-		width:930px;
-                margin:0;
-                font-size:85%;
-                line-height:1.4em;
-            }
-            
-            #sections h2{
-                color:#993333;
-                margin:20px 0pt;
-            }
-            #sections a{
-                color:#777;
-                font-weight:bolder;
-                text-decoration:none;
-            }
+    /*Styling for content within a section that does not have a right and left area*/        
+#sections p.nobreak{
+	width:930px;
+	margin:0;
+	font-size:85%;
+	line-height:1.4em;
+	padding:0 0 20px 0;
+}
+/*Header 2 styling*/
+#sections h2{
+	color:#0b0974;
+	margin:20px 0pt;
+}
+/*Header 3 styling*/
+#sections h3{
+	color:#1D1AB2;
+	margin:5px 0;
+}
+/*Header 4 styling*/
+#sections h4{
+	color:#513ED9;
+	margin:10px 0 0 0;
+}
+/*Anchor/link styling*/
+#sections a{
+	color:#323086;
+	font-weight:bolder;
+	text-decoration:none;
+}
+/*Hover over effect for links*/
+#sections a:hover{
+	text-decoration: underline;
+    color: #1D1AB2;
+		   }
+/*Spaces out the navigation links for the courses*/                   
 .courseNav{
-           margin: 10px;  
+           margin: 10px 20px 10px 0;  
                 
 }
-.courseNav:hover{
-           text-decoration: underline;
-           color: #1D1AB2;
-}
-.hide{
-	visibility:hidden;
-	position:absolute;
-	left:900px;
-}
+/*Together with left, splits a "page" or section into a right and left content area*/
 .right{
 	float:left;
 	width:440px;
@@ -100,3 +111,33 @@ ul, li, h4, h3, h2, h1, p{se
 	width:450px;
 	position:relative;
 }
+/*Styling for the signup button*/
+#signup{
+	width:150px;
+	margin:10px 43%;
+	color:#black;
+	display:block;
+	background-image:url(../images/signupbg.jpg);
+	-webkit-border-radius: 33px;
+	-moz-border-radius: 33px;
+	border-radius: 33px;
+	text-decoration:none;
+}
+/*Hover over effect for the signup button*/
+#signup:hover{
+	width:150px;
+	margin:10px 43%;
+	color:#black;
+	display:block;
+	background-image:url(../images/signupbgOver.jpg);
+	-webkit-border-radius: 33px;
+	-moz-border-radius: 33px;
+	border-radius: 33px;
+	text-decoration:none;
+}
+/*Styling for an image in the right content area*/
+.right img{
+	float:right; 
+	position:relative;
+	padding-top:70px;
+	}
