@@ -10,6 +10,8 @@ $custommenu = $OUTPUT->custom_menu();
 $hascustommenu = (empty($PAGE->layout_options['nocustommenu']) && !empty($custommenu));
 
 $bodyclasses = array();
+//Shaughn, removed the side-pre from general pages. 
+
 //if ($showsidepre && !$showsidepost) {
 //    $bodyclasses[] = 'side-pre-only';
 //} else if ($showsidepost && !$showsidepre) {
@@ -61,6 +63,7 @@ echo $OUTPUT->doctype() ?>
 
 <!-- START OF HEADER -->
 <!-- Shaughn, Took out the Logo URL and put in a static image that calls the Logo class in core.css -->
+
     <div id="page-header" class="clearfix">
 		<div id="page-header-wrapper">
 			<!-- <?php if($logourl == NULL) { ?> -->

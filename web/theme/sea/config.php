@@ -96,6 +96,8 @@ $THEME->editor_sheets = array('editor');
 // body of the editor.
 ////////////////////////////////////////////////////
 
+
+//Shaughn, Made minor changes to only return side-post as the default region.
 $THEME->layouts = array(
     'base' => array(
         'file' => 'general.php',
@@ -175,6 +177,7 @@ $THEME->layouts = array(
         'regions' => array(),
         'options' => array('nofooter'=>true, 'nonavbar'=>false, 'noblocks'=>true),
     ),
+
     'report' => array(
         'file' => 'general.php',
         'regions' => array('side-post'),

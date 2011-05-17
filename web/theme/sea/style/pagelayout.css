@@ -134,6 +134,7 @@ body {
 /* @group Post Side Only */
 
 /*Shaughn, Modified the layout so that the side post would be visible*/
+/*Made minor css changes, setted the regionwidth to not float out of the page*/
 
 .side-post-only #page-content #region-main-box { margin-left: 0px; }
 
