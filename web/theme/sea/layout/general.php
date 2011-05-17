@@ -49,7 +49,7 @@ echo $OUTPUT->doctype() ?>
 </head>
 <body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
-
+<!-- Added awesomebar -->
         <div id="awesomebar">
         <?php
             $topsettings = new decaf_topsettings_renderer($this->page, null);

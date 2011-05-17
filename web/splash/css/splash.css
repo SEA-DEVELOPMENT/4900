@@ -1,0 +1,142 @@
+ul, li, h4, h3, h2, h1, p{
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+
+.next, .prev{
+    cursor:pointer;
+}
+
+#screen{
+    position:relative;
+    height:500px;
+    width:900px;
+}
+    #navigation{
+        width:900px;
+        text-align:center;
+        margin-left:62px;
+    }
+        #navigation ul{
+            margin-left:55px !important;
+            margin-left:35px;
+        }
+            #navigation li{
+                float:left;
+                margin:0 20px;
+                padding:10px 20px;
+                background-color:#EEE;
+            }
+                #navigation a{
+                    color:#0b0974;
+                    font-weight:bolder;
+                    text-decoration:none;
+                }
+    
+#sections{
+    overflow:hidden;
+    background-color:#EEE;
+    width:990px;
+    height:450px;
+    clear:left;
+    margin-left:0px;
+}
+    
+    #sections ul{
+        width:20000px;
+		height:450px;
+    }
+    
+        #sections li{
+			width:900px;
+			height:500px;
+            float:left;
+            padding:11px 30px;
+        }
+            
+            #sections p{
+                margin:0;
+                font-size:85%;
+                line-height:1.4em;
+            }
+#sections p.nobreak{
+	width:930px;
+	margin:0;
+	font-size:85%;
+	line-height:1.4em;
+	padding:0 0 20px 0;
+}
+
+#sections h2{
+	color:#0b0974;
+	margin:20px 0pt;
+}
+
+#sections h3{
+	color:#1D1AB2;
+	margin:5px 0;
+}
+
+#sections h4{
+	color:#513ED9;
+	margin:10px 0 0 0;
+}
+
+#sections a{
+	color:#323086;
+	font-weight:bolder;
+	text-decoration:none;
+}
+#sections a:hover{
+	text-decoration: underline;
+    color: #1D1AB2;
+		   }
+.courseNav{
+           margin: 10px 20px 10px 0;  
+                
+}
+.hide{
+	visibility:hidden;
+	position:absolute;
+	left:900px;
+}
+.right{
+	float:left;
+	width:440px;
+	position:relative;
+	padding:0 10px 0 0;
+}
+.left{
+	float:left;
+	width:450px;
+	position:relative;
+}
+
+#signup{
+	width:150px;
+	margin:10px 40%;
+	color:#black;
+	display:block;
+	background-image:url(../images/signupbg.jpg);
+	-webkit-border-radius: 33px;
+	-moz-border-radius: 33px;
+	border-radius: 33px;
+	text-decoration:none;
+}
+#signup:hover{
+	width:150px;
+	margin:10px 40%;
+	color:#black;
+	display:block;
+	background-image:url(../images/signupbgOver.jpg);
+	-webkit-border-radius: 33px;
+	-moz-border-radius: 33px;
+	border-radius: 33px;
+	text-decoration:none;
+}
+.right img{
+	float:right; 
+	position:relative;
+	padding-top:70px;
+	}
