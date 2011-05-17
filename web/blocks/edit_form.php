@@ -135,6 +135,9 @@ class block_edit_form extends moodleform {
 	//Shaughn, deactivated the choice to choose default region
         //$mform->addElement('select', 'bui_defaultregion', get_string('defaultregion', 'block'), $defaultregionoptions);
 
+	//Shaughn, The default region for all pages are now hidden and only returns side-post as the default region
+	$mform->addElement('hidden', 'bui_defaultregion', 'side-post');
+
         $mform->addElement('select', 'bui_defaultweight', get_string('defaultweight', 'block'), $weightoptions);
 
         // Where this block is positioned on this page.
@@ -148,7 +151,10 @@ class block_edit_form extends moodleform {
         }
 
 	//Shaughn, Took out the region select bar, now it defaults to the side-post
-        // $mform->addElement('select', 'bui_region', get_string('region', 'block'), $regionoptions);
+        //$mform->addElement('select', 'bui_region', get_string('region', 'block'), $regionoptions);
+
+	//Shaughn, The default region for this page is now hidden and only returns side-post as the default region
+	$mform->addElement('hidden', 'bui_region', 'side-post');
 
         $mform->addElement('select', 'bui_weight', get_string('weight', 'block'), $weightoptions);
 

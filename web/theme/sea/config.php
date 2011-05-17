@@ -34,7 +34,7 @@ $THEME->name = 'sea';
 // the directory in which this file resides.
 ////////////////////////////////////////////////////
 
-
+//Edited by Edi Mange to add decaf
 $THEME->parents = array(
     'canvas',
     'base',
@@ -51,7 +51,7 @@ $THEME->parents = array(
 // changes you want to your theme.
 ////////////////////////////////////////////////////
 
-
+//Edited by Edi to add awsomebar_2 customizaton
 $THEME->sheets = array(
     'core',
     'pagelayout',
@@ -96,6 +96,8 @@ $THEME->editor_sheets = array('editor');
 // body of the editor.
 ////////////////////////////////////////////////////
 
+
+//Shaughn, Made minor changes to only return side-post as the default region.
 $THEME->layouts = array(
     'base' => array(
         'file' => 'general.php',
@@ -175,6 +177,7 @@ $THEME->layouts = array(
         'regions' => array(),
         'options' => array('nofooter'=>true, 'nonavbar'=>false, 'noblocks'=>true),
     ),
+
     'report' => array(
         'file' => 'general.php',
         'regions' => array('side-post'),
@@ -190,7 +193,7 @@ $THEME->layouts = array(
 // if you want to add a different layout template to a
 // specific page.
 ///////////////////////////////////////////////////////////////
-
+//Added by Edi to get our theme working
 $THEME->csspostprocess = 'sea_process_css';
 
 ////////////////////////////////////////////////////
@@ -238,7 +241,7 @@ $THEME->csspostprocess = 'sea_process_css';
 // An array of JavaScript files NOT to inherit from
 // the themes parents
 ////////////////////////////////////////////////////
-
+//Edited by Edi to get the proper settings for our theme
 $THEME->parents_exclude_sheets = array(
         'base'=>array(
             'pagelayout',
