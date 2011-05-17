@@ -147,7 +147,7 @@ echo $OUTPUT->doctype() ?>
         <?php echo page_doc_link(get_string('moodledocslink')) ?>
     </p><center>
         <?php
-	echo $OUTPUT->home_link();
+	//echo $OUTPUT->home_link();
 	echo $OUTPUT->standard_end_of_body_html() ?>
 </center>
 </body>
