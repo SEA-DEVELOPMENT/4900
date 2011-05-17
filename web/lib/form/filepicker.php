@@ -73,6 +73,14 @@ class MoodleQuickForm_filepicker extends HTML_QuickForm_input {
         $args = new stdClass();
         // need these three to filter repositories list
         $args->accepted_types = $this->_options['accepted_types']?$this->_options['accepted_types']:'*';
+        //jamesbrennan
+        if(empty($args->accepted_types))
+            $args->accepted_types = '';
+        else {
+            if($args->accepted_types != '*')
+                $args->accepted_types = get_string('acceptedfiletypes', 'moodle', implode(', ', $args->accepted_types));
+        }
+        //jb end
         $args->return_types = FILE_INTERNAL;
         $args->itemid = $draftitemid;
         $args->maxbytes = $this->_options['maxbytes'];

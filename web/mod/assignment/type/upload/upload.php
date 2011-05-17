@@ -60,6 +60,7 @@ $instance = new assignment_upload($cm->id, $assignment, $cm, $course);
 $submission = $instance->get_submission($formdata->userid, true);
 
 //jamesbrennan
+// Grab assignment accepted types to be checked againts the file the user uploads
 if($assignment->accepted_types)
     $accepted_types = explode(',',$assignment->accepted_types);
 else

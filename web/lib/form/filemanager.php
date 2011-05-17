@@ -276,8 +276,10 @@ function form_filemanager_render($options) {
     //jamesbrennan
     if(empty($options->accepted_types))
         $filetypes = '';
-    else
-        $filetypes = get_string('acceptedfiletypes', 'moodle', implode(', ', $options->accepted_types));
+    else {
+        if($options->accepted_types != '*')
+            $filetypes = get_string('acceptedfiletypes', 'moodle', implode(', ', $options->accepted_types));
+    }
     //jb end
     $html .= <<<FMHTML
 <div class="filemanager-loading mdl-align" id='filemanager-loading-{$client_id}'>

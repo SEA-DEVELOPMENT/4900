@@ -57,6 +57,7 @@ $title = strip_tags($course->fullname.': '.get_string('modulename', 'assignment'
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 //jamesbrennan
+// Grab assignment accepted types to be checked againts the file the user uploads
 if($assignment->accepted_types)
     $accepted_types = explode(',',$assignment->accepted_types);
 else

@@ -81,6 +81,13 @@ class file_picker implements renderable {
             }
         }
 
+        //jamesbrennan
+        if(!empty($options->accepted_types)) {
+            if($options->accepted_types != '*')
+                echo get_string('acceptedfiletypes', 'moodle', $options->accepted_types);
+        }
+        //jb end
+        
         // initilise options, getting files in root path
         $this->options = initialise_filepicker($options);
 

@@ -268,6 +268,7 @@ class assignment_uploadsingle extends assignment_base {
         $mform->setDefault('maxbytes', $CFG->assignment_maxbytes);
         
         //jamesbrennan
+        // List some common filetypes for teacher to select
         $fileoptions = array( 
             '0' => get_string('allowall', 'assignment'), 
             '.doc' => '.doc',
@@ -275,6 +276,7 @@ class assignment_uploadsingle extends assignment_base {
             '.pages'=> '.pages',
             '.xls' => '.xls',
             '.xlsx' => '.xlsx',
+            '.numbers' => '.numbers',
             '.csv' => '.csv',
             '.ppt' => '.ppt',
             '.pps' => '.pps',
@@ -311,6 +313,7 @@ class assignment_uploadsingle extends assignment_base {
             '.png' => '.png');
         $mform->addElement('select', 'accepted_types', get_string('allowedfiletypes', 'assignment'), $fileoptions, array('multiple' => 'multiple', 'size' => '8'));
         $mform->setDefault('accepted_types', '0');
+        // A textbox for additional filetypes not in the select
         $mform->addElement('text', 'otherfiletypes', get_string('otherfiletypes', 'assignment'));
         //jb end
 
