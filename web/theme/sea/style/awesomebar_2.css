@@ -1,3 +1,4 @@
+/*Styles below customized by Edi for the version 2 of awsomebar navigation, later minor adjustments were made by ken to make the final version 3*/
 /*Sytles the main bar, also positions it to stay at the top of the page*/
 #awesomebar{height:25px;background-color:#025167;margin:0;text-shadow: 0 1px 0 #000; padding-left: 30px; position:fixed; top: 0; width: 98%; z-index: 1000;}
 /*Styles the main bar's border, and the border between elements*/
