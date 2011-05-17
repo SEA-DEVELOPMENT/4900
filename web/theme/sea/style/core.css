@@ -28,12 +28,13 @@ body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
 .logininfo a:link {
 color:#00ff00;
 }
-
+/*Edi added a min-width to the wrapper*/
 #wrapper {
     background:#fff;
     margin:25px 5% 0px 5%;
     padding:0px;
     border:1px solid #c1bc9d;
+    min-width: 900px;
 }
 
 #page-content-wrapper {
