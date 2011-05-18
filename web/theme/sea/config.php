@@ -61,6 +61,11 @@ $THEME->sheets = array(
     
 );
 
+////////////////////////////////////////////////////
+// Name of the stylesheet(s) you've including in  //
+// this theme's /styles/ directory.               //
+////////////////////////////////////////////////////
+
 ///////////
 //Shaughn Change --> Excluding sheets
 //Excluding pagelayout
@@ -75,11 +80,6 @@ $THEME->parents_exclude_sheets = array (
 	),
 );
 */
-
-////////////////////////////////////////////////////
-// Name of the stylesheet(s) you've including in
-// this theme's /styles/ directory.
-////////////////////////////////////////////////////
 
 
 $THEME->enable_dock = true;
