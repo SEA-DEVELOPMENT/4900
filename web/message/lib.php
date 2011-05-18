@@ -2345,8 +2345,6 @@ function message_print_heading($title, $colspan=3) {
     echo html_writer::tag('td', $title, array('colspan' => $colspan, 'class' => 'heading'));
     echo html_writer::end_tag('tr');
 }
-<<<<<<< HEAD
-=======
 
 
 //Sean Hall
@@ -2371,4 +2369,3 @@ function print_bulk_message_tag($open, $id = "bulk") {
     
     return true;
 }
->>>>>>> 0377d3da7783fb5085363bfc102cbb6ce02335cf
