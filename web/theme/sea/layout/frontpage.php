@@ -105,15 +105,15 @@ echo $OUTPUT->doctype() ?>
                     </div>
                 </div>
 
-                <?php if ($hassidepre) { ?>
+                <?php if ($hassidepre && isloggedin()) { ?>
                 <div id="region-pre" class="block-region">
                     <div class="region-content">
                         <?php echo $OUTPUT->blocks_for_region('side-pre') ?>
                     </div>
                 </div>
                 <?php } ?>
-
-                <?php if ($hassidepost) { ?>
+                <!--Edi added logged in requirment to display side post -->
+                <?php if ($hassidepost && isloggedin()) { ?>
                 <div id="region-post" class="block-region">
                     <div class="region-content">
                         <?php echo $OUTPUT->blocks_for_region('side-post') ?>

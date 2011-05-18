@@ -10,11 +10,11 @@ ul, li, h4, h3, h2, h1, p{
 #screen{
     position:relative;
     height:500px;
-    width:900px;
+    width:863px;
 }
 /*Navigation styling*/
     #navigation{
-        width:900px;
+        width:100%;
         text-align:center;
         margin-left:62px;
     }
@@ -33,11 +33,11 @@ ul, li, h4, h3, h2, h1, p{
                     font-weight:bolder;
                     text-decoration:none;
                 }
-    /*The object being scrolled. Is the actual visable content area screen*/*/
+    /*The object being scrolled. Is the actual visable content area*/
 #sections{
     overflow:hidden;
     background-color:#EEE;
-    width:990px;
+    width:100%;
     height:450px;
     clear:left;
     margin-left:0px;
@@ -49,20 +49,20 @@ ul, li, h4, h3, h2, h1, p{
     }
     /*An individual "page" or section*/
         #sections li{
-			width:900px;
+			width:850px;
 			height:500px;
             float:left;
             padding:11px 30px;
         }
      /*Styling for the content within a section with a right and left content area*/       
             #sections p{
-                margin:0;
+                margin:10px 10px 10px 5px;
                 font-size:85%;
                 line-height:1.4em;
             }
     /*Styling for content within a section that does not have a right and left area*/        
 #sections p.nobreak{
-	width:930px;
+	width:810px;
 	margin:0;
 	font-size:85%;
 	line-height:1.4em;
@@ -102,20 +102,21 @@ ul, li, h4, h3, h2, h1, p{
 /*Together with left, splits a "page" or section into a right and left content area*/
 .right{
 	float:left;
-	width:440px;
+	width:410px;
 	position:relative;
-	padding:0 10px 0 0;
+	padding:0 10px 0 5px;
+        margin-left: 10px;
 }
 .left{
 	float:left;
-	width:450px;
+	width:410px;
 	position:relative;
 }
 /*Styling for the signup button*/
 #signup{
 	width:150px;
 	margin:10px 43%;
-	color:#black;
+	color:black;
 	display:block;
 	background-image:url(../images/signupbg.jpg);
 	-webkit-border-radius: 33px;
