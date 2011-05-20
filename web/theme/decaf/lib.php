@@ -107,7 +107,10 @@ class decaf_topsettings_renderer extends plugin_renderer_base {
         $content .= html_writer::empty_tag('input', array('id' => 'topadminsearchquery', 'type' => 'text', 'name' => 'query', 'value' => s($searchvalue),
                     'onfocus' => "if(this.value == 'Search Settings..') {this.value = '';}",
                     'onblur' => "if (this.value == '') {this.value = 'Search Settings..';}"));
-        $content .= html_writer::empty_tag('input', array('class'=>'search-go','type'=>'submit', 'value'=>''));
+
+	//Shaughn, Removed the submit button for the search bar because it is not necessary. 
+        //$content .= html_writer::empty_tag('input', array('class'=>'search-go','type'=>'submit', 'value'=>''));
+
         $content .= html_writer::end_tag('div');
         $content .= html_writer::end_tag('form');
 
